@@ -12,7 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements JWTSubject {
 
-    use SoftDeletes, Notifiable;
+    use Notifiable;
 
     protected $table = 'rl_users';
 
