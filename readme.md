@@ -73,3 +73,13 @@ the following additional fields are obligate to be filled out within .env file:
 - MAIL_USERNAME
 - MAIL_PASSWORD
 - MAIL_ENCRYPTION
+
+
+###Login to the app
+
+To login to the app use the following creds:
+
+```
+admin@gmail.com
+admin
+```
