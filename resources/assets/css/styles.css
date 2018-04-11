@@ -369,7 +369,7 @@
 }
 
 .type-filter{
-    width: calc(23.3333% - 10px);
+    width: calc(23.3333% - 4px);
     float: left;
 }
 
@@ -387,6 +387,79 @@
 
 .select-filter + .select-filter{
     float: left;
-    width: calc(23.3333% - 10px);
-    margin-left: 10px;
+    width: calc(23.3333% - 4px);
+    margin-left: 4px;
+}
+
+.sidebar-form ul.tab-filter{
+    list-style-type: none;
+    overflow: hidden;
+    padding: 0;
+    margin-top: 25px;
+    margin-bottom: 0;
+    margin-bottom: -15px;
+}
+
+.sidebar-form ul.tab-filter li{
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36%;
+    text-align: center;
+}
+
+.sidebar-form ul.tab-filter li:first-child{
+    width: 23.3333%;
+}
+
+.sidebar-form ul.tab-filter li a{
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: #3a444f;
+    opacity: 0.5;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    padding: 10px 0;
+    font-size: 14px;
+    font-family: Montserrat;
+    font-weight: 600;
+}
+
+.sidebar-form ul.tab-filter li a:hover{
+    opacity: 1;
+}
+
+.sidebar-form ul.tab-filter li a.active{
+    border-bottom: 2px solid #4a90e2;
+    opacity: 1;
+}
+
+.sidebar-form ul.tab-filter li.my-customers a.active{
+    border-bottom: 2px solid #34cc8c;
+}
+
+.sidebar-form ul.tab-filter li.potential-customers a.active{
+    border-bottom: 2px solid #ff894f;
+}
+
+
+.margin-bottom-0{
+    margin-bottom: 0;
+}
+
+.oval {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.my-customers .oval{
+    background-color: #34cc8c;
+}
+
+.potential-customers .oval{
+    background-color: #ff894f;
 }
