@@ -23,6 +23,15 @@
                     </li>
                 </ul>
             </div>
+            
+            <div class="nav-links">
+                <ul>
+                    <li><a href="#" class="active">Lab Map</a></li>
+                    <li><a href="#">Feed</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
 
         </nav>
     </header>

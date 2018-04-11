@@ -424,6 +424,7 @@
     font-size: 14px;
     font-family: Montserrat;
     font-weight: 600;
+    transition: opacity 100ms linear;
 }
 
 .sidebar-form ul.tab-filter li a:hover{
@@ -462,4 +463,44 @@
 
 .potential-customers .oval{
     background-color: #ff894f;
+}
+
+.nav-links{
+    float: right;
+}
+
+.nav-links ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links ul li {
+    display: flex;
+    float: left;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-links ul li a{
+    color: #ffffff;
+    height: 70px;
+    display: inline-block;
+    line-height: 70px;
+    margin-right: 35px;
+    font-size: 14px;
+    font-family: Montserrat;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    opacity: 0.7;
+    transition: opacity 100ms linear;
+}
+
+.nav-links ul li a:hover{
+    opacity: 1;
+}
+
+.nav-links ul li a.active{
+    border-bottom: 2px solid #fff;
+    opacity: 1;
 }
