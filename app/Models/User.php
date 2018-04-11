@@ -14,52 +14,10 @@ class User extends Authenticatable implements JWTSubject {
 
     use SoftDeletes, Notifiable;
 
+    protected $table = 'rl_users';
+
     protected $fillable = [
-        'email',
-        'password',
-        'is_verified',
-        'remember_token',
-        'surname',
-        'name',
-        'street',
-        'number',
-        'bus',
-        'postalcode',
-        'city',
-        'social_security_number',
-        'bank_account',
-        'mobile',
-        'gender',
-        'nationality',
-        'birth_date',
-        'birth_place',
-        'iban',
-        'bic',
-        'mobile_phone',
-        'mobile_phone_public',
-        'personal_email',
-        'avatar',
-        'supervisor_id',
-        'active',
-        'work_phone',
-        'contract_type',
-        'hours_week',
-        'recruitment',
-        'function',
-        'diploma',
-        'specification',
-        'transport',
-        'commuting',
-        'marital_status',
-        'marital_status_since',
-        'partner_surname',
-        'partner_name',
-        'partner_birth_date',
-        'partner_profession',
-        'partner_dependant',
-        'children_dependant',
-        'dependant_children_count',
-        'extra_info'
+
     ];
 
     protected $hidden = ['password', 'remember_token'];
@@ -89,15 +47,5 @@ class User extends Authenticatable implements JWTSubject {
     public function getAvatarAttribute($value)
     {
         return env('APP_URL').'/storage/'.$value;
-    }
-
-
-    function updateProfilePicture(UploadedFile $file)
-    {
-        $filePath = Storage::disk('public')->putFile('profile-pictures', $file);
-
-        $this->avatar = $filePath;
-
-        $this->save();
     }
 }
