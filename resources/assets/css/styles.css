@@ -292,7 +292,11 @@
     padding: 25px 25px;
 }
 
-.skin-blue .main-header .navbar .sidebar-toggle:hover {
+.main-header .sidebar-toggle{
+    color: #ffffff;
+}
+
+.main-header .sidebar-toggle:hover {
     background-color: #60a5f9;
 }
 
@@ -322,4 +326,12 @@
 .nav-search input::placeholder{
     color: #fff;
     opacity: 0.5;
+}
+
+.navbar .header-logo {
+    width: 150px;
+    float: left;
+    height: 70px;
+    display: flex;
+    align-items: center;
 }
