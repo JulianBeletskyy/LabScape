@@ -214,3 +214,43 @@
 .fileContainerBox {
     display: inline-block;
 }
+
+.skin-blue .main-header .navbar{
+    background: transparent;
+    /*box-shadow: 0 0 30px 0 rgba(35, 40, 72, 0.13);*/
+    height: 70px;
+}
+
+.main-header{
+    background-image: linear-gradient(to right, #4a90e2, #3c7bde);
+}
+
+.main-header .logo{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    background: transparent !important;
+}
+
+.logo-lg{
+    background: transparent;
+}
+
+.logo-lg img {
+    width: 100%;
+    height: auto;
+}
+
+.main-sidebar {
+    padding-top: 70px;
+}
+
+
+.main-header .sidebar-toggle {
+    float: left;
+    padding: 25px 25px;
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+    background-color: #60a5f9;
+}
