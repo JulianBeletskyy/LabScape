@@ -1,0 +1,70 @@
+#Sporta Leave
+
+### Laravel 5.6 + Angular 5.2.0(with Angular cli)
+
+### Installation
+
+```
+composer install
+npm install
+```
+
+Create `.env` file (can be based on `.env.example`)
+```
+php artisan key:generate
+```
+
+Create .env file using .env.example as the base.
+
+Set DB credentials within .env file
+
+Run migrations
+
+```
+php artisan migrate
+```
+
+Create storage link
+
+```
+php artisan storage:link
+```
+
+
+### Dev Build
+
+```
+ng build --watch    // you may need to run this command with sudo
+php artisan serv
+```
+
+### Production Build
+
+go to project url in browser or run the command:
+
+```
+ng build
+```
+
+### Structure
+
+Angular5 files are stored in  **/resources/assets/src folder**
+
+
+###E-Mailing
+
+Currently emailing is used for:
+- reset password
+
+for dev purpose please set-up appropriate smtp.mailtrap.io settings in .env file
+
+###.env file
+
+the following additional fields are obligate to be filled out within .env file:
+- APP_URL
+- MAIL_DRIVER
+- MAIL_HOST
+- MAIL_PORT
+- MAIL_USERNAME
+- MAIL_PASSWORD
+- MAIL_ENCRYPTION
