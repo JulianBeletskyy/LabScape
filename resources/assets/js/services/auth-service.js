@@ -1,6 +1,5 @@
 const AuthService = {
-    // isLoggedIn: false,
-    isLoggedIn: true, //TODO for temp purpose
+    isLoggedIn: false,
     login: function() { this.isLoggedIn = true },
     logout: function() { this.isLoggedIn = false },
     defineIsLoggedIn: function() {
