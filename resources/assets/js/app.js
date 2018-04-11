@@ -2,6 +2,7 @@ require('./bootstrap');
 import router from './routes';
 import VueRouter from 'vue-router';
 import AuthService from './services/auth-service';
+import {Pagination} from 'vue-pagination-2';
 
 window.Vue = require('vue');
 
@@ -17,6 +18,7 @@ Vue.component('loader', require('./partial-view-components/loader'));
 Vue.component('main-header', require('./private-components/layouts/main-header'));
 Vue.component('main-sidebar', require('./private-components/layouts/main-sidebar'));
 Vue.component('main-footer', require('./private-components/layouts/main-footer'));
+Vue.component('pagination', Pagination);
 
 Vue.prototype.$eventGlobal = new Vue(); // Global event bus
 
