@@ -1,0 +1,8 @@
+@media (min-width: 768px){
+    .sidebar-collapse .main-sidebar {
+        -webkit-transform: translate(-585px, 0);
+        -ms-transform: translate(-585px, 0);
+        -o-transform: translate(-585px, 0);
+        transform: translate(-585px, 0);
+    }
+}
