@@ -88,7 +88,11 @@
         { "type": "Feature", "properties": { "id": "ci38020944", "mag": 1.0, "time": 1507362158010, "felt": null, "tsunami": 0 }, "geometry": { "type": "Point", "coordinates": [ -116.457667, 34.326, 2.73 ] } },
         { "type": "Feature", "properties": { "id": "mb80259564", "mag": 1.03, "time": 1507361004730, "felt": null, "tsunami": 0 }, "geometry": { "type": "Point", "coordinates": [ -112.529833, 46.865833, 9.91 ] } },];
 
+    import http from '../mixins/http';
+
     export default {
+
+        mixins: [http],
 
         data: function () {
             return {
@@ -97,6 +101,13 @@
         },
 
         methods: {
+
+            loadAddresses: function () {
+                this.httpGet('/api/addresses')
+                    .then(data => {
+                        console.log('data', data);
+                    })
+            },
 
             composeMapData: function (data) {
                 return data;
@@ -214,6 +225,9 @@
         },
 
         mounted: function () {
+
+            this.loadAddresses();
+
             this.initMap();
         }
 

@@ -32,8 +32,8 @@ Route::group(['middleware'=>['jwt.auth']],function (){
 
     Route::get('/logged-user', 'UserController@showLoggedUserData')->name('user.showLoggedUserData');
 
-    Route::put('/update-user-profile', 'UserController@updateUserProfile')->name('user.updateUserProfile');
-
-    Route::post('/update-user-profile-picture', 'UserController@updateUserProfilePicture')->name('user.updateUserProfilePicture');
+    Route::get('/addresses', function (){
+        return \App\Models\Address::all();
+    });
 
 });
