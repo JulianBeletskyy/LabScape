@@ -89,6 +89,21 @@
                                     <a href="#">ISO</a>
                                 </li>
                             </ul>
+
+                            <div class="info-block">
+                                <div class="lightening-icon">
+                                    <img src="/images/blue-lightening.png" alt="">
+                                </div>
+
+                                <div class="news-label">
+                                    New employer <a href="#" class="news-link">Jina James</a> joined the lab
+                                </div>
+
+                                <a href="#" class="news-link more-news-link">
+                                    +3 more news
+                                </a>
+                            </div>
+
                         </div>
                     </li>
 

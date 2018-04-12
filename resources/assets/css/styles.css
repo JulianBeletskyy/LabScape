@@ -593,3 +593,42 @@ ul.tag-list li + li{
 .sidebar ul.tag-list li a:hover{
     background-color: #eaeff4;
 }
+
+.info-block{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.5;
+    text-align: left;
+    color: #3a444f;
+}
+
+.info-block .lightening-icon{
+    position: absolute;
+    bottom: 9px;
+    left: -30px;
+}
+
+.info-block .news-label{
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #f7f7f7;
+    border-radius: 6px;
+}
+
+.info-block .news-link{
+    color: #4a90e3 !important;
+}
+
+.info-block .news-link:hover{
+    text-decoration: underline !important;
+}
+
+.info-block .news-link.more-news-link{
+    margin-top: 10px;
+    margin-left: 15px;
+}
