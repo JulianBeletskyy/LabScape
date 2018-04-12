@@ -636,3 +636,9 @@ ul.tag-list li + li{
     margin-top: 10px;
     margin-left: 15px;
 }
+
+#map-element{
+    height: 100%;
+    width: 100%;
+    min-height: 800px;
+}

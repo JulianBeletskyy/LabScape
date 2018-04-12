@@ -18,6 +18,7 @@ mix
         'bower_components/Ionicons/css/ionicons.min.css',
         'bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
         'bower_components/bootstrap-daterangepicker/daterangepicker.css',
+        'node_modules/mapbox-gl/dist/mapbox-gl.css',
         'resources/assets/css/font-awesome.min.css',
         'resources/assets/css/AdminLTE.min.css',
         'resources/assets/css/_all-skins.css',
