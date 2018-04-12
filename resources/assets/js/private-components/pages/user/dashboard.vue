@@ -30,11 +30,12 @@
 <script>
 
     var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
+    var token = document.head.querySelector('meta[name="mapbox-key"]').content;
 
     export default {
 
         mounted: function () {
-            mapboxgl.accessToken = 'pk.eyJ1Ijoic2VyZ2V6YWsiLCJhIjoiY2pmdXNmcnpkMG01YzJxbXdteDhkcHpjcCJ9.4kSySXM2rYx9VUMkxouIpg';
+            mapboxgl.accessToken = token;
             var map = new mapboxgl.Map({
                 container: 'map-element',
                 style: 'mapbox://styles/mapbox/streets-v10'
