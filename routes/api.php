@@ -32,8 +32,6 @@ Route::group(['middleware'=>['jwt.auth']],function (){
 
     Route::get('/logged-user', 'UserController@showLoggedUserData')->name('user.showLoggedUserData');
 
-    Route::get('/addresses', function (){
-        return \App\Models\Address::all();
-    });
+    Route::get('/addresses', 'AddressesController@index')->name('address.index');
 
 });
