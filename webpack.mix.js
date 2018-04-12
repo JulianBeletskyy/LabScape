@@ -38,9 +38,6 @@ mix
             'bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
             'bower_components/jquery-slimscroll/jquery.slimscroll.min.js',
             'bower_components/fastclick/lib/fastclick.js',
-            // 'node_modules/admin-lte/dist/js/adminlte.min',
-            // 'node_modules/admin-lte/dist/js/pages/dashboard.js',
-            // 'node_modules/admin-lte/dist/js/demo.js',
         ],
         'public/js/vendor.js')
 

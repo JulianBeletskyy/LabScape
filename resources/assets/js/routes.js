@@ -32,16 +32,10 @@ let publicRoutes = [
 let privateRoutes = [
     {
         path: '/dashboard',
-        component: require('./private-components/pages/user/dashboard'),
+        component: require('./private-components/pages/dashboard'),
         meta: { requiresAuth: true },
         name: 'Dashboard'
-    },
-    {
-        path: '/user/profile',
-        component: require('./private-components/pages/user/profile'),
-        meta: { requiresAuth: true },
-        name: 'Profile'
-    },
+    }
 
 ];
 
