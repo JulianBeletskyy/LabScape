@@ -504,3 +504,92 @@
     border-bottom: 2px solid #fff;
     opacity: 1;
 }
+
+.found-result-statistics {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    text-align: left;
+    color: #3a444f;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    opacity: 0.6;
+}
+
+ul.sidebar-list{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.sidebar-list li{
+
+}
+
+ul.sidebar-list li h3{
+    display: flex;
+    align-items: center;
+    font-family: Montserrat;
+    font-size: 18px;
+    line-height: 1.39em;
+    font-weight: 600;
+    margin: 0;
+    margin-top: 5px;
+}
+
+ul.sidebar-list li h3 .oval{
+    margin-left: 10px;
+}
+
+ul.sidebar-list li .item{
+    margin-left: 50px;
+    margin-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: solid 1px #f7f7f7;;
+}
+
+ul.sidebar-list li .item p{
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+    text-align: left;
+    color: #3a444f;
+    margin-top: 10px;
+}
+
+ul.tag-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.tag-list li{
+    display: inline-block;
+}
+
+ul.tag-list li + li{
+    margin-left: 7px;
+}
+
+.sidebar ul.tag-list li a{
+    display: block;
+    padding: 6px 10px;
+    font-family: Montserrat;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #3a444f;
+    border-radius: 6px;
+    border: solid 1px #eaeff4;
+    transition: background-color 100ms linear;
+}
+
+.sidebar ul.tag-list li a:hover{
+    background-color: #eaeff4;
+}

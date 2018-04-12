@@ -66,6 +66,53 @@
             </div>
             <!-- /.search form -->
 
+            <div class="sidebar-list-box">
+
+                <div class="found-result-statistics">
+                    Found 373 labs. 354 in current map display
+                </div>
+
+                <ul class="sidebar-list">
+                    <li>
+                        <div class="item potential-customers">
+                            <h3>Hrf Billens <span class="oval"></span></h3>
+
+                            <p class="address">Route de l'Hopital 1, 1681 Billens-Hennens. Switzerland</p>
+
+                            <p class="lab-chain-p">Lab Chain: <strong>NorthernLabs</strong></p>
+
+                            <ul class="tag-list">
+                                <li>
+                                    <a href="#">Radiology</a>
+                                </li>
+                                <li>
+                                    <a href="#">ISO</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item my-customers">
+                            <h3>Visp Hospital <span class="oval"></span></h3>
+
+                            <p class="address">Route de l'Hopital 1, 1681 Billens-Hennens. Switzerland</p>
+
+                            <p class="lab-chain-p">Lab Chain: <strong>NorthernLabs</strong></p>
+
+                            <ul class="tag-list">
+                                <li>
+                                    <a href="#">Radiology</a>
+                                </li>
+                                <li>
+                                    <a href="#">ISO</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
 
         </section>
         <!-- /.sidebar -->
