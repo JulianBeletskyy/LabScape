@@ -618,6 +618,10 @@ ul.tag-list li + li{
     padding: 10px 15px;
     background-color: #f7f7f7;
     border-radius: 6px;
+    max-width: 370px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .info-block .news-link{

@@ -123,6 +123,16 @@
                                     <a href="#">ISO</a>
                                 </li>
                             </ul>
+
+                            <div class="info-block">
+                                <div class="lightening-icon">
+                                    <img src="/images/blue-lightening.png" alt="">
+                                </div>
+
+                                <div class="news-label">
+                                    Lab exhibited a new method of lobotomy Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium aperiam dignissimos enim eveniet
+                                </div>
+                            </div>
                         </div>
                     </li>
                 </ul>
