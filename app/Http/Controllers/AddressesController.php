@@ -22,7 +22,9 @@ class AddressesController extends Controller
     {
         $addresses = Address::with(['tags' => function ($q){
             $q->select(['id', 'name']);
-        }])->paginate(20);
+        }])
+            ->with('cluster')
+            ->paginate(20);
 
         return response()->json($addresses);
     }

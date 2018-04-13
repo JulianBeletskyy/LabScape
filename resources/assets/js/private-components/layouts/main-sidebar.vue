@@ -88,7 +88,7 @@
 
                             <p class="address">{{address.address}}</p>
 
-                            <p class="lab-chain-p">Lab Chain: <strong>NorthernLabs</strong></p>
+                            <p class="lab-chain-p" v-if="address.cluster">Lab Chain: <strong>{{address.cluster.name}}</strong></p>
 
                             <ul class="tag-list" v-if="address.tags && address.tags.length">
                                 <li v-for="tag in address.tags">
