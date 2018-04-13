@@ -15,13 +15,23 @@ class AddressesController extends Controller
 
     function index()
     {
-        $addresses = Address::all();
+        $addresses = $this->prepareAddressesQuery()->get();
 
         return response()->json($addresses);
     }
 
 
     function loadAddressesPaginated()
+    {
+        $query = $this->prepareAddressesQuery();
+
+        $addresses = $query->paginate(20);
+
+        return response()->json($addresses);
+    }
+
+
+    function prepareAddressesQuery()
     {
         $query = Address::with('tags')
             ->with('cluster')
@@ -31,9 +41,7 @@ class AddressesController extends Controller
 
         $query = $this->composeConditions($query, request()->all());
 
-        $addresses = $query->paginate(20);
-
-        return response()->json($addresses);
+        return $query;
     }
 
 

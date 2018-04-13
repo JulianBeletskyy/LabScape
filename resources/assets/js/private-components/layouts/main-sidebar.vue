@@ -226,8 +226,8 @@
                         this.addressesTotal = data.total;
                         this.addressList = data.data;
 
-                        if(!this.isFirstLoad) {
-                            this.notifyAddressListUpdated();
+                        if(!this.isFirstLoad && this.pagination.currentPage == 1) {
+                            this.notifyFiltersHaveBeenApplied();
                         }
 
                         this.isFirstLoad = false;
@@ -235,8 +235,8 @@
 
             },
 
-            notifyAddressListUpdated: function () {
-                this.$eventGlobal.$emit('addressListUpdated', JSON.parse(JSON.stringify(this.addressList)));
+            notifyFiltersHaveBeenApplied: function () {
+                this.$eventGlobal.$emit('filtersHaveBeenApplied', this.composeQueryUrl().replace('&','?'));
             },
 
             pageChanged: function (pageNumber) {
@@ -253,6 +253,7 @@
 
             applyFilters: function () {
                 console.log('appliedFilters', this.appliedFilters);
+                this.pagination.currentPage = 1;
                 this.loadAddressesPaginated();
             }
         }

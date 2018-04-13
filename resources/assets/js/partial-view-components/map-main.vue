@@ -21,8 +21,8 @@
 
         methods: {
 
-            loadAddresses: function () {
-                return this.httpGet('/api/addresses');
+            loadAddresses: function (queryString) {
+                return this.httpGet('/api/addresses' + (queryString || ''));
             },
 
             composeMapData: function (data) {
@@ -170,15 +170,19 @@
 
             this.initMap();
 
-            this.$eventGlobal.$on('addressListUpdated', (newAddressList) => {
+            this.$eventGlobal.$on('filtersHaveBeenApplied', (queryStr) => {
 
-                ['clusters','cluster-count','unclustered-point'].forEach(el => {
-                    if(this.map.getLayer(el)) this.map.removeLayer(el);
-                });
+                this.loadAddresses(queryStr)
+                    .then((data) => {
 
-                this.map.removeSource('earthquakes');
+                        ['clusters','cluster-count','unclustered-point'].forEach(el => {
+                            if(this.map.getLayer(el)) this.map.removeLayer(el);
+                        });
 
-                this.initDataSource(newAddressList);
+                        this.map.removeSource('earthquakes');
+
+                        this.initDataSource(data);
+                    })
 
             })
         }
