@@ -17,4 +17,10 @@ class AddressesController extends Controller
     }
 
 
+    function loadAddressesPaginated()
+    {
+        $addresses = Address::paginate(20);
+
+        return response()->json($addresses);
+    }
 }

@@ -159,16 +159,38 @@
 </template>
 
 <script>
+
+    import http from '../../mixins/http';
+
     export default {
+
+        mixins: [http],
+
         data: function () {
             return {
                 user: {}
             }
         },
+
         created: function () {
             this.$eventGlobal.$on('update-user-profile', (data) => {
                 this.user = data;
             });
+
+            this.loadAddressesPaginated()
+        },
+
+        methods: {
+            loadAddressesPaginated: function (page) {
+
+
+
+                this.httpGet('/api/addresses-paginated')
+                    .then(data => {
+                        console.log('dara', data);
+                    })
+
+            }
         }
     }
 </script>
