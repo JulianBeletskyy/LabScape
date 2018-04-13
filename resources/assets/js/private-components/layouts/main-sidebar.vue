@@ -182,7 +182,9 @@
                 this.user = data;
             });
 
-            this.loadAddressesPaginated(1)
+            this.loadAddressesPaginated(1);
+
+            this.loadFilterValues();
         },
 
         methods: {
@@ -200,6 +202,13 @@
 
             pageChanged: function (pageNumber) {
                 this.loadAddressesPaginated(pageNumber)
+            },
+
+            loadFilterValues: function() {
+                this.httpGet('/api/addresses-load-filters')
+                    .then(data => {
+                        console.log('data', data);
+                    })
             }
         }
     }

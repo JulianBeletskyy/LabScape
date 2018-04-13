@@ -36,4 +36,6 @@ Route::group(['middleware'=>['jwt.auth']],function (){
 
     Route::get('/addresses-paginated', 'AddressesController@loadAddressesPaginated')->name('address.loadAddressesPaginated');
 
+    Route::get('/addresses-load-filters', 'AddressesController@loadFilterValues')->name('address.loadFilterValues');
+
 });
