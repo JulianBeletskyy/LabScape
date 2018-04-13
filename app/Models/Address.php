@@ -20,4 +20,10 @@ class Address extends Model
     {
         return $this->belongsTo(Cluster::class);
     }
+
+
+    function products()
+    {
+        return $this->belongsToMany(Product::class, 'rl_address_products', 'address_id','product_id');
+    }
 }
