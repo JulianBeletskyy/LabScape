@@ -369,7 +369,7 @@
 }
 
 .type-filter{
-    width: calc(23.3333% - 4px);
+    width: calc(20.3333% - 4px);
     float: left;
 }
 
@@ -387,8 +387,29 @@
 
 .select-filter + .select-filter{
     float: left;
-    width: calc(23.3333% - 4px);
+    width: calc(20.3333% - 4px);
     margin-left: 4px;
+}
+
+.sidebar .sidebar-form a.reset-filters {
+    float: left;
+    width: calc(9% - 4px);
+    margin-left: 4px;
+    border-radius: 6px;
+    font-family: Montserrat;
+    font-size: 14px;
+    padding: 10px;
+    background: #ffffff;
+    font-weight: 600;
+    height: auto;
+    display: inline-block;
+    border: 1px solid #d2d6de;
+}
+
+.sidebar .sidebar-form a.reset-filters:hover{
+    background-color: #eee;
+    border-color: #ddd;
+    color: #23527c;
 }
 
 .sidebar-form ul.tab-filter{

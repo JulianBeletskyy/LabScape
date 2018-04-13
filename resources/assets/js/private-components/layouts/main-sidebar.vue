@@ -36,6 +36,10 @@
                                 <option>option 4</option>
                                 <option>option 5</option>
                             </select>
+
+                            <a href="javascript:void(0)" class="btn btn-default reset-filters" title="Reset Filters" @click="resetFilters()">
+                                <i class="fa fa-remove"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -255,6 +259,17 @@
                 console.log('appliedFilters', this.appliedFilters);
                 this.pagination.currentPage = 1;
                 this.loadAddressesPaginated();
+            },
+
+            resetFilters: function () {
+
+                this.appliedFilters = {
+                    usedProducts: '',
+                    tag: '',
+                    type: ''
+                };
+
+                this.applyFilters();
             }
         }
     }
