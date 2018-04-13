@@ -69,22 +69,24 @@
             <div class="sidebar-list-box">
 
                 <div class="found-result-statistics">
-                    Found 373 labs. 354 in current map display
+                    Found {{addressesTotal}} labs. ---- in current map display
                 </div>
 
                 <ul class="sidebar-list">
-                    <li>
+                    <li v-for="address in addressList">
                         <div class="item potential-customers">
                             
                             <div class="item-image">
-                                <img src="/images/person.png" class="main-image" alt="">
+                                <div class="main-image">
+                                    <img src="/images/anonimus-person_100x100.png" alt="">
+                                </div>
                                 <div class="circle-1"></div>
                                 <div class="circle-2"></div>
                             </div>
                             
-                            <h3>Hrf Billens <span class="oval"></span></h3>
+                            <h3>{{address.name}} <span class="oval"></span></h3>
 
-                            <p class="address">Route de l'Hopital 1, 1681 Billens-Hennens. Switzerland</p>
+                            <p class="address">{{address.address}}</p>
 
                             <p class="lab-chain-p">Lab Chain: <strong>NorthernLabs</strong></p>
 
@@ -151,6 +153,10 @@
                     </li>
                 </ul>
 
+                <div class="pagination-box">
+                    <pagination :records="addressesTotal" :class="'pagination pagination-sm no-margin pull-right'" :per-page="20" @paginate="pageChanged"></pagination>
+                </div>
+
             </div>
 
         </section>
@@ -168,7 +174,9 @@
 
         data: function () {
             return {
-                user: {}
+                user: {},
+                addressList: [],
+                addressesTotal: 0
             }
         },
 
@@ -177,19 +185,24 @@
                 this.user = data;
             });
 
-            this.loadAddressesPaginated()
+            this.loadAddressesPaginated(1)
         },
 
         methods: {
+
             loadAddressesPaginated: function (page) {
 
-
-
-                this.httpGet('/api/addresses-paginated')
+                this.httpGet('/api/addresses-paginated?page='+page)
                     .then(data => {
                         console.log('dara', data);
+                        this.addressesTotal = data.total;
+                        this.addressList = data.data;
                     })
 
+            },
+
+            pageChanged: function (pageNumber) {
+                this.loadAddressesPaginated(pageNumber)
             }
         }
     }
