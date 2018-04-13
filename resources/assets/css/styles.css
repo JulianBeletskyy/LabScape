@@ -646,3 +646,38 @@ ul.tag-list li + li{
 .content {
     padding: 0
 }
+
+.item-image {
+    float: right;
+    width: 120px;
+    height: 100px;
+    position: relative;
+}
+
+.item-image .main-image {
+    width: 100px;
+    height: 100px;
+    z-index: 100;
+    border-radius: 50px;
+    position: absolute;
+}
+
+.item-image .circle-1{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 10px;
+    z-index: 99;
+    border-radius: 50px;
+    background: #d7e1ec;
+}
+
+.item-image .circle-2{
+    width: 100px;
+    height: 100px;
+    left: 20px;
+    position: absolute;
+    z-index: 98;
+    border-radius: 50px;
+    background: #eaeff4;
+}

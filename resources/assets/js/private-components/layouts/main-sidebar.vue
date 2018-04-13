@@ -75,6 +75,13 @@
                 <ul class="sidebar-list">
                     <li>
                         <div class="item potential-customers">
+                            
+                            <div class="item-image">
+                                <img src="/images/person.png" class="main-image" alt="">
+                                <div class="circle-1"></div>
+                                <div class="circle-2"></div>
+                            </div>
+                            
                             <h3>Hrf Billens <span class="oval"></span></h3>
 
                             <p class="address">Route de l'Hopital 1, 1681 Billens-Hennens. Switzerland</p>
@@ -109,6 +116,13 @@
 
                     <li>
                         <div class="item my-customers">
+
+                            <div class="item-image">
+                                <img src="/images/person.png" class="main-image" alt="">
+                                <div class="circle-1"></div>
+                                <div class="circle-2"></div>
+                            </div>
+
                             <h3>Visp Hospital <span class="oval"></span></h3>
 
                             <p class="address">Route de l'Hopital 1, 1681 Billens-Hennens. Switzerland</p>
