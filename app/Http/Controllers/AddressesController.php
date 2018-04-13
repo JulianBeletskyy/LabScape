@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class AddressesController extends Controller
@@ -19,7 +20,9 @@ class AddressesController extends Controller
 
     function loadAddressesPaginated()
     {
-        $addresses = Address::paginate(20);
+        $addresses = Address::with(['tags' => function ($q){
+            $q->select(['id', 'name']);
+        }])->paginate(20);
 
         return response()->json($addresses);
     }

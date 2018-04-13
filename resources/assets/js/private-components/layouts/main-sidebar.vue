@@ -90,12 +90,9 @@
 
                             <p class="lab-chain-p">Lab Chain: <strong>NorthernLabs</strong></p>
 
-                            <ul class="tag-list">
-                                <li>
-                                    <a href="#">Radiology</a>
-                                </li>
-                                <li>
-                                    <a href="#">ISO</a>
+                            <ul class="tag-list" v-if="address.tags && address.tags.length">
+                                <li v-for="tag in address.tags">
+                                    <a href="#">{{tag.name}}</a>
                                 </li>
                             </ul>
 
