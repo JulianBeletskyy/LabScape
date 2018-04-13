@@ -26,4 +26,10 @@ class Address extends Model
     {
         return $this->belongsToMany(Product::class, 'rl_address_products', 'address_id','product_id');
     }
+
+
+    function customerType()
+    {
+        return $this->belongsTo(CustomerType::class, 'customer_status');
+    }
 }

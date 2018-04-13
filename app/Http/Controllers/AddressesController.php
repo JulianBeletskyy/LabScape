@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
+use App\Models\CustomerType;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -50,6 +51,12 @@ class AddressesController extends Controller
             });
         }
 
+        if (isset($requestParams['type_id'])) {
+            $query->whereHas('customerType', function ($q) use ($requestParams) {
+                $q->where('id', $requestParams['type_id']);
+            });
+        }
+
         return $query;
     }
 
@@ -58,10 +65,12 @@ class AddressesController extends Controller
     {
         $tags = Tag::get(['id', 'name']);
         $products = Product::all();
+        $customerTypes = CustomerType::visible()->get();
 
         $filters = [
             'tag_list' => $tags,
-            'used_product_list' => $products
+            'used_product_list' => $products,
+            'customer_types' => $customerTypes
         ];
 
         return response()->json($filters);

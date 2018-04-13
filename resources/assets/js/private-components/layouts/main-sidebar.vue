@@ -7,12 +7,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <select class="form-control select-filter type-filter">
-                                <option>Type</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
+                            <select v-model="appliedFilters.type" @change="applyFilters()" class="form-control select-filter type-filter">
+                                <option selected class="hidden" value="">Type</option>
+                                <option v-for="type in filterObject.customer_types" :value="type.id">
+                                    {{type.name}}
+                                </option>
                             </select>
 
                             <select v-model="appliedFilters.usedProducts" @change="applyFilters()" class="form-control select-filter used-products-filter">
@@ -179,6 +178,7 @@
                 appliedFilters: {
                     usedProducts: '',
                     tag: '',
+                    type: ''
                 },
                 pagination: {
                     currentPage: 1
@@ -207,6 +207,10 @@
 
                 if (this.appliedFilters.tag) {
                     queryStr += '&tag_id=' + this.appliedFilters.tag;
+                }
+
+                if (this.appliedFilters.type) {
+                    queryStr += '&type_id=' + this.appliedFilters.type;
                 }
 
                 return queryStr;
