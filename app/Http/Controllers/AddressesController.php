@@ -34,7 +34,7 @@ class AddressesController extends Controller
     function loadFilterValues()
     {
         $tags = Tag::get(['id', 'name']);
-        $products = Product::get(['id', 'name']);
+        $products = Product::all();
 
         $filters = [
             'tag_list' => $tags,

@@ -14,20 +14,21 @@
                                 <option>option 4</option>
                                 <option>option 5</option>
                             </select>
-                            <select class="form-control select-filter used-products-filter">
-                                <option>Used Products</option>
-                                <option>Tags</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
+
+                            <select v-model="appliedFilters.usedProducts" class="form-control select-filter used-products-filter">
+                                <option selected class="hidden" value="">Used Products</option>
+                                <option v-for="product in filterObject.used_product_list" :value="product.id">
+                                    {{product.company}}<span v-if="product.name">: {{product.name}}</span>
+                                </option>
                             </select>
-                            <select class="form-control select-filter tags-filter">
-                                <option>Tags</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
+
+                            <select v-model="appliedFilters.tag" class="form-control select-filter tags-filter">
+                                <option selected class="hidden" value="">Tags</option>
+                                <option v-for="tag in filterObject.tag_list" :value="tag.id">
+                                    {{tag.name}}
+                                </option>
                             </select>
+
                             <select class="form-control select-filter sort-by-filter">
                                 <option>Sort By</option>
                                 <option>option 2</option>
@@ -173,7 +174,12 @@
             return {
                 user: {},
                 addressList: [],
-                addressesTotal: 0
+                addressesTotal: 0,
+                filterObject: {},
+                appliedFilters: {
+                    usedProducts: '',
+                    tag: '',
+                }
             }
         },
 
@@ -184,7 +190,7 @@
 
             this.loadAddressesPaginated(1);
 
-            this.loadFilterValues();
+            this.loadFilterObject();
         },
 
         methods: {
@@ -204,10 +210,10 @@
                 this.loadAddressesPaginated(pageNumber)
             },
 
-            loadFilterValues: function() {
+            loadFilterObject: function() {
                 this.httpGet('/api/addresses-load-filters')
                     .then(data => {
-                        console.log('data', data);
+                        this.filterObject = data;
                     })
             }
         }
