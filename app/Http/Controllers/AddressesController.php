@@ -23,7 +23,10 @@ class AddressesController extends Controller
     function loadAddressesPaginated()
     {
         $query = Address::with('tags')
-            ->with('cluster');
+            ->with('cluster')
+            ->with(['products' => function($q){
+                $q->select('id');
+            }]);
 
         $query = $this->composeConditions($query, request()->all());
 
@@ -38,6 +41,12 @@ class AddressesController extends Controller
         if (isset($requestParams['tag_id'])) {
             $query->whereHas('tags', function ($q) use ($requestParams) {
                 $q->where('id', $requestParams['tag_id']);
+            });
+        }
+
+        if (isset($requestParams['used_product_id'])) {
+            $query->whereHas('products', function ($q) use ($requestParams) {
+                $q->where('id', $requestParams['used_product_id']);
             });
         }
 
