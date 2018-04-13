@@ -172,6 +172,7 @@
 
         data: function () {
             return {
+                isFirstLoad: true,
                 user: {},
                 addressList: [],
                 addressesTotal: 0,
@@ -224,8 +225,18 @@
                         console.log('dara', data);
                         this.addressesTotal = data.total;
                         this.addressList = data.data;
+
+                        if(!this.isFirstLoad) {
+                            this.notifyAddressListUpdated();
+                        }
+
+                        this.isFirstLoad = false;
                     })
 
+            },
+
+            notifyAddressListUpdated: function () {
+                this.$eventGlobal.$emit('addressListUpdated', JSON.parse(JSON.stringify(this.addressList)));
             },
 
             pageChanged: function (pageNumber) {

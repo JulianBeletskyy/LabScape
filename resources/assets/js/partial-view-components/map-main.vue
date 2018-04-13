@@ -58,9 +58,6 @@
 
                 this.map.addSource("earthquakes", {
                     type: "geojson",
-                    // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
-                    // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
-                    // data: "/mapbox-gl-js/assets/earthquakes.js",
                     data: {
                         "type": "FeatureCollection",
                         "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
@@ -144,8 +141,18 @@
                     center: [8.553399, 46.901604],
                     zoom: 7
                 });
-            }
+            },
 
+            initDataSource: function (addressList) {
+
+                this.provideDataToMap(addressList);
+
+                this.addClustersLayer();
+
+                this.addClustersCountLayer();
+
+                this.addUnclusteredPointLayer();
+            }
         },
 
         mounted: function () {
@@ -154,18 +161,26 @@
                 .then(data => {
                     this.map.on('load', () => {
 
-                        this.provideDataToMap(data);
+                        this.initDataSource(data);
 
-                        this.addClustersLayer();
-
-                        this.addClustersCountLayer();
-
-                        this.addUnclusteredPointLayer();
+                        console.log('this.map', this.map)
 
                     });
                 });
 
             this.initMap();
+
+            this.$eventGlobal.$on('addressListUpdated', (newAddressList) => {
+
+                ['clusters','cluster-count','unclustered-point'].forEach(el => {
+                    if(this.map.getLayer(el)) this.map.removeLayer(el);
+                });
+
+                this.map.removeSource('earthquakes');
+
+                this.initDataSource(newAddressList);
+
+            })
         }
 
     }
