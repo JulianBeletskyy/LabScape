@@ -15,14 +15,14 @@
                                 <option>option 5</option>
                             </select>
 
-                            <select v-model="appliedFilters.usedProducts" class="form-control select-filter used-products-filter">
+                            <select v-model="appliedFilters.usedProducts" @change="applyFilters()" class="form-control select-filter used-products-filter">
                                 <option selected class="hidden" value="">Used Products</option>
                                 <option v-for="product in filterObject.used_product_list" :value="product.id">
                                     {{product.company}}<span v-if="product.name">: {{product.name}}</span>
                                 </option>
                             </select>
 
-                            <select v-model="appliedFilters.tag" class="form-control select-filter tags-filter">
+                            <select v-model="appliedFilters.tag" @change="applyFilters()" class="form-control select-filter tags-filter">
                                 <option selected class="hidden" value="">Tags</option>
                                 <option v-for="tag in filterObject.tag_list" :value="tag.id">
                                     {{tag.name}}
@@ -76,7 +76,7 @@
                 <ul class="sidebar-list">
                     <li v-for="address in addressList">
                         <div class="item potential-customers">
-                            
+
                             <div class="item-image">
                                 <div class="main-image">
                                     <img src="/images/anonimus-person_100x100.png" alt="">
@@ -84,7 +84,7 @@
                                 <div class="circle-1"></div>
                                 <div class="circle-2"></div>
                             </div>
-                            
+
                             <h3>{{address.name}} <span class="oval"></span></h3>
 
                             <p class="address">{{address.address}}</p>
@@ -179,6 +179,9 @@
                 appliedFilters: {
                     usedProducts: '',
                     tag: '',
+                },
+                pagination: {
+                    currentPage: 1
                 }
             }
         },
@@ -188,16 +191,30 @@
                 this.user = data;
             });
 
-            this.loadAddressesPaginated(1);
+            this.loadAddressesPaginated();
 
             this.loadFilterObject();
         },
 
         methods: {
 
-            loadAddressesPaginated: function (page) {
+            composeQueryUrl: function () {
+                let queryStr = '';
 
-                this.httpGet('/api/addresses-paginated?page='+page)
+                if (this.appliedFilters.usedProducts) {
+                    queryStr += '&used_product_id=' + this.appliedFilters.usedProducts;
+                }
+
+                if (this.appliedFilters.tag) {
+                    queryStr += '&tag_id=' + this.appliedFilters.tag;
+                }
+
+                return queryStr;
+            },
+
+            loadAddressesPaginated: function () {
+
+                this.httpGet('/api/addresses-paginated?page=' + this.pagination.currentPage + this.composeQueryUrl())
                     .then(data => {
                         console.log('dara', data);
                         this.addressesTotal = data.total;
@@ -207,7 +224,8 @@
             },
 
             pageChanged: function (pageNumber) {
-                this.loadAddressesPaginated(pageNumber)
+                this.pagination.currentPage = pageNumber;
+                this.loadAddressesPaginated();
             },
 
             loadFilterObject: function() {
@@ -215,6 +233,11 @@
                     .then(data => {
                         this.filterObject = data;
                     })
+            },
+
+            applyFilters: function () {
+                console.log('appliedFilters', this.appliedFilters);
+                this.loadAddressesPaginated();
             }
         }
     }

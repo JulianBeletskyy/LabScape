@@ -6,6 +6,7 @@ use App\Models\Address;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AddressesController extends Controller
 {
@@ -21,13 +22,26 @@ class AddressesController extends Controller
 
     function loadAddressesPaginated()
     {
-        $addresses = Address::with(['tags' => function ($q){
-            $q->select(['id', 'name']);
-        }])
-            ->with('cluster')
-            ->paginate(20);
+        $query = Address::with('tags')
+            ->with('cluster');
+
+        $query = $this->composeConditions($query, request()->all());
+
+        $addresses = $query->paginate(20);
 
         return response()->json($addresses);
+    }
+
+
+    function composeConditions($query, $requestParams)
+    {
+        if (isset($requestParams['tag_id'])) {
+            $query->whereHas('tags', function ($q) use ($requestParams) {
+                $q->where('id', $requestParams['tag_id']);
+            });
+        }
+
+        return $query;
     }
 
 
