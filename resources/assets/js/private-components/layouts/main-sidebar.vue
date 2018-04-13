@@ -9,6 +9,7 @@
                         <div class="form-group">
                             <select v-model="appliedFilters.type" @change="applyFilters()" class="form-control select-filter type-filter">
                                 <option selected class="hidden" value="">Type</option>
+                                <option value="">All</option>
                                 <option v-for="type in filterObject.customer_types" :value="type.id">
                                     {{type.name}}
                                 </option>
@@ -44,17 +45,17 @@
                         <div class="form-group margin-bottom-0">
                             <ul class="tab-filter">
                                 <li>
-                                    <a href="javascript:void(0)" class="active">
+                                    <a href="javascript:void(0)" @click="appliedFilters.type = ''; applyFilters()" :class="{'active': appliedFilters.type == ''}">
                                         All Labs</a>
                                 </li>
                                 <li class="my-customers">
-                                    <a href="javascript:void(0)">
+                                    <a href="javascript:void(0)" @click="appliedFilters.type = 1; applyFilters()" :class="{'active': appliedFilters.type == 1}">
                                         <span class="oval"></span>
                                         My customers
                                     </a>
                                 </li>
                                 <li class="potential-customers">
-                                    <a href="javascript:void(0)">
+                                    <a href="javascript:void(0)" @click="appliedFilters.type = 2; applyFilters()" :class="{'active': appliedFilters.type == 2}">
                                         <span class="oval"></span>
                                         Potential Customers
                                     </a>

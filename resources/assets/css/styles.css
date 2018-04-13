@@ -525,7 +525,7 @@ ul.sidebar-list{
     list-style-type: none;
     padding: 0;
     margin: 0;
-    height: 590px;
+    height: 600px;
     overflow-y: auto;
 }
 
@@ -708,4 +708,8 @@ ul.tag-list li + li{
     padding: 5px 10px;
     font-size: 12px;
     line-height: 1.5;
+}
+
+.VuePagination__count{
+    display: none;
 }
