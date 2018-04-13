@@ -79,7 +79,7 @@
 
                 <ul class="sidebar-list">
                     <li v-for="address in addressList">
-                        <div class="item potential-customers">
+                        <div class="item" :class="{'potential-customers':address.customer_status == 2, 'my-customers': address.customer_status == 1}">
 
                             <div class="item-image">
                                 <div class="main-image">
@@ -115,42 +115,6 @@
                                 </a>
                             </div>
 
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="item my-customers">
-
-                            <div class="item-image">
-                                <img src="/images/person.png" class="main-image" alt="">
-                                <div class="circle-1"></div>
-                                <div class="circle-2"></div>
-                            </div>
-
-                            <h3>Visp Hospital <span class="oval"></span></h3>
-
-                            <p class="address">Route de l'Hopital 1, 1681 Billens-Hennens. Switzerland</p>
-
-                            <p class="lab-chain-p">Lab Chain: <strong>NorthernLabs</strong></p>
-
-                            <ul class="tag-list">
-                                <li>
-                                    <a href="#">Radiology</a>
-                                </li>
-                                <li>
-                                    <a href="#">ISO</a>
-                                </li>
-                            </ul>
-
-                            <div class="info-block">
-                                <div class="lightening-icon">
-                                    <img src="/images/blue-lightening.png" alt="">
-                                </div>
-
-                                <div class="news-label">
-                                    Lab exhibited a new method of lobotomy Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium aperiam dignissimos enim eveniet
-                                </div>
-                            </div>
                         </div>
                     </li>
                 </ul>
