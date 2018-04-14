@@ -165,13 +165,19 @@
 
                         let totalPointsDisplayed = 0;
 
+                        let uniqueSingleFeatureIds = [];
                         let uniqueClusterIds = [];
 
                         let unclusteredFeatures = this.map.queryRenderedFeatures(e.point, {
                             layers: ['unclustered-point']
                         });
 
-                        totalPointsDisplayed += unclusteredFeatures.length;
+                        for(let i=0; i < unclusteredFeatures.length; i++) {
+                            if(uniqueSingleFeatureIds.indexOf(unclusteredFeatures[i].properties.id) === -1) {
+                                totalPointsDisplayed++;
+                                uniqueSingleFeatureIds.push(unclusteredFeatures[i].properties.id);
+                            }
+                        }
 
                         let clusteredFeatures = this.map.queryRenderedFeatures(e.point, {
                             layers: ['clusters']
