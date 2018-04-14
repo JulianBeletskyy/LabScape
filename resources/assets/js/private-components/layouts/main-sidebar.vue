@@ -74,7 +74,7 @@
             <div class="sidebar-list-box">
 
                 <div class="found-result-statistics">
-                    Found {{addressesTotal}} labs. ---- in current map display
+                    Found {{addressesTotal}} labs. {{totalPointsInCurrentMap}} in current map display
                 </div>
 
                 <ul class="sidebar-list">
@@ -152,7 +152,8 @@
                 },
                 pagination: {
                     currentPage: 1
-                }
+                },
+                totalPointsInCurrentMap: 0
             }
         },
 
@@ -166,7 +167,17 @@
             this.loadFilterObject();
         },
 
+        mounted: function () {
+            this.listenToTotalPointsDisplayedOnMapChanged();
+        },
+
         methods: {
+
+            listenToTotalPointsDisplayedOnMapChanged: function () {
+                this.$eventGlobal.$on('totalPointsDisplayedOnMapChanged', (totalPoints) => {
+                    this.totalPointsInCurrentMap = totalPoints
+                });
+            },
 
             composeQueryUrl: function () {
                 let queryStr = '';
