@@ -151,6 +151,50 @@
                 });
             },
 
+            countDisplayedMarkers: function () {
+
+                var timeoutId;
+
+                this.map.on('move', (e) => {
+
+                    if (timeoutId) {
+                        clearTimeout(timeoutId)
+                    }
+
+                    timeoutId = setTimeout(()=>{
+
+                        let totalPointsDisplayed = 0;
+
+                        let uniqueClusterIds = [];
+
+                        let unclusteredFeatures = this.map.queryRenderedFeatures(e.point, {
+                            layers: ['unclustered-point']
+                        });
+
+                        totalPointsDisplayed += unclusteredFeatures.length;
+
+                        let clusteredFeatures = this.map.queryRenderedFeatures(e.point, {
+                            layers: ['clusters']
+                        });
+
+                        for(let i=0; i < clusteredFeatures.length; i++) {
+                            if(uniqueClusterIds.indexOf(clusteredFeatures[i].properties.cluster_id) === -1) {
+                                totalPointsDisplayed += clusteredFeatures[i].properties.point_count;
+                                uniqueClusterIds.push(clusteredFeatures[i].properties.cluster_id);
+                            }
+                        }
+                        
+                        this.notifyTotalPointsDisplayedOnMapChanged(totalPointsDisplayed)
+
+                    },500)
+
+                });
+            },
+
+            notifyTotalPointsDisplayedOnMapChanged: function (totalPoints) {
+                this.$eventGlobal.$emit('totalPointsDisplayedOnMapChanged', totalPoints);
+            },
+
             initDataSource: function (addressList) {
 
                 this.provideDataToMap(addressList);
@@ -162,6 +206,8 @@
                 this.addUnclusteredPointLayer();
 
                 this.fitMapBounds();
+
+                this.countDisplayedMarkers();
             }
         },
 
