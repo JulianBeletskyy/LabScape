@@ -6,6 +6,7 @@
 
 <script>
     var mapboxgl = require('mapbox-gl');
+    var geojsonExtent = require('@mapbox/geojson-extent');
 
     import http from '../mixins/http';
 
@@ -15,7 +16,8 @@
 
         data: function () {
             return {
-                map: null
+                map: null,
+                FeatureCollection: {}
             }
         },
 
@@ -56,13 +58,15 @@
 
                 let mapData = this.composeMapData(data);
 
+                this.FeatureCollection = {
+                    "type": "FeatureCollection",
+                    "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                    "features": mapData
+                };
+
                 this.map.addSource("earthquakes", {
                     type: "geojson",
-                    data: {
-                        "type": "FeatureCollection",
-                        "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                        "features": mapData
-                    },
+                    data: this.FeatureCollection,
                     cluster: true,
                     clusterMaxZoom: 14, // Max zoom to cluster points on
                     clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
@@ -124,12 +128,16 @@
                     source: "earthquakes",
                     filter: ["!has", "point_count"],
                     paint: {
-                        "circle-color": "#11b4da",
+                        "circle-color": "#00da4d",
                         "circle-radius": 7,
                         "circle-stroke-width": 1,
                         "circle-stroke-color": "#fff"
                     }
                 });
+            },
+
+            fitMapBounds: function () {
+                this.map.fitBounds(geojsonExtent(this.FeatureCollection), {maxZoom: 12, padding: 50});
             },
 
             initMap: function () {
@@ -152,6 +160,8 @@
                 this.addClustersCountLayer();
 
                 this.addUnclusteredPointLayer();
+
+                this.fitMapBounds();
             }
         },
 
