@@ -47,6 +47,24 @@ class AddressesController extends Controller
 
     function composeConditions($query, $requestParams)
     {
+
+        if (isset($requestParams['sort_by'])) {
+
+            $field = explode('-',$requestParams['sort_by'])[0];
+            $direction = explode('-',$requestParams['sort_by'])[1];
+
+            if($field == 'people') {
+                $query->withCount('people');
+                $field .= '_count';
+            }
+            else if($field == 'products') {
+                $query->withCount('products');
+                $field .= '_count';
+            }
+
+            $query->orderBy($field,$direction);
+        }
+
         if (isset($requestParams['tag_id'])) {
             $query->whereHas('tags', function ($q) use ($requestParams) {
                 $q->where('id', $requestParams['tag_id']);
@@ -63,14 +81,6 @@ class AddressesController extends Controller
             $query->whereHas('customerType', function ($q) use ($requestParams) {
                 $q->where('id', $requestParams['type_id']);
             });
-        }
-
-        if (isset($requestParams['sort_by'])) {
-
-            $field = explode('-',$requestParams['sort_by'])[0];
-            $direction = explode('-',$requestParams['sort_by'])[1];
-
-            $query->orderBy($field,$direction);
         }
 
         return $query;

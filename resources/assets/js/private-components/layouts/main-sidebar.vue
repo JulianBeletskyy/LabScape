@@ -31,10 +31,12 @@
 
                             <select v-model="appliedFilters.sortBy" @change="applyFilters(true)" class="form-control select-filter sort-by-filter">
                                 <option selected class="hidden" value="">Sort By</option>
-                                <option value="name-asc">Name ASC</option>
-                                <option value="name-desc">Name DESC</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
+                                <option value="name-asc">Name &uarr;</option>
+                                <option value="name-desc">Name &darr;</option>
+                                <option value="people-asc">Employee &uarr;</option>
+                                <option value="people-desc">Employee &darr;</option>
+                                <option value="products-asc">Products &uarr;</option>
+                                <option value="products-desc">Products &darr;</option>
                             </select>
 
                             <a href="javascript:void(0)" class="btn btn-default reset-filters" title="Reset Filters" @click="resetFilters()">
@@ -149,7 +151,8 @@
                     usedProducts: '',
                     tag: '',
                     type: '',
-                    sortBy: ''
+                    sortBy: '',
+                    isOnlySortingChanged: false
                 },
                 pagination: {
                     currentPage: 1
@@ -206,11 +209,11 @@
 
                 this.httpGet('/api/addresses-paginated?page=' + this.pagination.currentPage + this.composeQueryUrl())
                     .then(data => {
-                        console.log('dara', data);
+                        console.log('data', data);
                         this.addressesTotal = data.total;
                         this.addressList = data.data;
 
-                        if(!this.isFirstLoad && this.pagination.currentPage == 1) {
+                        if(!this.isFirstLoad && !this.appliedFilters.isOnlySortingChanged) {
                             this.notifyFiltersHaveBeenApplied();
                         }
 
@@ -235,10 +238,12 @@
                     })
             },
 
-            applyFilters: function (isSortingChanged) {
+            applyFilters: function (isOnlySortingChanged) {
                 console.log('appliedFilters', this.appliedFilters);
 
-                if(!isSortingChanged) {
+                this.appliedFilters.isOnlySortingChanged = !!isOnlySortingChanged;
+
+                if(!isOnlySortingChanged) {
                     this.pagination.currentPage = 1;
                 }
 
@@ -250,7 +255,9 @@
                 this.appliedFilters = {
                     usedProducts: '',
                     tag: '',
-                    type: ''
+                    type: '',
+                    sortBy: '',
+                    isOnlySortingChanged: false
                 };
 
                 this.applyFilters();

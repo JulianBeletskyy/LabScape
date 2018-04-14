@@ -32,4 +32,9 @@ class Address extends Model
     {
         return $this->belongsTo(CustomerType::class, 'customer_status');
     }
+
+    function people()
+    {
+        return $this->belongsToMany(People::class, 'rl_address_people', 'address_id','person_id');
+    }
 }
