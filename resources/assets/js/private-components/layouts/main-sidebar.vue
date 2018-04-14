@@ -122,7 +122,7 @@
                 </ul>
 
                 <div class="pagination-box">
-                    <pagination :records="addressesTotal" :class="'pagination pagination-sm no-margin pull-right'" :per-page="20" @paginate="pageChanged"></pagination>
+                    <pagination :records="addressesTotal" ref="paginationDirective" :class="'pagination pagination-sm no-margin pull-right'" :per-page="20" @paginate="pageChanged"></pagination>
                 </div>
 
             </div>
@@ -213,7 +213,7 @@
                         this.addressesTotal = data.total;
                         this.addressList = data.data;
 
-                        if(!this.isFirstLoad && !this.appliedFilters.isOnlySortingChanged) {
+                        if(!this.isFirstLoad && !this.appliedFilters.isOnlySortingChanged && this.pagination.currentPage == 1) {
                             this.notifyFiltersHaveBeenApplied();
                         }
 
@@ -245,6 +245,7 @@
 
                 if(!isOnlySortingChanged) {
                     this.pagination.currentPage = 1;
+                    this.$refs.paginationDirective.setPage(1)
                 }
 
                 this.loadAddressesPaginated();
