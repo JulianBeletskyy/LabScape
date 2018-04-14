@@ -29,10 +29,10 @@
                                 </option>
                             </select>
 
-                            <select class="form-control select-filter sort-by-filter">
-                                <option>Sort By</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
+                            <select v-model="appliedFilters.sortBy" @change="applyFilters(true)" class="form-control select-filter sort-by-filter">
+                                <option selected class="hidden" value="">Sort By</option>
+                                <option value="name-asc">Name ASC</option>
+                                <option value="name-desc">Name DESC</option>
                                 <option>option 4</option>
                                 <option>option 5</option>
                             </select>
@@ -148,7 +148,8 @@
                 appliedFilters: {
                     usedProducts: '',
                     tag: '',
-                    type: ''
+                    type: '',
+                    sortBy: ''
                 },
                 pagination: {
                     currentPage: 1
@@ -194,6 +195,10 @@
                     queryStr += '&type_id=' + this.appliedFilters.type;
                 }
 
+                if (this.appliedFilters.sortBy) {
+                    queryStr += '&sort_by=' + this.appliedFilters.sortBy;
+                }
+
                 return queryStr;
             },
 
@@ -230,9 +235,13 @@
                     })
             },
 
-            applyFilters: function () {
+            applyFilters: function (isSortingChanged) {
                 console.log('appliedFilters', this.appliedFilters);
-                this.pagination.currentPage = 1;
+
+                if(!isSortingChanged) {
+                    this.pagination.currentPage = 1;
+                }
+
                 this.loadAddressesPaginated();
             },
 

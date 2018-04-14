@@ -65,6 +65,14 @@ class AddressesController extends Controller
             });
         }
 
+        if (isset($requestParams['sort_by'])) {
+
+            $field = explode('-',$requestParams['sort_by'])[0];
+            $direction = explode('-',$requestParams['sort_by'])[1];
+
+            $query->orderBy($field,$direction);
+        }
+
         return $query;
     }
 
