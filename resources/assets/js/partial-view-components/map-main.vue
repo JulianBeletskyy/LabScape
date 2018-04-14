@@ -213,18 +213,18 @@
 
         mounted: function () {
 
-            this.loadAddresses()
-                .then(data => {
-                    this.map.on('load', () => {
+            this.initMap();
+
+            this.map.on('load', () => {
+                this.loadAddresses()
+                    .then(data => {
 
                         this.initDataSource(data);
 
                         console.log('this.map', this.map)
 
                     });
-                });
-
-            this.initMap();
+            });
 
             this.$eventGlobal.$on('filtersHaveBeenApplied', (queryStr) => {
 
