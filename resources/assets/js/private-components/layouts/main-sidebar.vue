@@ -207,7 +207,11 @@
 
             loadAddressesPaginated: function () {
 
-                this.httpGet('/api/addresses-paginated?page=' + this.pagination.currentPage + this.composeQueryUrl())
+                let url = '/api/addresses-paginated?page=' + this.pagination.currentPage + this.composeQueryUrl();
+
+                console.log('url',url);
+
+                this.httpGet(url)
                     .then(data => {
                         console.log('data', data);
                         this.addressesTotal = data.total;
@@ -239,16 +243,11 @@
             },
 
             applyFilters: function (isOnlySortingChanged) {
-                console.log('appliedFilters', this.appliedFilters);
 
                 this.appliedFilters.isOnlySortingChanged = !!isOnlySortingChanged;
 
-                if(!isOnlySortingChanged) {
-                    this.pagination.currentPage = 1;
-                    this.$refs.paginationDirective.setPage(1)
-                }
+                this.$refs.paginationDirective.setPage(1);
 
-                this.loadAddressesPaginated();
             },
 
             resetFilters: function () {
