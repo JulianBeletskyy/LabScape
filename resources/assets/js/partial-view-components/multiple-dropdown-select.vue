@@ -81,6 +81,9 @@
 
             setIdForCurrentComponent: function () {
                 this.blockId = this.name.replace(/[^A-Za-z0-9]/g,'').toLowerCase() + Math.round(Math.random()*100);
+            },
+            resetSelectedValues: function () {
+                this.selectedValues = [];
             }
         },
 

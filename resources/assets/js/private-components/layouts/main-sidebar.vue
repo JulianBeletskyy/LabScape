@@ -20,6 +20,7 @@
                                     :name="'Used Products'"
                                     :options="usedProductOptionsForDropDown"
                                     @changed="applyUsedProductsFilter"
+                                    ref="productsMultipleDropdownSelect"
                             ></multiple-dropdown-select>
 
                             <multiple-dropdown-select
@@ -27,6 +28,7 @@
                                     :name="'Tags'"
                                     :options="tagOptionsForDropDown"
                                     @changed="applyTagsFilter"
+                                    ref="tagMultipleDropdownSelect"
                             ></multiple-dropdown-select>
 
                             <select v-model="appliedFilters.sortBy" @change="applyFilters(true)" class="form-control select-filter sort-by-filter">
@@ -160,7 +162,8 @@
                 pagination: {
                     currentPage: 1
                 },
-                totalPointsInCurrentMap: 0
+                totalPointsInCurrentMap: 0,
+                multipleDropdownSelects: []
             }
         },
 
@@ -288,6 +291,9 @@
 
             resetFilters: function () {
 
+                this.$refs.productsMultipleDropdownSelect.resetSelectedValues();
+                this.$refs.tagMultipleDropdownSelect.resetSelectedValues();
+
                 this.appliedFilters = {
                     usedProducts: [],
                     tags: [],
@@ -295,6 +301,8 @@
                     sortBy: '',
                     isOnlySortingChanged: false
                 };
+
+
 
                 this.applyFilters();
             }
