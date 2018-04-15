@@ -6,7 +6,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li v-for="option in options">
-                    <input type="checkbox" @click="checkboxClick(option.value)" :id="option.value"><label :for="option.value">{{option.label}}</label>
+                    <input type="checkbox" @click="checkboxClick(option.value)" :id="blockId + option.value"><label :for="blockId + option.value">{{option.label}}</label>
                 </li>
             </ul>
         </li>
@@ -18,7 +18,8 @@
 
         data: function () {
             return {
-                selectedValues: []
+                selectedValues: [],
+                blockId: ''
             }
         },
 
@@ -51,6 +52,10 @@
 
             notifyParentComponent: function () {
                 this.$emit('changed', JSON.parse(JSON.stringify(this.selectedValues)));
+            },
+
+            setIdForCurrentComponent: function () {
+                this.blockId = this.name.replace(/[^A-Za-z0-9]/g,'').toLowerCase() + Math.round(Math.random()*100);
             }
         },
 
@@ -58,6 +63,8 @@
             $('.dropdown-menu').on('click', function (e) {
                 e.stopPropagation();
             });
+
+            this.setIdForCurrentComponent();
         },
 
 
