@@ -22,6 +22,13 @@
                                 </option>
                             </select>
 
+                            <multiple-dropdown-select
+                                    :name="'Used Products'"
+                                    :options="usedProductOptionsForDropDown"
+                                    @changed="updateUsedProductsFilter"
+                            ></multiple-dropdown-select>
+
+
                             <select v-model="appliedFilters.tag" @change="applyFilters()" class="form-control select-filter tags-filter">
                                 <option selected class="hidden" value="">Tags</option>
                                 <option v-for="tag in filterObject.tag_list" :value="tag.id">
@@ -146,9 +153,11 @@
                 user: {},
                 addressList: [],
                 addressesTotal: 0,
-                filterObject: {},
+                filterObject: {
+                    used_product_list: []
+                },
                 appliedFilters: {
-                    usedProducts: '',
+                    usedProducts: [],
                     tag: '',
                     type: '',
                     sortBy: '',
@@ -158,6 +167,17 @@
                     currentPage: 1
                 },
                 totalPointsInCurrentMap: 0
+            }
+        },
+
+        computed: {
+            usedProductOptionsForDropDown: function () {
+                return this.filterObject.used_product_list.map(product => {
+                    return {
+                        label: product.company + (product.name? ': ' + product.name: ''),
+                        value: product.id
+                    }
+                })
             }
         },
 
@@ -176,6 +196,11 @@
         },
 
         methods: {
+
+            updateUsedProductsFilter: function (data) {
+                console.log('updateUsedProductsFilter', data);
+                this.appliedFilters.usedProducts = data;
+            },
 
             listenToTotalPointsDisplayedOnMapChanged: function () {
                 this.$eventGlobal.$on('totalPointsDisplayedOnMapChanged', (totalPoints) => {
@@ -253,7 +278,7 @@
             resetFilters: function () {
 
                 this.appliedFilters = {
-                    usedProducts: '',
+                    usedProducts: [],
                     tag: '',
                     type: '',
                     sortBy: '',

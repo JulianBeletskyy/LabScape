@@ -19,6 +19,7 @@ Vue.component('main-header', require('./private-components/layouts/main-header')
 Vue.component('main-sidebar', require('./private-components/layouts/main-sidebar'));
 Vue.component('main-footer', require('./private-components/layouts/main-footer'));
 Vue.component('map-main', require('./partial-view-components/map-main'));
+Vue.component('multiple-dropdown-select', require('./partial-view-components/multiple-dropdown-select'));
 Vue.component('pagination', Pagination);
 
 Vue.prototype.$eventGlobal = new Vue(); // Global event bus

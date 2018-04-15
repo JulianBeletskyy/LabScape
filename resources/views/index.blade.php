@@ -12,6 +12,8 @@
     <title>Laravel</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <script src="/js/vendor.js"></script>
 </head>
 <body class="skin-blue">
 
@@ -19,7 +21,7 @@
         <main-component></main-component>
     </div>
 
-    <script src="/js/vendor.js"></script>
+
     <script src="/js/app.js"></script>
 </body>
 </html>
