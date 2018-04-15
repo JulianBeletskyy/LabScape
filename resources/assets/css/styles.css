@@ -391,6 +391,66 @@
     margin-left: 4px;
 }
 
+ul.select-filter{
+    padding: 0;
+}
+
+ul.select-filter > li {
+    width: 100%;
+}
+
+.sidebar-form ul.select-filter > li > a {
+    padding: 10px;
+    color: #555555;
+    background: transparent !important;
+    border: none;
+}
+
+ul.select-filter > li > a .caret {
+    float: right;
+    margin-top: 7px;
+}
+
+ul.select-filter > li > ul.dropdown-menu{
+    max-height: 500px;
+    overflow-y: auto;
+    box-shadow: 5px 5px 20px rgba(0,0,0,.2);
+}
+
+ul.select-filter > li > ul > li{
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+ul.select-filter > li > ul > li:hover{
+    background: #edf5ff;
+    cursor: pointer;
+}
+
+ul.select-filter > li > ul > li label {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 4px 5px;
+}
+
+ul.select-filter > li > ul > li .grey-checkbox span.remember_text{
+    font-weight: 400;
+    color: #333333;
+    float: none;
+}
+
+ul.select-filter > li > ul > li:hover .grey-checkbox span.remember_text{
+    color: #333333;
+}
+
+ul.select-filter > li > ul > li .grey-checkbox label span.borders{
+    float: none;
+    margin: 0;
+}
+
 .sidebar .sidebar-form a.reset-filters {
     float: left;
     width: calc(9% - 4px);
@@ -737,4 +797,8 @@ ul.tag-list li + li{
 
 .alertify-notifier .ajs-message.ajs-warning{
     border-color: #d3d6de;
+}
+
+.sidebar .sidebar-form{
+    overflow: initial;
 }

@@ -16,12 +16,14 @@
                             </select>
 
                             <multiple-dropdown-select
+                                    class="form-control select-filter used-products-filter"
                                     :name="'Used Products'"
                                     :options="usedProductOptionsForDropDown"
                                     @changed="applyUsedProductsFilter"
                             ></multiple-dropdown-select>
 
                             <multiple-dropdown-select
+                                    class="form-control select-filter tags-filter"
                                     :name="'Tags'"
                                     :options="tagOptionsForDropDown"
                                     @changed="applyTagsFilter"

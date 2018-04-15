@@ -6,7 +6,13 @@
             </a>
             <ul class="dropdown-menu">
                 <li v-for="option in options">
-                    <input type="checkbox" @click="checkboxClick(option.value)" :id="blockId + option.value"><label :for="blockId + option.value">{{option.label}}</label>
+                    <div class="grey-checkbox">
+                        <label>
+                            <input type="checkbox" @click="checkboxClick(option.value)" :id="blockId + option.value">
+                            <span class="borders"></span>
+                            <span class="remember_text">{{option.label}}</span>
+                        </label>
+                    </div>
                 </li>
             </ul>
         </li>
@@ -63,8 +69,6 @@
             $('.dropdown-menu').on('click', function (e) {
                 e.stopPropagation();
             });
-
-            this.setIdForCurrentComponent();
         },
 
 
