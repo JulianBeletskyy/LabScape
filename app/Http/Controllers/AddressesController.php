@@ -71,9 +71,9 @@ class AddressesController extends Controller
             });
         }
 
-        if (isset($requestParams['used_product_id'])) {
+        if (isset($requestParams['used_product_ids'])) {
             $query->whereHas('products', function ($q) use ($requestParams) {
-                $q->where('id', $requestParams['used_product_id']);
+                $q->whereIn('id', $requestParams['used_product_ids']);
             });
         }
 

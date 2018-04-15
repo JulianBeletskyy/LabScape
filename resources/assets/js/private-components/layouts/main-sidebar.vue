@@ -25,7 +25,7 @@
                             <multiple-dropdown-select
                                     :name="'Used Products'"
                                     :options="usedProductOptionsForDropDown"
-                                    @changed="updateUsedProductsFilter"
+                                    @changed="applyUsedProductsFilter"
                             ></multiple-dropdown-select>
 
 
@@ -197,9 +197,9 @@
 
         methods: {
 
-            updateUsedProductsFilter: function (data) {
-                console.log('updateUsedProductsFilter', data);
+            applyUsedProductsFilter: function (data) {
                 this.appliedFilters.usedProducts = data;
+                this.applyFilters();
             },
 
             listenToTotalPointsDisplayedOnMapChanged: function () {
@@ -211,8 +211,10 @@
             composeQueryUrl: function () {
                 let queryStr = '';
 
-                if (this.appliedFilters.usedProducts) {
-                    queryStr += '&used_product_id=' + this.appliedFilters.usedProducts;
+                if (this.appliedFilters.usedProducts.length) {
+                    this.appliedFilters.usedProducts.forEach(id => {
+                        queryStr += '&used_product_ids[]=' + id;
+                    });
                 }
 
                 if (this.appliedFilters.tag) {
