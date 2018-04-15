@@ -217,7 +217,7 @@
                     this.countDisplayedMarkers();
                 }
                 else {
-
+                    alertify.notify('No addresses have been found', 'warning', 3);
                 }
             }
         },

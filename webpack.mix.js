@@ -19,6 +19,8 @@ mix
         'bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
         'bower_components/bootstrap-daterangepicker/daterangepicker.css',
         'node_modules/mapbox-gl/dist/mapbox-gl.css',
+        'node_modules/alertifyjs/build/css/alertify.css',
+        'node_modules/alertifyjs/build/css/themes/bootstrap.css',
         'resources/assets/css/font-awesome.min.css',
         'resources/assets/css/AdminLTE.min.css',
         'resources/assets/css/_all-skins.css',
@@ -38,6 +40,7 @@ mix
             'bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
             'bower_components/jquery-slimscroll/jquery.slimscroll.min.js',
             'bower_components/fastclick/lib/fastclick.js',
+            'node_modules/alertifyjs/build/alertify.js'
         ],
         'public/js/vendor.js')
 

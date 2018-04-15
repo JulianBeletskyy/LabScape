@@ -288,7 +288,7 @@
 
                 this.appliedFilters = {
                     usedProducts: [],
-                    tag: '',
+                    tags: [],
                     type: '',
                     sortBy: '',
                     isOnlySortingChanged: false
