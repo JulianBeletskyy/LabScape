@@ -211,9 +211,14 @@
 
                 this.addUnclusteredPointLayer();
 
-                this.fitMapBounds();
+                if (addressList.length) {
+                    this.fitMapBounds();
 
-                this.countDisplayedMarkers();
+                    this.countDisplayedMarkers();
+                }
+                else {
+
+                }
             }
         },
 
