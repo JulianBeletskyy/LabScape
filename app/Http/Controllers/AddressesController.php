@@ -65,9 +65,9 @@ class AddressesController extends Controller
             $query->orderBy($field,$direction);
         }
 
-        if (isset($requestParams['tag_id'])) {
+        if (isset($requestParams['tag_ids'])) {
             $query->whereHas('tags', function ($q) use ($requestParams) {
-                $q->where('id', $requestParams['tag_id']);
+                $q->whereIn('id', $requestParams['tag_ids']);
             });
         }
 

@@ -15,26 +15,17 @@
                                 </option>
                             </select>
 
-                            <select v-model="appliedFilters.usedProducts" @change="applyFilters()" class="form-control select-filter used-products-filter">
-                                <option selected class="hidden" value="">Used Products</option>
-                                <option v-for="product in filterObject.used_product_list" :value="product.id">
-                                    {{product.company}}<span v-if="product.name">: {{product.name}}</span>
-                                </option>
-                            </select>
-
                             <multiple-dropdown-select
                                     :name="'Used Products'"
                                     :options="usedProductOptionsForDropDown"
                                     @changed="applyUsedProductsFilter"
                             ></multiple-dropdown-select>
 
-
-                            <select v-model="appliedFilters.tag" @change="applyFilters()" class="form-control select-filter tags-filter">
-                                <option selected class="hidden" value="">Tags</option>
-                                <option v-for="tag in filterObject.tag_list" :value="tag.id">
-                                    {{tag.name}}
-                                </option>
-                            </select>
+                            <multiple-dropdown-select
+                                    :name="'Tags'"
+                                    :options="tagOptionsForDropDown"
+                                    @changed="applyTagsFilter"
+                            ></multiple-dropdown-select>
 
                             <select v-model="appliedFilters.sortBy" @change="applyFilters(true)" class="form-control select-filter sort-by-filter">
                                 <option selected class="hidden" value="">Sort By</option>
@@ -154,11 +145,12 @@
                 addressList: [],
                 addressesTotal: 0,
                 filterObject: {
-                    used_product_list: []
+                    used_product_list: [],
+                    tag_list: []
                 },
                 appliedFilters: {
                     usedProducts: [],
-                    tag: '',
+                    tags: [],
                     type: '',
                     sortBy: '',
                     isOnlySortingChanged: false
@@ -176,6 +168,14 @@
                     return {
                         label: product.company + (product.name? ': ' + product.name: ''),
                         value: product.id
+                    }
+                })
+            },
+            tagOptionsForDropDown: function () {
+                return this.filterObject.tag_list.map(tag => {
+                    return {
+                        label: tag.name,
+                        value: tag.id
                     }
                 })
             }
@@ -202,6 +202,11 @@
                 this.applyFilters();
             },
 
+            applyTagsFilter: function (data) {
+                this.appliedFilters.tags = data;
+                this.applyFilters();
+            },
+
             listenToTotalPointsDisplayedOnMapChanged: function () {
                 this.$eventGlobal.$on('totalPointsDisplayedOnMapChanged', (totalPoints) => {
                     this.totalPointsInCurrentMap = totalPoints
@@ -217,8 +222,10 @@
                     });
                 }
 
-                if (this.appliedFilters.tag) {
-                    queryStr += '&tag_id=' + this.appliedFilters.tag;
+                if (this.appliedFilters.tags.length) {
+                    this.appliedFilters.tags.forEach(id => {
+                        queryStr += '&tag_ids[]=' + id;
+                    });
                 }
 
                 if (this.appliedFilters.type) {
