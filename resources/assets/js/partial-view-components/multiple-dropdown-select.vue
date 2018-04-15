@@ -1,8 +1,10 @@
 <template>
     <ul class="nav nav-tabs">
         <li class="dropdown">
-            <a class="dropdown-toggle" @click="toogleDropdown($event)" data-toggle="dropdown" href="#" >
-                {{name}} <span class="caret"></span>
+            <a class="dropdown-toggle" @click="toogleDropdown($event)" data-toggle="dropdown" href="#" :title="selectedValuesNamesString? name +': '+ selectedValuesNamesString : name">
+
+                <span class="caret"></span>
+                {{selectedValuesNamesString? selectedValuesNamesString : name}}
             </a>
             <ul class="dropdown-menu">
                 <li v-for="option in options">
@@ -26,6 +28,23 @@
             return {
                 selectedValues: [],
                 blockId: ''
+            }
+        },
+
+        computed: {
+            selectedValuesNamesString: function () {
+                let str = '';
+                this.selectedValues.forEach((id, index) => {
+                    let option = this.options.find(el => el.value == id);
+
+                    str += option.label
+
+                    if(++index !== this.selectedValues.length) {
+                        str += ', ';
+                    }
+                });
+
+                return str;
             }
         },
 

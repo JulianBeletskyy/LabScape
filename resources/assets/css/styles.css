@@ -404,6 +404,9 @@ ul.select-filter > li {
     color: #555555;
     background: transparent !important;
     border: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 ul.select-filter > li > a .caret {
