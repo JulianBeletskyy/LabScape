@@ -813,10 +813,28 @@ ul.tag-list li + li{
 .address-details-container{
     padding-left: 50px;
     padding-top: 40px;
+    position: relative;
 }
 
 .address-overview .customer-status-select-box{
     float: right;
+}
+
+.sidebar .address-overview h2 a{
+    display: inline-block;
+    color: #fff;
+    background: #bbbec2;
+    font-size: 16px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 14px;
+    text-align: center;
+    transition: background-color 0.1s linear;
+}
+
+.sidebar .address-overview h2 a:hover{
+    background: #4a90e3;
 }
 
 .customer-status-select-box {
@@ -1166,4 +1184,22 @@ ul.lab-news-list li h4 a{
 
 ul.lab-news-list li h4 a:hover{
     text-decoration: underline !important;
+}
+
+a.link-back.arrow-left{
+    position: absolute;
+    top: 42px;
+    left: 10px;
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+    display: block;
+    text-align: center;
+    line-height: 28px;
+    border-radius: 5px;
+}
+
+a.link-back.arrow-left:hover{
+    background-color: #4a90e3;
+    color: #fff;
 }

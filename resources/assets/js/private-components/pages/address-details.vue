@@ -2,6 +2,10 @@
     <section class="sidebar">
         <div class="address-details-container">
 
+            <router-link to="/dashboard" title="Back to dashboard" class="link-back arrow-left">
+                <i class="fa fa-angle-left"></i>
+            </router-link>
+
             <div class="address-overview">
 
                 <h2>
