@@ -39,27 +39,52 @@
                 </p>
             </div>
 
-            <div class="stuff-overview">
+            <div class="staff-overview address-box">
                 <div class="header">
-                    <h3>Stuff <a href="#"><i class="fa fa-pencil"></i></a></h3>
+                    <h3>Staff <a href="#"><i class="fa fa-pencil"></i></a></h3>
                     <a href="" class="view-contacts-chain">View Contacts Chain</a>
                 </div>
 
-                <ul class="stuff-list">
+                <ul class="staff-list">
                     <li>
                         <div class="image">
                             <img src="/images/anonimus-person_100x100.png" alt="">
                         </div>
+                        <div class="personal-info">
+                            <p class="name">Dr. med. Eduard Blanc</p>
+                            <p class="occupation">Laborleiterin Mikrobiologie</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="image">
+                            <img src="/images/anonimus-person_100x100.png" alt="">
+                        </div>
+                        <div class="personal-info">
+                            <p class="name">Dr. med. Eduard Blanc</p>
+                            <p class="occupation">Laborleiterin Mikrobiologie</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="image">
+                            <img src="/images/anonimus-person_100x100.png" alt="">
+                        </div>
+                        <div class="personal-info">
+                            <p class="name">Dr. med. Eduard Blanc</p>
+                            <p class="occupation">Laborleiterin Mikrobiologie</p>
+                        </div>
                     </li>
                 </ul>
 
-                <a href="#">Show All Employers</a>
+                <div style="clear: both"></div>
+
+                <a href="#" class="address-box-show-more-link">Show All Employers</a>
             </div>
 
-            <div class="used-products-overview">
+            <div class="used-products-overview address-box">
                 <div class="header">
                     <h3>Used Products <a href="#"><i class="fa fa-pencil"></i></a></h3>
-                    <a href="" class="view-contacts-chain">View Contacts Chain</a>
                 </div>
 
                 <ul class="used-products-list">
@@ -81,7 +106,7 @@
                 </ul>
             </div>
 
-            <div class="lab-chain-members-overview">
+            <div class="lab-chain-members-overview address-box">
                 <div class="header">
                     <h3>Lab Chain Members</h3>
                 </div>
@@ -109,7 +134,7 @@
                 </ul>
             </div>
 
-            <div class="lab-news-overview">
+            <div class="lab-news-overview address-box">
                 <div class="header">
                     <h3>Lab News <a href="#"><i class="fa fa-plus"></i></a></h3>
                 </div>

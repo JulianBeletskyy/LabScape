@@ -863,7 +863,7 @@ ul.tag-list li + li{
 }
 
 .address-overview .lab-chain .add-to-chain-link {
-    color:#0080ff;
+    color:#4a90e2;
     font-weight: 500;
 }
 
@@ -894,7 +894,7 @@ ul.tag-list li + li{
 }
 
 .sidebar .link-and-phone a{
-    color:#0080ff;
+    color:#4a90e2;
     float: left;
     margin-right: 30px;
     font-weight: 600;
@@ -906,4 +906,140 @@ ul.tag-list li + li{
 
 .link-and-phone .pone-number{
 
+}
+
+.staff-overview {
+    border-top: 1px solid #f7f7f7;
+}
+
+.address-box{
+    padding-right: 25px;
+    padding-top: 25px;
+}
+
+.address-box .header{
+    overflow: hidden;
+}
+
+.address-box .header h3{
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: left;
+    color: #3a444f;
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+.staff-overview.address-box .header h3{
+    float: left;
+    width: calc(100% - 200px);
+}
+
+.address-box .header h3 > a{
+    padding: 1px;
+    background: #bbbec2;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 14px;
+    color: #ffffff;
+    transition: background-color 0.1s linear;
+    margin-left: 15px;
+}
+
+.address-box .header h3 > a:hover{
+    background: #4a90e3;
+}
+
+.staff-overview.address-box .header > a{
+    background: #4a90e3;
+    color: #fff;
+    display: block;
+    float: right;
+    padding: 10px 15px;
+    border-radius: 5px;
+
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    margin: 0;
+    transition: background-color 0.1s linear;
+}
+
+.staff-overview.address-box .header > a:hover{
+    background: #5ba3f4;
+}
+
+ul.staff-list {
+    list-style-type: none;
+    margin-top: 10px;
+    padding: 0;
+}
+
+ul.staff-list li {
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+ul.staff-list li .image{
+    float: left;
+    border-radius: 35px;
+    background: #e6ecf3;
+}
+
+ul.staff-list li .image img{
+    width: 70px;
+    height: 70px;
+}
+
+ul.staff-list li .personal-info {
+    float: left;
+    margin-left: 15px;
+}
+
+ul.staff-list li .personal-info .name {
+    margin-bottom: 0;
+    margin-top: 12px;
+
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: left;
+    color: #3a444f;
+
+}
+
+ul.staff-list li .personal-info .occupation {
+    margin-bottom: 0;
+
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    color: #3a444f;
+}
+
+
+.address-box a.address-box-show-more-link{
+    display: inline-block;
+    font-family: Montserrat;
+    font-size: 16px;
+    line-height: 1.31;
+    color: #4a90e2;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: all 0.1s linear;
+}
+
+.address-box a.address-box-show-more-link:hover{
+    background: #4a90e2;
+    color: #ffffff;
 }
