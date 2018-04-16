@@ -9,7 +9,7 @@
             <div class="address-overview">
 
                 <h2>
-                    <span>Laboratorium Dr. G. Bichsel AG</span>
+                    <span>{{addressData.name}}</span>
                     <a href="#"><i class="fa fa-pencil"></i></a>
                 </h2>
 
@@ -28,18 +28,16 @@
                 </p>
 
                 <ul class="tag-list">
-                    <li><a href="">ISO</a></li>
-                    <li><a href="">Medical Laboratory</a></li>
-                    <li><a href="">Radiology</a></li>
+                    <li v-for="tag in addressData.tags"><a href="">{{tag.name}}</a></li>
                 </ul>
 
                 <p class="address-line">
-                    Hottingerstrasse 9, 8032 Zürich, Switzerland
+                    {{addressData.address}}
                 </p>
 
                 <p class="link-and-phone">
-                    <a href="#">bichsel.ch</a>
-                    <span class="pone-number">+41 033 827 80 00</span>
+                    <a :href="addressData.url" target="_blank">{{addressData.url.replace('https://', '').replace('http://', '').replace('/', '')}}</a>
+                    <span class="pone-number">{{addressData.phone}}</span>
                 </p>
             </div>
 
@@ -169,12 +167,22 @@
 
         data: function () {
             return {
-                addressId: null
+                addressId: null,
+                addressData: {
+                    tags: [],
+                    url: ''
+                }
             }
         },
 
         methods: {
             loadAddressDetails: function () {
+
+                this.httpGet('/api/address-details/'+this.addressId)
+                    .then(data => {
+                        console.log('data', data);
+                        this.addressData = data;
+                    })
 
             }
         },

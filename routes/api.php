@@ -38,4 +38,6 @@ Route::group(['middleware'=>['jwt.auth']],function (){
 
     Route::get('/addresses-load-filters', 'AddressesController@loadFilterValues')->name('address.loadFilterValues');
 
+    Route::get('/address-details/{address}', 'AddressesController@show')->name('address.show');
+
 });

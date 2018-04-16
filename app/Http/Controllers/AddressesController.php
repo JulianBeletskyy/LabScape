@@ -101,4 +101,11 @@ class AddressesController extends Controller
 
         return response()->json($filters);
     }
+
+
+    function show(Address $address)
+    {
+        $address->load('tags');
+        return response()->json($address);
+    }
 }
