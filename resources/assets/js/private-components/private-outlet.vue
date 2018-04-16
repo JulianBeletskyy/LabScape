@@ -3,12 +3,19 @@
 
         <main-header></main-header>
 
-        <!-- Left side column. contains the logo and sidebar -->
+
         <main-sidebar></main-sidebar>
 
+
         <div class="content-wrapper">
-            <router-view></router-view>
+
+            <section class="content">
+
+                <map-main></map-main>
+
+            </section>
         </div>
+
 
         <main-footer></main-footer>
 

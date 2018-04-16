@@ -617,6 +617,10 @@ ul.sidebar-list li{
 
 }
 
+ul.sidebar-list > li:hover{
+    box-shadow: 0 0 50px rgba(0,0,0,.15);
+}
+
 ul.sidebar-list li:first-child .item{
     padding-top: 0px;
 }
@@ -629,7 +633,7 @@ ul.sidebar-list li h3{
     line-height: 1.39em;
     font-weight: 600;
     margin: 0;
-    margin-top: 5px;
+    padding-top: 5px;
 }
 
 ul.sidebar-list li h3 .oval{
