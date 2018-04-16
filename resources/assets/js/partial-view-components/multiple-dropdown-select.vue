@@ -1,5 +1,5 @@
 <template>
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs" :id="blockId">
         <li class="dropdown">
             <a class="dropdown-toggle" @click="toogleDropdown($event)" data-toggle="dropdown" href="#" :title="selectedValuesNamesString? name +': '+ selectedValuesNamesString : name">
 
@@ -83,6 +83,7 @@
                 this.blockId = this.name.replace(/[^A-Za-z0-9]/g,'').toLowerCase() + Math.round(Math.random()*100);
             },
             resetSelectedValues: function () {
+                $('#'+this.blockId+' input[type="checkbox"]:checked').prop('checked', false)
                 this.selectedValues = [];
             }
         },
@@ -91,6 +92,8 @@
             $('.dropdown-menu').on('click', function (e) {
                 e.stopPropagation();
             });
+
+            this.setIdForCurrentComponent();
         },
 
 
