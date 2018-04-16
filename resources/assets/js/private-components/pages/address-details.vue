@@ -22,7 +22,10 @@
                 <div style="clear: both"></div>
 
                 <p class="lab-chain">
-                    <span class="current-chain-name">Medical Laboratory</span>
+                    <span class="current-chain-name">{{addressData.cluster.name}}</span>
+
+                    <br />
+
                     <span class="lab-chain-text">Lab Chain:</span>
                     <a href="#" class="add-to-chain-link">Add to Chain</a>
                 </p>
@@ -48,33 +51,13 @@
                 </div>
 
                 <ul class="staff-list">
-                    <li>
+                    <li v-if="i < 3" v-for="(person, i) in addressData.people">
                         <div class="image">
                             <img src="/images/anonimus-person_100x100.png" alt="">
                         </div>
                         <div class="personal-info">
-                            <p class="name">Dr. med. Eduard Blanc</p>
-                            <p class="occupation">Laborleiterin Mikrobiologie</p>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="image">
-                            <img src="/images/anonimus-person_100x100.png" alt="">
-                        </div>
-                        <div class="personal-info">
-                            <p class="name">Dr. med. Eduard Blanc</p>
-                            <p class="occupation">Laborleiterin Mikrobiologie</p>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="image">
-                            <img src="/images/anonimus-person_100x100.png" alt="">
-                        </div>
-                        <div class="personal-info">
-                            <p class="name">Dr. med. Eduard Blanc</p>
-                            <p class="occupation">Laborleiterin Mikrobiologie</p>
+                            <p class="name">{{person.name}}</p>
+                            <p class="occupation">{{person.description}}</p>
                         </div>
                     </li>
                 </ul>
@@ -170,8 +153,10 @@
                 addressId: null,
                 addressData: {
                     tags: [],
-                    url: ''
-                }
+                    url: '',
+                    cluster: {},
+                    people: []
+                },
             }
         },
 

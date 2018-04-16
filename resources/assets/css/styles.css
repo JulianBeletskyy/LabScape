@@ -1001,6 +1001,8 @@ ul.staff-list {
 ul.staff-list li {
     overflow: hidden;
     margin-top: 15px;
+    display: flex;
+    align-items: center;
 }
 
 ul.staff-list li .image{
@@ -1017,11 +1019,11 @@ ul.staff-list li .image img{
 ul.staff-list li .personal-info {
     float: left;
     margin-left: 15px;
+    width: calc(100% - 85px);
 }
 
 ul.staff-list li .personal-info .name {
     margin-bottom: 0;
-    margin-top: 12px;
 
     font-family: Montserrat;
     font-size: 15px;

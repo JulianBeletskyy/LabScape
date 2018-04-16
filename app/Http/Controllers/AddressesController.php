@@ -106,6 +106,8 @@ class AddressesController extends Controller
     function show(Address $address)
     {
         $address->load('tags');
+        $address->load('cluster');
+        $address->load('people');
         return response()->json($address);
     }
 }
