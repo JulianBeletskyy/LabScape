@@ -72,18 +72,12 @@
                     <h3>Used Products <a href="#"><i class="fa fa-pencil"></i></a></h3>
                 </div>
 
-                <ul class="used-products-list">
-                    <li>
+                <ul class="used-products-list" v-if="addressData.products.length">
+                    <li v-if="i < 3" v-for="(product, i) in addressData.products" :title="product.name? product.company + ': ' + product.name : product.company">
                         <span class="image"></span>
-                        <span class="prod-name">Sysmex</span>
-                    </li>
-                    <li>
-                        <span class="image"></span>
-                        <span class="prod-name">Joyfact</span>
-                    </li>
-                    <li>
-                        <span class="image"></span>
-                        <span class="prod-name">TeslaMed</span>
+                        <span class="prod-name">
+                            {{product.name? product.company + ': ' + product.name : product.company}}
+                        </span>
                     </li>
                     <li>
                         <a href="" class="show-all-link">Show All</a>
@@ -155,7 +149,8 @@
                     tags: [],
                     url: '',
                     cluster: {},
-                    people: []
+                    people: [],
+                    products: []
                 },
             }
         },

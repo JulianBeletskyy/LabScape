@@ -108,6 +108,7 @@ class AddressesController extends Controller
         $address->load('tags');
         $address->load('cluster');
         $address->load('people');
+        $address->load('products');
         return response()->json($address);
     }
 }

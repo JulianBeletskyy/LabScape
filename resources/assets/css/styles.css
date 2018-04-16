@@ -1101,6 +1101,11 @@ ul.used-products-list li span.prod-name{
     font-size: 16px;
     font-weight: 400;
     color: #3a444f;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: Montserrat;
 }
 
 ul.used-products-list li a.show-all-link {
