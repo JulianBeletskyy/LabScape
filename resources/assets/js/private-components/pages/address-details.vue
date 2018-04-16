@@ -50,6 +50,8 @@
                     <a href="" class="view-contacts-chain">View Contacts Chain</a>
                 </div>
 
+                <p v-if="!addressData.people.length" class="empty-data-p">There are no employees yet.</p>
+
                 <ul class="staff-list">
                     <li v-if="i < 3" v-for="(person, i) in addressData.people">
                         <div class="image">
@@ -72,6 +74,8 @@
                     <h3>Used Products <a href="#"><i class="fa fa-pencil"></i></a></h3>
                 </div>
 
+                <p v-if="!addressData.products.length" class="empty-data-p">There are no used products</p>
+
                 <ul class="used-products-list" v-if="addressData.products.length">
                     <li v-if="i < 3" v-for="(product, i) in addressData.products" :title="product.name? product.company + ': ' + product.name : product.company">
                         <span class="image"></span>
@@ -87,25 +91,15 @@
 
             <div class="lab-chain-members-overview address-box">
                 <div class="header">
-                    <h3>Lab Chain Members</h3>
+                    <h3>Lab Chain Members <small :title="'Addresses in chain: ' + addressData.cluster.addresses.length">({{addressData.cluster.addresses.length}})</small></h3>
                 </div>
 
+                <p v-if="addressData.cluster.addresses.length === 1" class="empty-data-p">Current address is the only member in this chain</p>
+
                 <ul class="lab-chain-member-list">
-                    <li>
-                        <h4>Hospital Du Valais De Montana</h4>
-                        <p>Route de la Moubra 87, 3963, Switzerland</p>
-                    </li>
-                    <li>
-                        <h4>Hospital Du Valais De Montana</h4>
-                        <p>Route de la Moubra 87, 3963, Switzerland</p>
-                    </li>
-                    <li>
-                        <h4>Hospital Du Valais De Montana</h4>
-                        <p>Route de la Moubra 87, 3963, Switzerland</p>
-                    </li>
-                    <li>
-                        <h4>Hospital Du Valais De Montana</h4>
-                        <p>Route de la Moubra 87, 3963, Switzerland</p>
+                    <li v-if="c.id != addressData.id && i < 3" v-for="(c,i) in addressData.cluster.addresses">
+                        <h4>{{c.name}}</h4>
+                        <p>{{c.address}}</p>
                     </li>
                 </ul>
 
@@ -148,7 +142,9 @@
                 addressData: {
                     tags: [],
                     url: '',
-                    cluster: {},
+                    cluster: {
+                        addresses: []
+                    },
                     people: [],
                     products: []
                 },
