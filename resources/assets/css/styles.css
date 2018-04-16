@@ -1097,3 +1097,29 @@ ul.used-products-list li a.show-all-link {
 ul.used-products-list li a.show-all-link:hover{
     text-decoration: underline;
 }
+
+ul.lab-chain-member-list{
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.lab-chain-member-list li{
+    margin-bottom: 15px;
+}
+
+ul.lab-chain-member-list li h4{
+    font-family: Montserrat;
+    font-size: 16px;
+    line-height: 1.63;
+    color: #3a444f;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+ul.lab-chain-member-list li p{
+    font-family: Montserrat;
+    font-size: 14px;
+    line-height: 1.63;
+    color: #3a444f;
+    font-weight: 400;
+}

@@ -128,10 +128,9 @@
                         <h4>Hospital Du Valais De Montana</h4>
                         <p>Route de la Moubra 87, 3963, Switzerland</p>
                     </li>
-                    <li class="view-all-chain-link">
-                        <a href="#">Lab Chain Details</a>
-                    </li>
                 </ul>
+
+                <a href="#" class="address-box-show-more-link">Lab Chain Details</a>
             </div>
 
             <div class="lab-news-overview address-box">
