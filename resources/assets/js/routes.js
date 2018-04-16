@@ -35,7 +35,14 @@ let privateRoutes = [
         component: require('./private-components/pages/dashboard'),
         meta: { requiresAuth: true },
         name: 'Dashboard'
+    },
+    {
+        path: '/address-details/:id',
+        component: require('./private-components/pages/address-details'),
+        meta: { requiresAuth: true },
+        name: 'Dashboard'
     }
+
 
 ];
 

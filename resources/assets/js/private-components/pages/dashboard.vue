@@ -88,7 +88,9 @@
 
                             <div class="item-image">
                                 <div class="main-image">
-                                    <img src="/images/anonimus-person_100x100.png" alt="">
+                                    <router-link :to="'/address-details/'+address.id">
+                                        <img src="/images/anonimus-person_100x100.png" alt="">
+                                    </router-link>
                                 </div>
                                 <div class="circle-1"></div>
                                 <div class="circle-2"></div>
