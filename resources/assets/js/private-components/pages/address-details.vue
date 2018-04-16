@@ -89,19 +89,19 @@
 
                 <ul class="used-products-list">
                     <li>
-                        <img src="/images/anonimus-person_100x100.png" alt="">
-                        <span>Sysmex</span>
+                        <span class="image"></span>
+                        <span class="prod-name">Sysmex</span>
                     </li>
                     <li>
-                        <img src="/images/anonimus-person_100x100.png" alt="">
-                        <span>Joyfact</span>
+                        <span class="image"></span>
+                        <span class="prod-name">Joyfact</span>
                     </li>
                     <li>
-                        <img src="/images/anonimus-person_100x100.png" alt="">
-                        <span>TeslaMed</span>
+                        <span class="image"></span>
+                        <span class="prod-name">TeslaMed</span>
                     </li>
                     <li>
-                        <a href="">Show All</a>
+                        <a href="" class="show-all-link">Show All</a>
                     </li>
                 </ul>
             </div>

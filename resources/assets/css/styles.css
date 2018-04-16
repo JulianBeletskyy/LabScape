@@ -1033,7 +1033,7 @@ ul.staff-list li .personal-info .occupation {
     line-height: 1.31;
     color: #4a90e2;
     font-weight: 600;
-    padding: 10px 15px;
+    padding: 5px;
     border-radius: 5px;
     margin-top: 5px;
     transition: all 0.1s linear;
@@ -1042,4 +1042,58 @@ ul.staff-list li .personal-info .occupation {
 .address-box a.address-box-show-more-link:hover{
     background: #4a90e2;
     color: #ffffff;
+}
+
+.address-box {
+    border-top: 1px solid #f7f7f7;
+    padding-bottom: 25px;
+}
+
+.used-products-overview .header h3{
+    margin-top: 0;
+}
+
+ul.used-products-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+ul.used-products-list li{
+    display: flex;
+    float: left;
+    width: 25%;
+    align-items: center;
+}
+
+ul.used-products-list li span.image{
+    width: 25px;
+    height: 25px;
+    background-color: #eaeff4;
+    border-radius: 14px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+ul.used-products-list li span.prod-name{
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    color: #3a444f;
+}
+
+ul.used-products-list li a.show-all-link {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+    color: #4a90e2;
+    line-height: 25px;
+    display: block;
+    width: 100px;
+    text-align: right;
+}
+
+ul.used-products-list li a.show-all-link:hover{
+    text-decoration: underline;
 }
