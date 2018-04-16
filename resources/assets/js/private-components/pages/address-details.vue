@@ -3,22 +3,30 @@
         <div class="address-details-container">
 
             <div class="address-overview">
-                <h2>Laboratorium Dr. G. Bichsel AG <a href="#"><i class="fa fa-pencil"></i></a></h2>
 
-                <select>
+                <h2>
+                    <span>Laboratorium Dr. G. Bichsel AG</span>
+                    <a href="#"><i class="fa fa-pencil"></i></a>
+                </h2>
+
+                <select class="customer-status-select-box">
                     <option >My Customer</option>
                     <option >Potential Customer</option>
                     <option >Not a Customer</option>
                 </select>
 
-                <p>Medical Laboratory</p>
+                <div style="clear: both"></div>
 
-                <p class="lab-chain">Lab Chain: <strong>medica MEDICAL LABORATORIES Dr. F. KAEPPELI AG</strong></p>
+                <p class="lab-chain">
+                    <span class="current-chain-name">Medical Laboratory</span>
+                    <span class="lab-chain-text">Lab Chain:</span>
+                    <a href="#" class="add-to-chain-link">Add to Chain</a>
+                </p>
 
                 <ul class="tag-list">
                     <li><a href="">ISO</a></li>
                     <li><a href="">Medical Laboratory</a></li>
-                    <li><a href=""></a></li>
+                    <li><a href="">Radiology</a></li>
                 </ul>
 
                 <p class="address-line">
@@ -27,7 +35,7 @@
 
                 <p class="link-and-phone">
                     <a href="#">bichsel.ch</a>
-                    <span class="pone-number"></span>
+                    <span class="pone-number">+41 033 827 80 00</span>
                 </p>
             </div>
 

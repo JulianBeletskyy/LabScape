@@ -810,10 +810,100 @@ ul.tag-list li + li{
     overflow: initial;
 }
 
-.address-details-container .lab-chain{
+.address-details-container{
+    padding-left: 50px;
+    padding-top: 40px;
+}
+
+.address-overview .customer-status-select-box{
+    float: right;
+}
+
+.customer-status-select-box {
 
 }
 
-.address-details-container .address-line{
+.address-overview {
+    padding-right: 25px;
+    padding-bottom: 25px;
+}
+
+.address-overview h2{
+    display: inline-block;
+    align-items: center;
+    font-family: Montserrat;
+    font-size: 27px;
+    line-height: 1.39em;
+    font-weight: 400;
+    margin: 0;
+    float: left;
+    width: calc(100% - 170px);
+}
+
+.address-overview .lab-chain{
+    margin-top: 10px;
+
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+    text-align: left;
+    color: #3a444f;
+    margin-top: 10px;
+    font-weight: 400;
+}
+
+.address-overview .lab-chain .current-chain-name {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.address-overview .lab-chain .lab-chain-text {
+    color: #949494;
+}
+
+.address-overview .lab-chain .add-to-chain-link {
+    color:#0080ff;
+    font-weight: 500;
+}
+
+.address-overview .lab-chain .add-to-chain-link:hover{
+    text-decoration: underline;
+}
+
+.address-overview .address-line{
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+    text-align: left;
+    color: #3a444f;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.link-and-phone {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+    text-align: left;
+    color: #3a444f;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.sidebar .link-and-phone a{
+    color:#0080ff;
+    float: left;
+    margin-right: 30px;
+    font-weight: 600;
+}
+
+.sidebar .link-and-phone a:hover{
+    text-decoration: underline;
+}
+
+.link-and-phone .pone-number{
 
 }
