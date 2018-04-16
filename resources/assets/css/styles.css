@@ -1123,3 +1123,47 @@ ul.lab-chain-member-list li p{
     color: #3a444f;
     font-weight: 400;
 }
+
+.lab-news-overview.address-box .header h3{
+    margin-bottom: 15px;
+}
+
+ul.lab-news-list{
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.lab-news-list li{
+    margin-bottom: 20px;
+}
+
+ul.lab-news-list li p.date{
+    opacity: 0.6;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: #3a444f;
+}
+
+ul.lab-news-list li h4{
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #f7f7f7;
+    border-radius: 6px;
+    max-width: 370px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: Montserrat;
+    font-size: 12px;
+}
+
+ul.lab-news-list li h4 a{
+    color: #4a90e3 !important;
+    font-weight: 600;
+}
+
+ul.lab-news-list li h4 a:hover{
+    text-decoration: underline !important;
+}

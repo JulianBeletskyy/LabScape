@@ -148,6 +148,8 @@
                         <h4>High-precision analysis of DNA is now provided by lab</h4>
                     </li>
                 </ul>
+
+                <a href="#" class="address-box-show-more-link">Go to Lab News</a>
             </div>
 
         </div>
