@@ -1234,15 +1234,52 @@ a.link-back.arrow-left:hover{
     min-height: 100%;
     width: 0px;
     position: absolute;
-    background-color: #e6e6e6;
+    background-color: #eaeff4;
     top: 0;
     right: 0px;
     display: none;
     transition: transform .3s ease-in-out,width .3s ease-in-out;
+    box-shadow: 0 0 30px 0 rgba(35, 40, 72, 0.13);
 }
 
 .slider-container.expanded .slided-box{
     display: initial;
     width: 585px;
     transform: translate(585px, 0);
+}
+
+.slided-box-content {
+    padding: 30px 20px 20px 50px;
+}
+
+.slided-box-content h3{
+    font-family: Montserrat;
+    font-size: 28px;
+    color: #3a444f;
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.slided-box .slided-box-content h3 a{
+    display: inline-block;
+    color: #fff;
+    background: #bbbec2;
+    font-size: 16px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 14px;
+    text-align: center;
+    transition: background-color 0.1s linear;
+    margin-left: 15px;
+}
+
+.slided-box .slided-box-content h3 a:hover{
+    background: #4a90e3;
+}
+
+.slided-box .slided-box-content ul.staff-list li .image{
+    background-color: #f9f9f9;
 }

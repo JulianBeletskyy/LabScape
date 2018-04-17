@@ -2,7 +2,13 @@
     <section class="sidebar">
         <div class="address-details-container slider-container" :class="{expanded: isExpanded}">
 
-            <div class="slided-box"></div>
+            <div class="slided-box">
+
+                <div v-if="sideComponentToDisplay == 'all-employee'">
+                    <all-employee-list></all-employee-list>
+                </div>
+
+            </div>
 
             <router-link to="/dashboard" title="Back to dashboard" class="link-back arrow-left">
                 <i class="fa fa-angle-left"></i>
@@ -67,7 +73,7 @@
 
                 <div style="clear: both"></div>
 
-                <a href="javascript:void(0)" @click="showAllEmployee()" class="address-box-show-more-link">Show All Employers</a>
+                <a href="javascript:void(0)" @click="showSlidedBox('all-employee')" class="address-box-show-more-link">Show All Employers</a>
             </div>
 
             <div class="used-products-overview address-box">
@@ -150,7 +156,8 @@
                     products: []
                 },
                 customerStatusList: [],
-                isExpanded: false
+                isExpanded: false,
+                sideComponentToDisplay: ''
             }
         },
 
@@ -175,8 +182,9 @@
                         alertify.notify('Status has been updated.', 'success', 3);
                     })
             },
-            showAllEmployee: function () {
+            showSlidedBox: function (componentToDisplay) {
                 this.isExpanded = !this.isExpanded;
+                this.sideComponentToDisplay = componentToDisplay;
             }
         },
 
