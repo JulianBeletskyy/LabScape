@@ -9,6 +9,8 @@ class Address extends Model
 
     protected $table = 'rl_addresses';
 
+    protected $fillable = ['customer_status'];
+
 
     function tags()
     {

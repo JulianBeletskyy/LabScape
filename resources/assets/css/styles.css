@@ -1225,3 +1225,7 @@ a.link-back.arrow-left:hover{
     text-align: left;
     color: #3a444f;
 }
+
+.alertify-notifier .ajs-message.ajs-success {
+    text-shadow: none !important;
+}

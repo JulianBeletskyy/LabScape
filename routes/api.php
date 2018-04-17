@@ -40,6 +40,8 @@ Route::group(['middleware'=>['jwt.auth']],function (){
 
     Route::get('/address-details/{address}', 'AddressesController@show')->name('address.show');
 
+    Route::put('/address-details/{address}/update-status', 'AddressesController@updateCustomerStatus')->name('address.updateCustomerStatus');
+
     Route::get('/customer-statuses', 'CustomerStatusesController@show')->name('customerStatus.show');
 
 });

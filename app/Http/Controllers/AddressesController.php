@@ -112,4 +112,13 @@ class AddressesController extends Controller
         $address->load('products');
         return response()->json($address);
     }
+
+
+    function updateCustomerStatus(Address $address)
+    {
+        $address->customer_status = request()->get('status');
+        $address->save();
+
+        return response()->json($address);
+    }
 }

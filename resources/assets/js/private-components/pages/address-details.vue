@@ -13,7 +13,7 @@
                     <a href="#"><i class="fa fa-pencil"></i></a>
                 </h2>
 
-                <select class="customer-status-select-box" v-model="addressData.customer_status">
+                <select class="customer-status-select-box" @change="updateCustomerStatus()" v-model="addressData.customer_status">
                     <option :value="null" hidden disabled="disabled" class="hidden">Customer Status</option>
                     <option v-for="cs in customerStatusList" :value="cs.id">{{cs.name}}</option>
                 </select>
@@ -165,6 +165,12 @@
                 this.httpGet('/api/customer-statuses')
                     .then(data => {
                         this.customerStatusList = data;
+                    })
+            },
+            updateCustomerStatus: function () {
+                this.httpPut('/api/address-details/'+this.addressId+'/update-status', {type: this.addressData.customer_status})
+                    .then(data => {
+                        alertify.notify('Status has been updated.', 'success', 50);
                     })
             }
         },
