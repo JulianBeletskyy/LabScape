@@ -13,10 +13,9 @@
                     <a href="#"><i class="fa fa-pencil"></i></a>
                 </h2>
 
-                <select class="customer-status-select-box">
-                    <option >My Customer</option>
-                    <option >Potential Customer</option>
-                    <option >Not a Customer</option>
+                <select class="customer-status-select-box" v-model="addressData.customer_status">
+                    <option :value="null" hidden disabled="disabled" class="hidden">Customer Status</option>
+                    <option v-for="cs in customerStatusList" :value="cs.id">{{cs.name}}</option>
                 </select>
 
                 <div style="clear: both"></div>
@@ -148,6 +147,7 @@
                     people: [],
                     products: []
                 },
+                customerStatusList: []
             }
         },
 
@@ -160,6 +160,12 @@
                         this.addressData = data;
                     })
 
+            },
+            loadCustomerStatusList: function () {
+                this.httpGet('/api/customer-statuses')
+                    .then(data => {
+                        this.customerStatusList = data;
+                    })
             }
         },
 
@@ -167,6 +173,7 @@
             this.addressId = this.$route.params.id;
 
             this.loadAddressDetails();
+            this.loadCustomerStatusList();
         }
     }
 </script>
