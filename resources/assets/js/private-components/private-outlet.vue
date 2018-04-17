@@ -11,6 +11,8 @@
 
             <section class="content">
 
+                <modal-employee-details></modal-employee-details>
+
                 <map-main></map-main>
 
             </section>

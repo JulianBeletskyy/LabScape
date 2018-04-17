@@ -19,7 +19,7 @@
                     <img src="/images/anonimus-person_100x100.png" alt="">
                 </div>
                 <div class="personal-info">
-                    <p class="name">{{person.name}}</p>
+                    <p class="name"><a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id)">{{person.name}}</a></p>
                     <p class="occupation">{{person.description}}</p>
                 </div>
             </li>
@@ -34,9 +34,10 @@
 <script>
 
     import http from '../mixins/http';
+    import employeeModal from '../mixins/show-employee-details-modal';
 
     export default {
-        mixins: [http],
+        mixins: [http, employeeModal],
 
         data: function () {
             return {

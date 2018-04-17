@@ -59,7 +59,7 @@
             <div class="staff-overview address-box">
                 <div class="header">
                     <h3>Staff <a href="#"><i class="fa fa-pencil"></i></a></h3>
-                    <a href="" class="view-contacts-chain">View Contacts Chain</a>
+                    <a href="#" class="view-contacts-chain">View Contacts Chain</a>
                 </div>
 
                 <p v-if="!addressData.people.length" class="empty-data-p">There are no employees yet.</p>
@@ -70,7 +70,7 @@
                             <img src="/images/anonimus-person_100x100.png" alt="">
                         </div>
                         <div class="personal-info">
-                            <p class="name">{{person.name}}</p>
+                            <p class="name"><a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id)">{{person.name}}</a></p>
                             <p class="occupation">{{person.description}}</p>
                         </div>
                     </li>
@@ -78,7 +78,7 @@
 
                 <div style="clear: both"></div>
 
-                <a href="javascript:void(0)" @click="showSlidedBox('all-employee')" class="address-box-show-more-link">Show All Employers</a>
+                <a href="javascript:void(0)" @click="showSlidedBox('all-employee')" class="address-box-show-more-link">Show All Employee</a>
             </div>
 
             <div class="used-products-overview address-box">
@@ -144,9 +144,10 @@
 <script>
 
     import http from '../../mixins/http';
+    import employeeModal from '../../mixins/show-employee-details-modal';
 
     export default {
-        mixins: [http],
+        mixins: [http, employeeModal],
 
         data: function () {
             return {

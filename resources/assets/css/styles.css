@@ -1299,6 +1299,14 @@ a.link-back.arrow-left:hover{
     margin-left: 15px;
 }
 
+ul.staff-list li .personal-info .name a{
+    color: #3a444f;
+}
+
+ul.staff-list li .personal-info .name a:hover{
+    color: #4a90e3;
+}
+
 .slided-box .slided-box-content h3 a:hover{
     background: #4a90e3;
 }
