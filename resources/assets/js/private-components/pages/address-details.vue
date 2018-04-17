@@ -39,7 +39,7 @@
                 </p>
 
                 <p class="link-and-phone">
-                    <a :href="addressData.url" target="_blank">{{addressData.url.replace('https://', '').replace('http://', '').replace('/', '')}}</a>
+                    <a :href="addressData.url" target="_blank">{{addressData.url.replace('https://', '').replace('http://', '')}}</a>
                     <span class="pone-number">{{addressData.phone}}</span>
                 </p>
             </div>

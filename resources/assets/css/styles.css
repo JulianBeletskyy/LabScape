@@ -916,6 +916,11 @@ ul.tag-list li + li{
     float: left;
     margin-right: 30px;
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .sidebar .link-and-phone a:hover{
