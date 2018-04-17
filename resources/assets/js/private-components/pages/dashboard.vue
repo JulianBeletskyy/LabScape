@@ -96,7 +96,11 @@
                                 <div class="circle-2"></div>
                             </div>
 
-                            <h3>{{address.name}} <span class="oval"></span></h3>
+                            <h3>
+                                <router-link :to="'/address-details/'+address.id">{{address.name}}</router-link>
+
+                                <span class="oval"></span>
+                            </h3>
 
                             <p class="address">{{address.address}}</p>
 

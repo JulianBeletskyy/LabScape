@@ -636,6 +636,15 @@ ul.sidebar-list li h3{
     padding-top: 5px;
 }
 
+.sidebar ul.sidebar-list li h3 a{
+    color: #333333;
+    transition: color 0.1s linear;
+}
+
+.sidebar ul.sidebar-list li h3 a:hover{
+    color: #4a90e2;
+}
+
 ul.sidebar-list li h3 .oval{
     margin-left: 10px;
 }
