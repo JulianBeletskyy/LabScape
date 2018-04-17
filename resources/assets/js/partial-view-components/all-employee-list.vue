@@ -9,7 +9,7 @@
 
 
         <ul class="staff-list">
-            <li v-for="(person, i) in employeeList">
+            <li v-for="(person, i) in people">
                 <div class="image">
                     <img src="/images/anonimus-person_100x100.png" alt="">
                 </div>
@@ -19,12 +19,52 @@
                 </div>
             </li>
         </ul>
+
+        <div class="pagination-box">
+            <pagination :records="peopleTotal"  :class="'pagination pagination-sm no-margin pull-right'" :per-page="10" @paginate="pageChanged"></pagination>
+        </div>
     </div>
 </template>
 
 <script>
+
+    import http from '../mixins/http';
+
     export default {
-        props: ['employeeList'],
+        mixins: [http],
+
+        data: function () {
+            return {
+                people: [],
+                isDataLoaded: false
+            }
+        },
+
+        methods: {
+            loadAddressEmployeesPaginated: function (id, page) {
+
+                let p = page || 1;
+
+                this.httpGet('/api/address-details/'+id+'/people?page='+p)
+                    .then(data => {
+                        this.people = data.data;
+                        this.isDataLoaded = true;
+                        this.peopleTotal = data.total;
+                    })
+            },
+
+            pageChanged: function (pageNumber) {
+                this.loadAddressEmployeesPaginated(this.addressId, pageNumber);
+            }
+        },
+
+        props: ['employeeList', 'isActive', 'addressId'],
+
+        mounted: function () {
+            if(this.isActive && this.addressId && !this.isDataLoaded) {
+                this.loadAddressEmployeesPaginated(this.addressId)
+            }
+        }
     }
 </script>
 

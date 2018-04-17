@@ -1283,3 +1283,10 @@ a.link-back.arrow-left:hover{
 .slided-box .slided-box-content ul.staff-list li .image{
     background-color: #f9f9f9;
 }
+
+.slided-box-content .VuePagination__count {
+    display: block;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 12px;
+}

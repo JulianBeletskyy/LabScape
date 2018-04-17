@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Address;
 use App\Models\CustomerType;
+use App\Models\People;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -120,5 +121,17 @@ class AddressesController extends Controller
         $address->save();
 
         return response()->json($address);
+    }
+
+
+    function loadPeopleByAddressId (Address $address)
+    {
+        $people = People::with('addresses')
+                        ->whereHas('addresses', function ($q) use ($address){
+                            return $q->where('id', $address->id);
+                        })
+                        ->paginate(10);
+
+        return response()->json($people);
     }
 }
