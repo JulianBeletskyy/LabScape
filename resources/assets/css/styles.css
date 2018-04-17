@@ -40,6 +40,10 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+a{
+    transition: color 0.1s linear;
+}
+
 .grey-checkbox span.remember_text {
     border: none;
     color: #aaafb5;
@@ -1322,6 +1326,10 @@ ul.staff-list li .personal-info .name a:hover{
     font-size: 12px;
 }
 
+#personal-modal .modal-header{
+    background: #f7f7f7;
+}
+
 #personal-modal .modal-dialog{
     margin-top: 130px;
     width: 800px;
@@ -1348,6 +1356,7 @@ ul.staff-list li .personal-info .name a:hover{
     color: #3a444f;
     display: flex;
     margin-top: 10px;
+    margin-bottom: 17px;
     justify-content: center;
     align-items: center;
 }
@@ -1370,4 +1379,97 @@ ul.staff-list li .personal-info .name a:hover{
     background: #4a90e3;
 }
 
-.nav nav-tabs
+#personal-modal .place-of-work,
+#personal-modal .occupation {
+    font-family: Montserrat;
+    font-size: 16px;
+    text-align: center;
+    color: #3a444f;
+}
+
+#personal-modal .place-of-work a{
+    color: #4a90e3;
+    font-weight: 600;
+}
+
+#personal-modal .place-of-work a:hover{
+    color: #5ba3f4;
+}
+
+#personal-modal ul.social-icons{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    list-style-type: none;
+}
+
+#personal-modal ul.social-icons li + li{
+    margin-left: 15px;
+}
+
+#personal-modal ul.social-icons li a{
+    border: solid 1px #dde3e8;
+    border-radius: 20px;
+    color: #3a444f;
+    width: 35px;
+    height: 35px;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#personal-modal ul.social-icons li a:hover{
+    /*color: #4a90e3;*/
+    background: #f5f9ff;
+}
+
+#personal-modal .person-experience{
+    text-align: center;
+    margin-top: 25px;
+}
+
+#personal-modal .person-experience .number{
+    font-family: Montserrat;
+    font-size: 30px;
+    height: 40px;
+    color: #3a444f;
+    line-height: 1em;
+    font-weight: 600;
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#personal-modal .person-experience .text{
+    font-family: Montserrat;
+    font-size: 16px;
+    color: #3a444f;
+}
+
+#personal-modal .view-contacts-chain-container {
+    text-align: center;
+    margin-bottom: -35px;
+    margin-top: 30px;
+}
+
+#personal-modal .view-contacts-chain-container a{
+    background: #4a90e3;
+    color: #fff;
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    margin: 0;
+    transition: background-color 0.1s linear;
+}
+
+#personal-modal .view-contacts-chain-container a:hover{
+    background: #5ba3f4;
+}

@@ -37,7 +37,7 @@
 
                             <div class="col-md-4">
                                 <p class="number">
-                                    <img src="" alt="">
+                                    <img src="/images/ic-education.png" alt="">
                                 </p>
                                 <p class="text">Medical Doctor</p>
                             </div>
