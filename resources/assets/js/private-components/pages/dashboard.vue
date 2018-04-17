@@ -58,13 +58,13 @@
                                         All Labs</a>
                                 </li>
                                 <li class="my-customers">
-                                    <a href="javascript:void(0)" @click="appliedFilters.type = 1; applyFilters()" :class="{'active': appliedFilters.type == 1}">
+                                    <a href="javascript:void(0)" @click="appliedFilters.type = 2; applyFilters()" :class="{'active': appliedFilters.type == 2}">
                                         <span class="oval"></span>
                                         My customers
                                     </a>
                                 </li>
                                 <li class="potential-customers">
-                                    <a href="javascript:void(0)" @click="appliedFilters.type = 2; applyFilters()" :class="{'active': appliedFilters.type == 2}">
+                                    <a href="javascript:void(0)" @click="appliedFilters.type = 1; applyFilters()" :class="{'active': appliedFilters.type == 1}">
                                         <span class="oval"></span>
                                         Potential Customers
                                     </a>
@@ -84,7 +84,7 @@
 
                 <ul class="sidebar-list">
                     <li v-for="address in addressList">
-                        <div class="item" :class="{'potential-customers':address.customer_status == 2, 'my-customers': address.customer_status == 1}">
+                        <div class="item" :class="{'potential-customers':address.customer_status == 1, 'my-customers': address.customer_status == 2}">
 
                             <div class="item-image">
                                 <div class="main-image">
