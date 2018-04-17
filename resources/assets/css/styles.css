@@ -1229,3 +1229,20 @@ a.link-back.arrow-left:hover{
 .alertify-notifier .ajs-message.ajs-success {
     text-shadow: none !important;
 }
+
+.slided-box {
+    min-height: 100%;
+    width: 0px;
+    position: absolute;
+    background-color: #e6e6e6;
+    top: 0;
+    right: 0px;
+    display: none;
+    transition: transform .3s ease-in-out,width .3s ease-in-out;
+}
+
+.slider-container.expanded .slided-box{
+    display: initial;
+    width: 585px;
+    transform: translate(585px, 0);
+}

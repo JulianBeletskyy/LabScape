@@ -1,6 +1,8 @@
 <template>
     <section class="sidebar">
-        <div class="address-details-container">
+        <div class="address-details-container slider-container" :class="{expanded: isExpanded}">
+
+            <div class="slided-box"></div>
 
             <router-link to="/dashboard" title="Back to dashboard" class="link-back arrow-left">
                 <i class="fa fa-angle-left"></i>
@@ -65,7 +67,7 @@
 
                 <div style="clear: both"></div>
 
-                <a href="#" class="address-box-show-more-link">Show All Employers</a>
+                <a href="javascript:void(0)" @click="showAllEmployee()" class="address-box-show-more-link">Show All Employers</a>
             </div>
 
             <div class="used-products-overview address-box">
@@ -147,7 +149,8 @@
                     people: [],
                     products: []
                 },
-                customerStatusList: []
+                customerStatusList: [],
+                isExpanded: false
             }
         },
 
@@ -171,6 +174,9 @@
                     .then(data => {
                         alertify.notify('Status has been updated.', 'success', 3);
                     })
+            },
+            showAllEmployee: function () {
+                this.isExpanded = !this.isExpanded;
             }
         },
 
