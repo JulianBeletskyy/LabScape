@@ -168,7 +168,7 @@
                     })
             },
             updateCustomerStatus: function () {
-                this.httpPut('/api/address-details/'+this.addressId+'/update-status', {type: this.addressData.customer_status})
+                this.httpPut('/api/address-details/'+this.addressId+'/update-status', {status: this.addressData.customer_status})
                     .then(data => {
                         alertify.notify('Status has been updated.', 'success', 50);
                     })
