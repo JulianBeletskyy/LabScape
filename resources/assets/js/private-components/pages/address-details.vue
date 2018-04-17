@@ -9,6 +9,7 @@
                             :addressId="addressId"
                             :isActive="isExpanded && sideComponentToDisplay == 'all-employee'"
                             :employeeList="addressData.people"
+                            @closeSlidedBox="isExpanded = false"
                     ></all-employee-list>
                 </div>
 

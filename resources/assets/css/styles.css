@@ -1250,6 +1250,20 @@ a.link-back.arrow-left:hover{
 
 .slided-box-content {
     padding: 30px 20px 20px 50px;
+    position: relative;
+}
+
+.slided-box-content .close-icon-a {
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: 35px;
+    opacity: 0.5;
+    transition: opacity 0.1s linear;
+}
+
+.slided-box-content .close-icon-a:hover {
+    opacity: 1;
 }
 
 .slided-box-content h3{

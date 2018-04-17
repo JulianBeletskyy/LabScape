@@ -1,5 +1,10 @@
 <template>
     <div class="slided-box-content">
+
+        <a href="javascript:void(0)" class="close-icon-a" @click="closeSlidedBox()">
+            <img src="/images/x.png" alt="">
+        </a>
+
         <h3 class="">
             Lab Employees
             <a data-v-cd5686be="" href="#">
@@ -36,7 +41,8 @@
         data: function () {
             return {
                 people: [],
-                isDataLoaded: false
+                isDataLoaded: false,
+                peopleTotal: 0
             }
         },
 
@@ -55,6 +61,10 @@
 
             pageChanged: function (pageNumber) {
                 this.loadAddressEmployeesPaginated(this.addressId, pageNumber);
+            },
+
+            closeSlidedBox: function () {
+                this.$emit('closeSlidedBox')
             }
         },
 
