@@ -5,7 +5,7 @@
             <div class="slided-box">
 
                 <div v-if="sideComponentToDisplay == 'all-employee'">
-                    <all-employee-list></all-employee-list>
+                    <all-employee-list :employeeList="addressData.people"></all-employee-list>
                 </div>
 
             </div>
