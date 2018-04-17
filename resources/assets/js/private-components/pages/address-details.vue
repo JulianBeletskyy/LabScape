@@ -78,7 +78,7 @@
 
                 <div style="clear: both"></div>
 
-                <a href="javascript:void(0)" @click="showSlidedBox('all-employee')" class="address-box-show-more-link">Show All Employee</a>
+                <a href="javascript:void(0)" @click="showSlidedBox('all-employee')" class="address-box-show-more-link">Show All Employees</a>
             </div>
 
             <div class="used-products-overview address-box">

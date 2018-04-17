@@ -46,4 +46,6 @@ Route::group(['middleware'=>['jwt.auth']],function (){
 
     Route::get('/customer-statuses', 'CustomerStatusesController@show')->name('customerStatus.show');
 
+    Route::get('/people/{person}', 'PeopleController@show')->name('people.show');
+
 });

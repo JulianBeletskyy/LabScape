@@ -21,10 +21,35 @@
 </template>
 
 <script>
+
+    import http from '../mixins/http';
+
     export default {
-        mounted: function(){
-            this.$eventGlobal.$on('showModalEmployeeDetails', function(personId) {
+        mixins: [http],
+
+        data: function () {
+            return {
+                personId: null,
+                personData: {}
+            }
+        },
+
+        methods: {
+            init: function (personId) {
                 $('#myModal').modal('show');
+
+                this.personId = personId;
+
+                this.httpGet('/api/people/'+personId)
+                    .then(data => {
+                        this.personData = data;
+                    })
+            }
+        },
+
+        mounted: function(){
+            this.$eventGlobal.$on('showModalEmployeeDetails', (personId) => {
+                this.init(personId);
             });
         }
     }
