@@ -1473,3 +1473,48 @@ ul.staff-list li .personal-info .name a:hover{
 #personal-modal .view-contacts-chain-container a:hover{
     background: #5ba3f4;
 }
+
+#personal-modal .modal-body {
+    position: initial;
+    padding-top: 50px;
+    padding-left: 140px;
+    padding-right: 140px;
+}
+
+#personal-modal ul.person-tabs{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#personal-modal ul.person-tabs li {
+
+}
+
+#personal-modal ul.person-tabs li a{
+    padding: 10px 15px;
+    border: 2px solid transparent;
+
+    opacity: 0.5;
+    font-family: Montserrat;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: #3a444f;
+    font-weight: 600;
+}
+
+#personal-modal ul.person-tabs.nav-tabs>li>a:focus,
+#personal-modal ul.person-tabs.nav-tabs>li>a:hover{
+    border-bottom: 2px solid #3a444f;
+    background: #fff;
+}
+
+#personal-modal ul.person-tabs.nav-tabs>li.active>a,
+#personal-modal ul.person-tabs.nav-tabs>li.active>a:focus,
+#personal-modal ul.person-tabs.nav-tabs>li.active>a:hover{
+    opacity: 1;
+    cursor: default;
+    background: #fff;
+    border-bottom: 2px solid #3a444f
+}

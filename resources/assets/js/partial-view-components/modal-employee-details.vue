@@ -49,23 +49,11 @@
                     </div>
                     <div class="modal-body">
                         <div>
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Tab 1</a></li>
-                                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Tab 2</a></li>
-                                <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Tab 3</a></li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                        Dropdown <span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                                        <li role="presentation" class="divider"></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-                                    </ul>
-                                </li>
-                                <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                            <ul class="nav nav-tabs person-tabs">
+                                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Career</a></li>
+                                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">News</a></li>
+                                <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Publications</a></li>
+                                <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Relationships</a></li>
                             </ul>
                         </div>
                     </div>
