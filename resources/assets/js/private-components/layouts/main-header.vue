@@ -2,18 +2,13 @@
     <header class="main-header">
         <!-- Logo -->
 
-            <!-- mini logo for sidebar mini 50x50 pixels -->
-        <a href="#" class="sidebar-toggle new-toogle" data-toggle="push-menu" role="button">
-            <span class="sr-only">Toggle navigation</span>
-        </a>
-
-
-
-        <nav class="navbar navbar-static-top">
-
+        <div class="box-for-logo">
             <div class="header-logo">
                 <span class="logo-lg"><img src="/images/logo.png" alt=""></span>
             </div>
+        </div>
+
+        <nav class="navbar navbar-static-top">
 
             <div class="nav-search">
                 <ul class="nav navbar-nav">
