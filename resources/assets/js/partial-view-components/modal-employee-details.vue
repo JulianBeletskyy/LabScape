@@ -121,7 +121,23 @@
                                 </div>
 
                                 <div v-if="activeTab == 'relationships'">
-                                    <p>to be added later</p>
+
+                                    <p style="text-align: center" v-if="!personData.relationships.length">This person doesn't have relationships yet.</p>
+
+                                    <ul class="staff-list" v-if="personData.relationships && personData.relationships.length">
+
+                                        <li v-for="relation in personData.relationships">
+                                            <div class="image">
+                                                <img src="/images/anonimus-person_100x100.png" alt="">
+                                            </div>
+                                            <div class="personal-info">
+                                                <p class="name"><a href="javascript:void(0)">{{relation.name}}</a></p>
+                                                <p class="occupation" style="text-align: left">{{relation.description}}</p>
+                                                <p class="connection-type" style="text-align: left">{{connectionName(relation.pivot.edge_type)}}</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+
                                 </div>
 
                             </div>
@@ -149,7 +165,8 @@
                     careers: [],
                     publications: []
                 },
-                activeTab: 'career'
+                activeTab: 'career',
+                connectionTypes: []
             }
         },
 
@@ -186,6 +203,13 @@
         },
 
         methods: {
+            connectionName: function (id) {
+                let connection = this.connectionTypes.find(el => el.id == id);
+
+                console.log('connectionName',this.connectionTypes);
+
+                return connection? connection.name : id;
+            },
             endDate: function (date) {
                 return moment(date).format('MMM YYYY');
             },
@@ -215,6 +239,12 @@
         },
 
         mounted: function(){
+            this.httpGet('/api/connection-types')
+                .then(data => {
+                    this.connectionTypes = data;
+                    console.log("connectionTypes", this.connectionTypes);
+                });
+
             this.$eventGlobal.$on('showModalEmployeeDetails', (data) => {
                 this.init(data.personId, data.addressId, data.address);
             });

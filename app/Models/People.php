@@ -26,4 +26,11 @@ class People extends Model
     {
         return $this->belongsToMany(Publication::class, 'rl_people_publications', 'person_id', 'publication_id');
     }
+
+
+    function relationships()
+    {
+        return $this->belongsToMany(People::class, 'rl_address_connections', 'from_person_id', 'to_person_id')
+            ->withPivot('edge_type');
+    }
 }

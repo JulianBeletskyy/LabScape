@@ -1624,3 +1624,8 @@ ul.staff-list li .personal-info .name a:hover{
     color: #3a444f;
     margin-bottom: 0;
 }
+
+.staff-list .connection-type {
+    font-size: 12px;
+    opacity: 0.6;
+}

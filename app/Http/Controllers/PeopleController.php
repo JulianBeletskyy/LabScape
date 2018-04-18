@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ConnectionTypes;
 use App\Models\People;
 use Illuminate\Http\Request;
 
@@ -17,9 +18,13 @@ class PeopleController extends Controller
         $person->load(['addresses' => function($q){
             return $q->orderBy('id', 'desc');
         }]);
-        $person->load('publications');
+        $person->load('publications','relationships');
         return response()->json($person);
     }
 
 
+    function getConnectionTypes()
+    {
+        return response()->json(ConnectionTypes::all());
+    }
 }
