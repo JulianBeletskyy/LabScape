@@ -106,7 +106,33 @@
                                 <div v-if="activeTab == 'publications'">
                                     <ul class="publication-list">
                                         <li>
+                                            <p class="title">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                            </p>
+                                            <p class="description">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis esse facilis ipsa ipsam
+                                            </p>
+                                        </li>
 
+                                        <li>
+                                            <p class="title">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                            </p>
+                                            <p class="description">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis esse facilis ipsa ipsam
+                                            </p>
+                                        </li>
+
+                                        <li>
+                                            <p class="title">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                            </p>
+                                            <p class="description">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis esse facilis ipsa ipsam
+                                            </p>
                                         </li>
                                     </ul>
                                 </div>

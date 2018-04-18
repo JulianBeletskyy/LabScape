@@ -1593,3 +1593,30 @@ ul.staff-list li .personal-info .name a:hover{
     color: #3a444f;
     margin-bottom: 0;
 }
+
+.publication-list li{
+    margin-bottom: 20px;
+}
+
+.publication-list li p.title{
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+    color: #3a444f;
+    margin-bottom: 5px;
+}
+
+.publication-list li p.title a{
+    color: #909498;
+}
+.publication-list li p.title a:hover{
+    color: #4a90e3;
+}
+
+.publication-list li p.description{
+    opacity: 0.5;
+    font-family: Montserrat;
+    font-size: 14px;
+    color: #3a444f;
+    margin-bottom: 0;
+}
