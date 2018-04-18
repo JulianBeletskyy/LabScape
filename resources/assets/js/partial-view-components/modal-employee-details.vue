@@ -69,7 +69,7 @@
                                         <li v-for="career in personData.careers">
                                             <p class="occupation">{{career.role}}</p>
                                             <p class="work-place">{{workPlace(career)}}</p>
-                                            <p class="date">till: {{endDate(career.enddate)}}</p>
+                                            <p class="date">{{endDate(career.enddate)}}</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -104,40 +104,25 @@
                                 </div>
 
                                 <div v-if="activeTab == 'publications'">
-                                    <ul class="publication-list">
-                                        <li>
-                                            <p class="title">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                <a href="#"><i class="fa fa-external-link"></i></a>
-                                            </p>
-                                            <p class="description">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis esse facilis ipsa ipsam
-                                            </p>
-                                        </li>
 
-                                        <li>
-                                            <p class="title">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                <a href="#"><i class="fa fa-external-link"></i></a>
-                                            </p>
-                                            <p class="description">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis esse facilis ipsa ipsam
-                                            </p>
-                                        </li>
+                                    <p style="text-align: center" v-if="!personData.publications.length">This person doesn't have publications yet.</p>
 
-                                        <li>
+                                    <ul class="publication-list" v-if="personData.publications.length">
+                                        <li v-for="publication in personData.publications">
                                             <p class="title">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                {{publication.title}}
+                                                <a :href="publication.url" target="_blank"><i class="fa fa-external-link"></i></a>
                                             </p>
                                             <p class="description">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis esse facilis ipsa ipsam
+                                                {{publication.journal}}
                                             </p>
                                         </li>
                                     </ul>
                                 </div>
 
-                                <div v-if="activeTab == 'relationships'"></div>
+                                <div v-if="activeTab == 'relationships'">
+                                    <p>to be added later</p>
+                                </div>
 
                             </div>
                         </div>
@@ -160,7 +145,8 @@
                 personId: null,
                 currentAddressId: null,
                 personData: {
-                    careers: []
+                    careers: [],
+                    publications: []
                 },
                 activeTab: 'career'
             }
@@ -172,7 +158,7 @@
 
         methods: {
             endDate: function (date) {
-                return moment(date).format('MMM DD, YYYY');
+                return moment(date).format('MMM YYYY');
             },
             workPlace: function (career) {
                 if (career.address_id) {

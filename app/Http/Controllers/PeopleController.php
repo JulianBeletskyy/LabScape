@@ -17,6 +17,7 @@ class PeopleController extends Controller
         $person->load(['addresses' => function($q){
             return $q->orderBy('id', 'desc');
         }]);
+        $person->load('publications');
         return response()->json($person);
     }
 

@@ -21,4 +21,9 @@ class People extends Model
         return $this->hasMany(Career::class, 'person_id');
     }
 
+
+    function publications()
+    {
+        return $this->belongsToMany(Publication::class, 'rl_people_publications', 'person_id', 'publication_id');
+    }
 }
