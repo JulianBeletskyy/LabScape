@@ -69,7 +69,7 @@
                                         <li v-for="career in personData.careers">
                                             <p class="occupation">{{career.role}}</p>
                                             <p class="work-place">{{workPlace(career)}}</p>
-                                            <p class="date">Jun 2015 - Present, 3 yr 6 mon</p>
+                                            <p class="date">till: {{endDate(career.enddate)}}</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -145,6 +145,9 @@
         },
 
         methods: {
+            endDate: function (date) {
+                return moment(date).format('MMM DD, YYYY');
+            },
             workPlace: function (career) {
                 if (career.address_id) {
                     return (this.personData.addresses.find(addr => addr.id == career.address_id)).name;
