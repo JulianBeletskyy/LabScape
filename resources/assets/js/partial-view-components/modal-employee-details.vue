@@ -11,11 +11,13 @@
 
                         <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
 
-                        <h4 class="modal-title">Dr. med. Edouard Blanc <a href="#"><i class="fa fa-pencil"></i></a></h4>
+                        <h4 class="modal-title">{{personData.name}} <a href="#"><i class="fa fa-pencil"></i></a></h4>
 
-                        <p class="occupation">Laboratorien Mikrobioligie</p>
+                        <p class="occupation">{{personData.description}}</p>
 
-                        <p class="place-of-work">at <a href="#">Laboratorium Dr. G. Bichsel AG</a></p>
+                        <p class="place-of-work" v-if="personData.careers && personData.careers.length">
+                            at <a href="#">{{personData.careers[0].address_name_override}}</a>
+                        </p>
 
                         <ul class="social-icons">
                             <li><a href=""><i class="fa fa-linkedin"></i></a></li>
@@ -107,7 +109,9 @@
         data: function () {
             return {
                 personId: null,
-                personData: {},
+                personData: {
+                    careers: []
+                },
                 activeTab: 'career'
             }
         },

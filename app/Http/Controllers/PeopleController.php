@@ -11,6 +11,12 @@ class PeopleController extends Controller
 
     function show(People $person)
     {
+        $person->load(['careers' => function($q){
+            return $q->orderBy('id', 'desc');
+        }]);
+        $person->load(['addresses' => function($q){
+            return $q->orderBy('id', 'desc');
+        }]);
         return response()->json($person);
     }
 

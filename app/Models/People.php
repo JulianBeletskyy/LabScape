@@ -15,4 +15,10 @@ class People extends Model
         return $this->belongsToMany(Address::class, 'rl_address_people', 'person_id','address_id');
     }
 
+
+    function careers()
+    {
+        return $this->hasMany(Career::class, 'person_id');
+    }
+
 }
