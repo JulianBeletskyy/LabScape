@@ -84,9 +84,42 @@
                                     </ul>
                                 </div>
 
-                                <div v-if="activeTab == 'news'"></div>
+                                <div v-if="activeTab == 'news'">
+                                    <ul class="news-list">
+                                        <li>
+                                            <p class="date">Feb 21, 2018</p>
+                                            <div class="news-box">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis esse facilis ipsa ipsam itaque laborum</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p class="date">Feb 21, 2018</p>
+                                            <div class="news-box">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis esse facilis ipsa ipsam itaque laborum</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p class="date">Feb 21, 2018</p>
+                                            <div class="news-box">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis esse facilis ipsa ipsam itaque laborum</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p class="date">Feb 21, 2018</p>
+                                            <div class="news-box">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis esse facilis ipsa ipsam itaque laborum</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
 
-                                <div v-if="activeTab == 'publications'"></div>
+                                <div v-if="activeTab == 'publications'">
+                                    <ul class="publication-list">
+                                        <li>
+
+                                        </li>
+                                    </ul>
+                                </div>
 
                                 <div v-if="activeTab == 'relationships'"></div>
 

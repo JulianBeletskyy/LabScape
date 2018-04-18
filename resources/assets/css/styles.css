@@ -1479,6 +1479,7 @@ ul.staff-list li .personal-info .name a:hover{
     padding-top: 50px;
     padding-left: 140px;
     padding-right: 140px;
+    padding-bottom: 50px;
 }
 
 #personal-modal ul.person-tabs{
@@ -1523,7 +1524,8 @@ ul.staff-list li .personal-info .name a:hover{
     padding-top: 45px;
 }
 
-#personal-modal ul.career-list {
+
+#personal-modal ul{
     padding: 0;
     margin: 0;
     list-style-type: none;
@@ -1562,4 +1564,32 @@ ul.staff-list li .personal-info .name a:hover{
     font-weight: 400;
     text-align: left;
     color: #b2b6bb;
+}
+
+#personal-modal ul.news-list {
+
+}
+
+#personal-modal ul.news-list li + li{
+    margin-top: 20px;
+}
+
+#personal-modal ul.news-list li p.date{
+    opacity: 0.6;
+    font-family: Montserrat;
+    font-size: 12px;
+    color: #3a444f;
+}
+
+#personal-modal ul.news-list li .news-box {
+    padding: 10px 15px;
+    border-radius: 6px;
+    background-color: rgba(58,68,79,0.07);
+}
+
+#personal-modal ul.news-list li .news-box p{
+    font-family: Montserrat;
+    font-size: 12px;
+    color: #3a444f;
+    margin-bottom: 0;
 }
