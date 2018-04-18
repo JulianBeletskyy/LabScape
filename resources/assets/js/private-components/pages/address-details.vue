@@ -60,7 +60,7 @@
             <div class="staff-overview address-box">
                 <div class="header">
                     <h3>Staff <a href="#"><i class="fa fa-pencil"></i></a></h3>
-                    <a href="#" class="view-contacts-chain">View Contacts Chain</a>
+                    <a href="javascript:void(0)" @click="showContactsChain(addressData)" class="view-contacts-chain">View Contacts Chain</a>
                 </div>
 
                 <p v-if="!addressData.people.length" class="empty-data-p">There are no employees yet.</p>
@@ -192,6 +192,9 @@
             showSlidedBox: function (componentToDisplay) {
                 this.isExpanded = !this.isExpanded;
                 this.sideComponentToDisplay = componentToDisplay;
+            },
+            showContactsChain: function (addressData) {
+                this.$eventGlobal.$emit('showModalContactsChain', addressData)
             }
         },
 

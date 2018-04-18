@@ -13,6 +13,8 @@
 
                 <modal-employee-details></modal-employee-details>
 
+                <modal-contacts-chain></modal-contacts-chain>
+
                 <map-main></map-main>
 
             </section>

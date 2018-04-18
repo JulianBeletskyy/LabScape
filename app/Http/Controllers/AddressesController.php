@@ -134,4 +134,11 @@ class AddressesController extends Controller
 
         return response()->json($people);
     }
+
+
+    function getContactsChain(Address $address)
+    {
+        return response()->json('OK');
+    }
+
 }
