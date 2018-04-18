@@ -9,6 +9,7 @@
                             :addressId="addressId"
                             :isActive="isExpanded && sideComponentToDisplay == 'all-employee'"
                             :employeeList="addressData.people"
+                            :address="addressData"
                             @closeSlidedBox="isExpanded = false"
                     ></all-employee-list>
                 </div>
@@ -70,7 +71,7 @@
                             <img src="/images/anonimus-person_100x100.png" alt="">
                         </div>
                         <div class="personal-info">
-                            <p class="name"><a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressData.id)">{{person.name}}</a></p>
+                            <p class="name"><a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressData.id, addressData)">{{person.name}}</a></p>
                             <p class="occupation">{{person.description}}</p>
                         </div>
                     </li>

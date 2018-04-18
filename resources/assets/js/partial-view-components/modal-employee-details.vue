@@ -16,7 +16,7 @@
                         <p class="occupation">{{personData.description}}</p>
 
                         <p class="place-of-work" v-if="personData.careers && personData.careers.length">
-                            at <a href="#">{{personData.careers[0].address_name_override}}</a>
+                            at <a href="#">{{currentAddress.name}}</a>
                         </p>
 
                         <ul class="social-icons">
@@ -144,6 +144,7 @@
             return {
                 personId: null,
                 currentAddressId: null,
+                currentAddress: {},
                 personData: {
                     careers: [],
                     publications: []
@@ -196,11 +197,12 @@
                     return career.address_name_override;
                 }
             },
-            init: function (personId, addressId) {
+            init: function (personId, addressId, address) {
                 $('#personal-modal').modal('show');
 
                 this.personId = personId;
                 this.currentAddressId = addressId;
+                this.currentAddress = address;
 
                 this.httpGet('/api/people/'+personId)
                     .then(data => {
@@ -214,7 +216,7 @@
 
         mounted: function(){
             this.$eventGlobal.$on('showModalEmployeeDetails', (data) => {
-                this.init(data.personId, data.addressId);
+                this.init(data.personId, data.addressId, data.address);
             });
         }
     }
