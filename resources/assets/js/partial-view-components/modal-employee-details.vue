@@ -66,20 +66,10 @@
 
                                 <div v-if="activeTab == 'career'">
                                     <ul class="career-list">
-                                        <li>
-                                            <p class="occupation">Laboratorien Microbiologie</p>
-                                            <p class="work-place">Laboratoruum Dr. G. Bichshel AG</p>
+                                        <li v-for="career in personData.careers">
+                                            <p class="occupation">{{career.role}}</p>
+                                            <p class="work-place">{{workPlace(career)}}</p>
                                             <p class="date">Jun 2015 - Present, 3 yr 6 mon</p>
-                                        </li>
-                                        <li>
-                                            <p class="occupation">Microbiologist</p>
-                                            <p class="work-place">Laboratoruum Dr. G. Bichshel AG</p>
-                                            <p class="date">Jun 2015 - Present, 3 yr 6 mon</p>
-                                        </li>
-                                        <li>
-                                            <p class="occupation">Radiology specialist training</p>
-                                            <p class="work-place">Laboratoruum Dr. G. Bichshel AG</p>
-                                            <p class="date">Dec 1999 - Mar 2009, 9 yr 4 mon</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -142,6 +132,7 @@
         data: function () {
             return {
                 personId: null,
+                currentAddressId: null,
                 personData: {
                     careers: []
                 },
@@ -149,11 +140,24 @@
             }
         },
 
+        computed: {
+
+        },
+
         methods: {
-            init: function (personId) {
+            workPlace: function (career) {
+                if (career.address_id) {
+                    return (this.personData.addresses.find(addr => addr.id == career.address_id)).name;
+                }
+                else {
+                    return career.address_name_override;
+                }
+            },
+            init: function (personId, addressId) {
                 $('#personal-modal').modal('show');
 
                 this.personId = personId;
+                this.currentAddressId = addressId;
 
                 this.httpGet('/api/people/'+personId)
                     .then(data => {
@@ -166,8 +170,8 @@
         },
 
         mounted: function(){
-            this.$eventGlobal.$on('showModalEmployeeDetails', (personId) => {
-                this.init(personId);
+            this.$eventGlobal.$on('showModalEmployeeDetails', (data) => {
+                this.init(data.personId, data.addressId);
             });
         }
     }

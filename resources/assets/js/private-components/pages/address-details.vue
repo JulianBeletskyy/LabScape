@@ -70,7 +70,7 @@
                             <img src="/images/anonimus-person_100x100.png" alt="">
                         </div>
                         <div class="personal-info">
-                            <p class="name"><a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id)">{{person.name}}</a></p>
+                            <p class="name"><a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressData.id)">{{person.name}}</a></p>
                             <p class="occupation">{{person.description}}</p>
                         </div>
                     </li>

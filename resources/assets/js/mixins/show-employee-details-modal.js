@@ -1,8 +1,8 @@
 const employeeModal = {
 
     methods: {
-        showEmployeeDetailsModal: function (id) {
-            this.$eventGlobal.$emit('showModalEmployeeDetails', id);
+        showEmployeeDetailsModal: function (personId, addressId) {
+            this.$eventGlobal.$emit('showModalEmployeeDetails', {personId: personId, addressId: addressId});
         }
     }
 
