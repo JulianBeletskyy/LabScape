@@ -1518,3 +1518,48 @@ ul.staff-list li .personal-info .name a:hover{
     background: #fff;
     border-bottom: 2px solid #3a444f
 }
+
+#personal-modal .tab-content{
+    padding-top: 45px;
+}
+
+#personal-modal ul.career-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+#personal-modal ul.career-list li{
+    margin-bottom: 35px;
+}
+
+#personal-modal ul.career-list li p{
+    margin-bottom: 10px;
+    line-height: 1em;
+}
+
+#personal-modal ul.career-list li p.occupation {
+
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+    color: #3a444f;
+}
+
+#personal-modal ul.career-list li p.work-place {
+
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    color: #3a444f;
+}
+
+#personal-modal ul.career-list li p.date {
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    color: #b2b6bb;
+}

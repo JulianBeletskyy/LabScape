@@ -50,11 +50,45 @@
                     <div class="modal-body">
                         <div>
                             <ul class="nav nav-tabs person-tabs">
-                                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Career</a></li>
-                                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">News</a></li>
-                                <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Publications</a></li>
-                                <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Relationships</a></li>
+                                <li :class="{'active': activeTab == 'career'}">
+                                    <a href="javascript:void(0)" @click="setTabActive('career')" data-toggle="tab" aria-expanded="true">Career</a></li>
+                                <li :class="{'active': activeTab == 'news'}">
+                                    <a href="javascript:void(0)" @click="setTabActive('news')" data-toggle="tab" aria-expanded="false">News</a></li>
+                                <li :class="{'active': activeTab == 'publications'}">
+                                    <a href="javascript:void(0)" @click="setTabActive('publications')" data-toggle="tab" aria-expanded="false">Publications</a></li>
+                                <li :class="{'active': activeTab == 'relationships'}">
+                                    <a href="javascript:void(0)" @click="setTabActive('relationships')" data-toggle="tab" aria-expanded="false">Relationships</a></li>
                             </ul>
+
+                            <div class="tab-content">
+
+                                <div v-if="activeTab == 'career'">
+                                    <ul class="career-list">
+                                        <li>
+                                            <p class="occupation">Laboratorien Microbiologie</p>
+                                            <p class="work-place">Laboratoruum Dr. G. Bichshel AG</p>
+                                            <p class="date">Jun 2015 - Present, 3 yr 6 mon</p>
+                                        </li>
+                                        <li>
+                                            <p class="occupation">Microbiologist</p>
+                                            <p class="work-place">Laboratoruum Dr. G. Bichshel AG</p>
+                                            <p class="date">Jun 2015 - Present, 3 yr 6 mon</p>
+                                        </li>
+                                        <li>
+                                            <p class="occupation">Radiology specialist training</p>
+                                            <p class="work-place">Laboratoruum Dr. G. Bichshel AG</p>
+                                            <p class="date">Dec 1999 - Mar 2009, 9 yr 4 mon</p>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div v-if="activeTab == 'news'"></div>
+
+                                <div v-if="activeTab == 'publications'"></div>
+
+                                <div v-if="activeTab == 'relationships'"></div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -73,7 +107,8 @@
         data: function () {
             return {
                 personId: null,
-                personData: {}
+                personData: {},
+                activeTab: 'career'
             }
         },
 
@@ -87,6 +122,9 @@
                     .then(data => {
                         this.personData = data;
                     })
+            },
+            setTabActive: function (tabName) {
+                this.activeTab = tabName;
             }
         },
 
