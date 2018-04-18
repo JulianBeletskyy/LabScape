@@ -27,21 +27,21 @@
                         </ul>
 
                         <div class="row person-experience">
-                            <div class="col-md-4">
-                                <p class="number">17</p>
+                            <div :class="yearsAtThisJob? 'col-md-4': 'col-md-6'">
+                                <p class="number">{{experienceYears}}</p>
                                 <p class="text">Years Experience</p>
                             </div>
 
-                            <div class="col-md-4">
-                                <p class="number">3.5</p>
+                            <div class="col-md-4" v-if="yearsAtThisJob">
+                                <p class="number">{{yearsAtThisJob}}</p>
                                 <p class="text">Years at this Job</p>
                             </div>
 
-                            <div class="col-md-4">
+                            <div :class="yearsAtThisJob? 'col-md-4': 'col-md-6'">
                                 <p class="number">
                                     <img src="/images/ic-education.png" alt="">
                                 </p>
-                                <p class="text">Medical Doctor</p>
+                                <p class="text">{{personData.role}}</p>
                             </div>
                         </div>
 
@@ -153,7 +153,35 @@
         },
 
         computed: {
+            experienceYears: function() {
 
+                if(!this.personData.careers.length) {
+                    return 0;
+                }
+
+                let startDate = moment(this.personData.careers[this.personData.careers.length-1].enddate);
+                let now = moment();
+
+                return now.diff(startDate, 'years');
+            },
+
+            yearsAtThisJob: function () {
+                if (!this.personData.careers.length) {
+                    return 0;
+                }
+
+                let recordInCareer = this.personData.careers.find(el => el.address_id == this.currentAddressId);
+
+                if (!recordInCareer) {
+                    return 0;
+                }
+
+                let startDate = moment(recordInCareer.enddate);
+
+                let now = moment();
+
+                return _.round(now.diff(startDate, 'days') / 365 , 1);
+            }
         },
 
         methods: {
