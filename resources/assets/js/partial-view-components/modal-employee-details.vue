@@ -206,8 +206,6 @@
             connectionName: function (id) {
                 let connection = this.connectionTypes.find(el => el.id == id);
 
-                console.log('connectionName',this.connectionTypes);
-
                 return connection? connection.name : id;
             },
             endDate: function (date) {
