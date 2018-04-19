@@ -236,18 +236,20 @@
 
         mounted: function () {
 
-            this.initMap();
+            setTimeout(()=>{
+                $('#map-element').height($('.content-wrapper').height());
+                this.initMap();
 
-            this.map.on('load', () => {
-                this.loadAddresses()
-                    .then(data => {
+                this.map.on('load', () => {
+                    this.loadAddresses()
+                        .then(data => {
 
-                        this.initDataSource(data);
+                            this.initDataSource(data);
 
-                        console.log('this.map', this.map)
+                        });
+                });
 
-                    });
-            });
+            },500);
 
             this.$eventGlobal.$on('filtersHaveBeenApplied', (queryStr) => {
 
@@ -263,11 +265,11 @@
                         this.initDataSource(data);
                     })
 
-            })
+            });
 
             this.$eventGlobal.$on('notifyMapMainGlobalSearchPerformed', ()=>{
                 this.loadAddresses('', true)
-            })
+            });
         }
 
     }
