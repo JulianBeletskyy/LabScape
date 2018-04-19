@@ -17,13 +17,25 @@
         data: function () {
             return {
                 map: null,
-                FeatureCollection: {}
+                FeatureCollection: {},
+                isFirstLoad: true,
+                isGlobalSearchInitator: false
             }
         },
 
         methods: {
 
-            loadAddresses: function (queryString) {
+            loadAddresses: function (queryString, isGlobalSearchInitiator) {
+
+                if ((this.isFirstLoad && this.$route.query['global-search']) || isGlobalSearchInitiator) {
+
+                    let url = '/api/addresses?global_search=' + encodeURIComponent(this.$route.query['global-search']);
+
+                    this.isFirstLoad = false;
+
+                    return this.httpGet(url);
+                }
+
                 return this.httpGet('/api/addresses' + (queryString || ''));
             },
 
@@ -251,6 +263,10 @@
                         this.initDataSource(data);
                     })
 
+            })
+
+            this.$eventGlobal.$on('notifyMapMainGlobalSearchPerformed', ()=>{
+                this.loadAddresses('', true)
             })
         }
 

@@ -57,6 +57,7 @@
 
                     if(this.$route.path != '/dashboard') {
                         this.$router.push('/dashboard?global-search=' + encodeURIComponent(this.globalSearchInput));
+                        this.$eventGlobal.$emit('notifyMapMainGlobalSearchPerformed', encodeURIComponent(this.globalSearchInput));
                     }
                     else{
                         this.$eventGlobal.$emit('globalSearchPerformed', encodeURIComponent(this.globalSearchInput));
