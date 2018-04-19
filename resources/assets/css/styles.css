@@ -1769,3 +1769,13 @@ ul.staff-list li .personal-info .name a:hover{
 #dataSourceSelectContainer {
     display: none;
 }
+
+#contacts-chain .modal-dialog{
+    height: 80%;
+    width: 80%;
+}
+#contacts-chain .modal-dialog .modal-content,
+#contacts-chain .modal-dialog .modal-content .modal-body,
+#contacts-chain .modal-dialog .modal-content .modal-body #graphCanvasContainer {
+    height: 100%;
+}
