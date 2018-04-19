@@ -249,27 +249,37 @@
                         });
                 });
 
+                this.$eventGlobal.$on('filtersHaveBeenApplied', (queryStr) => {
+
+                    this.loadAddresses(queryStr)
+                        .then((data) => {
+
+                            ['clusters','cluster-count','unclustered-point'].forEach(el => {
+                                if(this.map.getLayer(el)) this.map.removeLayer(el);
+                            });
+
+                            this.map.removeSource('earthquakes');
+
+                            this.initDataSource(data);
+                        })
+
+                });
+
+                this.$eventGlobal.$on('notifyMapMainGlobalSearchPerformed', ()=>{
+                    this.loadAddresses('', true)
+                        .then((data) => {
+
+                            ['clusters','cluster-count','unclustered-point'].forEach(el => {
+                                if(this.map.getLayer(el)) this.map.removeLayer(el);
+                            });
+
+                            this.map.removeSource('earthquakes');
+
+                            this.initDataSource(data);
+                        })
+                });
+
             },1000);
-
-            this.$eventGlobal.$on('filtersHaveBeenApplied', (queryStr) => {
-
-                this.loadAddresses(queryStr)
-                    .then((data) => {
-
-                        ['clusters','cluster-count','unclustered-point'].forEach(el => {
-                            if(this.map.getLayer(el)) this.map.removeLayer(el);
-                        });
-
-                        this.map.removeSource('earthquakes');
-
-                        this.initDataSource(data);
-                    })
-
-            });
-
-            this.$eventGlobal.$on('notifyMapMainGlobalSearchPerformed', ()=>{
-                this.loadAddresses('', true)
-            });
         }
 
     }
