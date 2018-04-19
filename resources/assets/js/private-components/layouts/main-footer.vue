@@ -3,8 +3,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.4.0
         </div>
-        <strong>Copyright  {{currentYear}} PeakData GmbH.</strong> All rights
-        reserved.
+        <strong>Copyright &copy; {{currentYear}} PeakData GmbH.</strong> All rights reserved.
     </footer>
 </template>
 
