@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     <script src="/js/vendor.js"></script>
+    <script src="/js/graph.js"></script>
 </head>
 <body class="skin-blue">
 

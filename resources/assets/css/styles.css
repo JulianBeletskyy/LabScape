@@ -1638,3 +1638,126 @@ ul.staff-list li .personal-info .name a:hover{
     font-size: 12px;
     opacity: 0.6;
 }
+
+ #graphCanvasContainer {
+     width: 100%;
+     height: 400px;
+     position: relative;
+ }
+
+#graphCanvasMovableContainer{
+    width: 100%;
+    height: 100%;
+}
+
+#graphCanvasWhiteBackground{
+    background-color: white;
+    border: 1px solid lightgray;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#graphCanvas{
+    width: 100%;
+    height: 100%;
+}
+
+#graphFunctionIcons{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 50;
+}
+
+.graphIcon{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.column{
+    float: left;
+}
+
+#nodeInfo{
+    background-color: white;
+    width: 180px;
+    height: 80%;
+    border: 1px solid black;
+    overflow-y: scroll;
+}
+
+.nodeInfoRow{
+    width: 100%;
+    padding: 10px;
+}
+
+.topRow{
+    border-bottom: 1px solid black;
+}
+
+#nodeTitle{
+    font-weight: bold;
+}
+
+#moreDetailsLabel{
+    float: right;
+    margin-top: 9px;
+    margin-right: 15px;
+}
+
+#externalLinkIcon{
+    margin-top: 10px;
+}
+
+#employeeCount{
+    margin-bottom: 10px
+}
+
+.employeeRow{
+    margin-left: 3px;
+    margin-top: 5px;
+    border-bottom: 0.5px solid rgba(0,0,0,0.1);
+}
+
+.shownPerson{
+    color: lightgray;
+    font-style: italic;
+    transform: translateY(3px);
+}
+
+.rightPersonText {
+    /*float: right;*/
+    font-size: 13px;
+    font-family: verdana;
+}
+
+.addPersonLink{
+    text-decoration: underline;
+    color: blue;
+}
+
+.addPersonLink:hover{
+    cursor: pointer;
+}
+
+#dataSourceSelectContainer{
+    float: left;
+}
+
+#dataSourceSelectContainer div input{
+    margin-bottom: 0px;
+}
+
+#employeeRoles{
+    color: lightgray;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+#dataSourceSelectContainer {
+    display: none;
+}

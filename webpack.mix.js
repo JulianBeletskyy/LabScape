@@ -24,6 +24,7 @@ mix
         'resources/assets/css/font-awesome.min.css',
         'resources/assets/css/AdminLTE.min.css',
         'resources/assets/css/_all-skins.css',
+        // 'resources/assets/css/materialize.css',
         'resources/assets/css/styles.css',
         'resources/assets/css/responsive.css',
     ],
@@ -31,6 +32,9 @@ mix
 
     .scripts([
             'bower_components/jquery/dist/jquery.min.js',
+            'resources/assets/graph-js/vis.js',
+            'resources/assets/graph-js/materialize.min.js',
+            'resources/assets/graph-js/init.js',
             'bower_components/bootstrap/dist/js/bootstrap.min.js',
             'bower_components/jquery-ui/jquery-ui.min.js',
             'bower_components/jquery-sparkline/dist/jquery.sparkline.min.js',
@@ -47,4 +51,5 @@ mix
     .js('resources/assets/js/app.js', 'public/js')
 
     .copyDirectory('resources/assets/fonts', 'public/fonts')
-    .copyDirectory('resources/assets/images', 'public/images');
+    .copyDirectory('resources/assets/images', 'public/images')
+    .copy('resources/assets/graph-js/graph.js', 'public/js/graph.js');
