@@ -79,6 +79,9 @@
                 this.httpGet('/api/address-details/'+this.currentAddress.id+'/load-contacts-chain-data')
                     .then(data => {
                         mainLabId = this.currentAddress.id;
+
+                        // this.resetValues()
+
                         start(data);
                     })
             }

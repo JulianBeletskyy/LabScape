@@ -72,15 +72,66 @@ var hasStabilization = true;
 var fitScale = 0;
 var mousePosition = { x : -10000, y : -10000 };
 
+var graphState = 0;
+var dataSourceSelect = [];
+var selectedNode = null;
+
+var hospitals = [];
+var people = [];
+var hospitalConnections = [];
+var personHospitalConnections = [];
+var peopleConnections = [];
+var physicsOptions = { enabled : true, /*, timestep : 0.66, minVelocity : 0.75,*/ barnesHut: { gravitationalConstant: -20000, springConstant: 0.04, avoidOverlap: 1, damping: 0.91 }, stabilization : false };
+var hoverPhysicsOptions = { enabled : false, stabilization : { enabled : true } };
+
+function resetValues() {
+    BASE_URL = "http://localhost/~pdeboer/roche_labs/";
+
+    previousActions = [];
+
+    GRAPH_MARGIN = 10;
+    MAX_LETTERS_PER_LABEL_LINE = 20;
+    graphCanvas = null;
+
+//state = MapViewStateEnum.STABILIZING;
+    nodesMap = {};
+    edgesMap = {};
+    datasetEdges = null;
+    datasetNodes = null;
+    lastFrameTimeMs = 0;
+    APPEAR_FADE_TIME = 1.2;
+    DISSAPEAR_FADE_TIME = 0.5;
+    OFFSET_FADE_TIME = 0.1;
+    FIT_TIME = 1;
+    fitFlag = false;
+    fitAnimationFlag = true;
+    focusNode = null;
+    tFullScreen = false;
+    SNEAK_PEAK_ALPHA = 0.3;
+    canvas;
+    hasStabilization = true;
+
+    fitScale = 0;
+    mousePosition = { x : -10000, y : -10000 };
+
+    graphState = 0;
+    dataSourceSelect = [];
+    selectedNode = null;
+
+    hospitals = [];
+    people = [];
+    hospitalConnections = [];
+    personHospitalConnections = [];
+    peopleConnections = [];
+    physicsOptions = { enabled : true, /*, timestep : 0.66, minVelocity : 0.75,*/ barnesHut: { gravitationalConstant: -20000, springConstant: 0.04, avoidOverlap: 1, damping: 0.91 }, stabilization : false };
+    hoverPhysicsOptions = { enabled : false, stabilization : { enabled : true } }
+}
+
 GraphStateEnum = {
     STABILIZING : 0,
     STEADY : 1,
     ANIMATING : 2
 }
-
-var graphState = 0;
-var dataSourceSelect = [];
-var selectedNode = null;
 
 function GraphItem(){
     this.hasToUpdate = true;
@@ -718,13 +769,6 @@ function setSteadyGraph(){
     graphState = GraphStateEnum.STEADY;
 }
 
-var hospitals = [];
-var people = [];
-var hospitalConnections = [];
-var personHospitalConnections = [];
-var peopleConnections = [];
-var physicsOptions = { enabled : true, /*, timestep : 0.66, minVelocity : 0.75,*/ barnesHut: { gravitationalConstant: -20000, springConstant: 0.04, avoidOverlap: 1, damping: 0.91 }, stabilization : false };
-var hoverPhysicsOptions = { enabled : false, stabilization : { enabled : true } }
 
 // function called when clicking the grey space out of the canvas in full screen
 function exitFullScreen(event){
@@ -812,7 +856,7 @@ function getEdgeId(){
 
 function start(result){
 
-    console.log('mainLabId', mainLabId);
+    resetValues();
 
     // find main lab cluster (needed for later)
     var mainLabCluster = 0;
@@ -1217,8 +1261,8 @@ function filterMap(){
 
 function updateMap(){
     for (id in nodesMap){
-        // var node = nodesMap[id];
-        // nodes.update(node.updateObject);
+        var node = nodesMap[id];
+        node.update(node.updateObject);
     }
 }
 
