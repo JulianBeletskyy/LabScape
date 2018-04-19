@@ -85,6 +85,10 @@ class AddressesController extends Controller
             });
         }
 
+        if (isset($requestParams['global_search'])) {
+            $query->where('rl_addresses.name', 'LIKE', '%'.$requestParams['global_search'].'%');
+        }
+
         return $query;
     }
 
