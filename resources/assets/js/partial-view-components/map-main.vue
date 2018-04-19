@@ -230,6 +230,7 @@
                 }
                 else {
                     alertify.notify('No addresses have been found', 'warning', 3);
+                    this.notifyTotalPointsDisplayedOnMapChanged(0)
                 }
             }
         },
