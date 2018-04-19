@@ -164,7 +164,8 @@
                     tags: [],
                     type: '',
                     sortBy: '',
-                    isOnlySortingChanged: false
+                    isOnlySortingChanged: false,
+                    globalSearch: this.$route.query['global-search'] || ''
                 },
                 pagination: {
                     currentPage: 1
@@ -194,9 +195,6 @@
         },
 
         created: function () {
-            this.$eventGlobal.$on('update-user-profile', (data) => {
-                this.user = data;
-            });
 
             this.loadAddressesPaginated();
 
@@ -205,9 +203,20 @@
 
         mounted: function () {
             this.listenToTotalPointsDisplayedOnMapChanged();
+
+            this.listenToGlobalSearchPerformed();
         },
 
         methods: {
+
+            listenToGlobalSearchPerformed: function () {
+                this.$eventGlobal.$on('globalSearchPerformed', (globalSearchQuery) => {
+                    this.appliedFilters.globalSearch = globalSearchQuery || '';
+                    if(!this.isFirstLoad) {
+                        this.applyFilters();
+                    }
+                })
+            },
 
             applyUsedProductsFilter: function (data) {
                 this.appliedFilters.usedProducts = data;
@@ -248,6 +257,11 @@
                     queryStr += '&sort_by=' + this.appliedFilters.sortBy;
                 }
 
+                if (this.appliedFilters.globalSearch) {
+                    queryStr += '&global_search=' + this.appliedFilters.globalSearch;
+                    this.$router.push('/dashboard?global-search=' + this.appliedFilters.globalSearch);
+                }
+
                 return queryStr;
             },
 
@@ -259,7 +273,6 @@
 
                 this.httpGet(url)
                     .then(data => {
-                        console.log('data', data);
                         this.addressesTotal = data.total;
                         this.addressList = data.data;
 
@@ -292,8 +305,9 @@
 
                 this.appliedFilters.isOnlySortingChanged = !!isOnlySortingChanged;
 
-                this.$refs.paginationDirective.setPage(1);
-
+                if(this.$refs.paginationDirective){
+                    this.$refs.paginationDirective.setPage(1);
+                }
             },
 
             resetFilters: function () {
@@ -306,10 +320,15 @@
                     tags: [],
                     type: '',
                     sortBy: '',
-                    isOnlySortingChanged: false
+                    isOnlySortingChanged: false,
+                    globalSearch: ''
                 };
 
+                this.$eventGlobal.$emit('resetedAllFilters');
 
+                if(this.$route.query['global-search']) {
+                    this.$router.push('/dashboard');
+                }
 
                 this.applyFilters();
             }

@@ -240,7 +240,6 @@
             this.httpGet('/api/connection-types')
                 .then(data => {
                     this.connectionTypes = data;
-                    console.log("connectionTypes", this.connectionTypes);
                 });
 
             this.$eventGlobal.$on('showModalEmployeeDetails', (data) => {

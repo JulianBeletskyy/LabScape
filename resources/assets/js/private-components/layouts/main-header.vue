@@ -14,7 +14,11 @@
                 <ul class="nav navbar-nav">
                     <li>
                         <img src="/images/ic-search.png" alt="">
-                        <input type="text" placeholder="Search by laboratory, people or location">
+                        <input
+                               v-model="globalSearchInput"
+                               @keyup="makeGlobalSearch()"
+                               placeholder="Search by laboratory, people or location"
+                        >
                     </li>
                 </ul>
             </div>
@@ -36,13 +40,43 @@
     export default {
         data: function () {
             return {
-                user: {}
+                user: {},
+                globalSearchInput: '',
+                timeOutId: null
             }
         },
+        methods: {
+            makeGlobalSearch: function () {
+
+
+                if(this.timeOutId){
+                    clearTimeout(this.timeOutId)
+                }
+
+                this.timeOutId = setTimeout(()=>{
+
+                    if(this.$route.path != '/dashboard') {
+                        this.$router.push('/dashboard?global-search=' + encodeURIComponent(this.globalSearchInput));
+                    }
+                    else{
+                        this.$eventGlobal.$emit('globalSearchPerformed', encodeURIComponent(this.globalSearchInput));
+                    }
+
+                    if(this.globalSearchInput == '') {
+                        this.$router.push('/dashboard');
+                    }
+
+                },1000)
+            }
+        },
+
         created: function () {
-            this.$eventGlobal.$on('update-user-profile', (data) => {
-                this.user = data;
-            });
+
+        },
+        mounted: function () {
+            this.$eventGlobal.$on('resetedAllFilters', () => {
+                this.globalSearchInput = '';
+            })
         }
     }
 </script>
