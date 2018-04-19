@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class AddressesController extends Controller
 {
@@ -198,6 +199,8 @@ class AddressesController extends Controller
             }
             $related_people_ids = $related_people_ids . $p->id;
         }
+
+        Log::info('$related_people_ids ' . print_r($related_people_ids,1));
 
         // get relationships and descriptions
         $people_relationships = [];

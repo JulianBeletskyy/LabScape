@@ -78,7 +78,8 @@
             loadContactsChainData: function () {
                 this.httpGet('/api/address-details/'+this.currentAddress.id+'/load-contacts-chain-data')
                     .then(data => {
-                        console.log('loadContactsChainData - ',data)
+                        mainLabId = this.currentAddress.id;
+                        start(data);
                     })
             }
         },
