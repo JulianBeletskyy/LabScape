@@ -768,7 +768,7 @@ ul.tag-list li + li{
 #map-element{
     height: 100%;
     width: 100%;
-    min-height: 100%;
+    min-height: 800px;
 }
 
 .content {

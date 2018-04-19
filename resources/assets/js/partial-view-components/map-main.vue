@@ -249,7 +249,7 @@
                         });
                 });
 
-            },500);
+            },1000);
 
             this.$eventGlobal.$on('filtersHaveBeenApplied', (queryStr) => {
 
