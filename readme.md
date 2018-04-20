@@ -7,6 +7,7 @@
 ```
 composer install
 npm install
+bower install
 ```
 
 Create `.env` file (can be based on `.env.example`)
@@ -37,10 +38,14 @@ php artisan storage:link
 
 
 ### Dev Build
-
+to compile the project once, run:
 ```
-ng build --watch    // you may need to run this command with sudo
-php artisan serv
+npm run dev
+```
+
+to run porject watcher, run:
+```
+npm run watch-poll
 ```
 
 ### Production Build
