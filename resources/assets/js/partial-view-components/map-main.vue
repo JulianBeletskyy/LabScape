@@ -209,6 +209,41 @@
                 });
             },
 
+            listenToMouseMoves: function () {
+                this.map.on('mousemove', (e) => {
+                    let unclusteredFeatures = this.map.queryRenderedFeatures(e.point, {
+                        layers: ['unclustered-point']
+                    });
+
+                    let clusteredFeatures = this.map.queryRenderedFeatures(e.point, {
+                        layers: ['clusters']
+                    });
+
+                    if(unclusteredFeatures.length || clusteredFeatures.length) {
+                        this.map.getCanvas().style.cursor = 'pointer';
+                    }
+                    else {
+                        this.map.getCanvas().style.cursor = '';
+                    }
+                });
+            },
+
+            listenToMarkerClicks: function () {
+                this.map.on('click', (e) => {
+
+                    let unclusteredFeatures = this.map.queryRenderedFeatures(e.point, {
+                        layers: ['unclustered-point']
+                    });
+
+                    let clusteredFeatures = this.map.queryRenderedFeatures(e.point, {
+                        layers: ['clusters']
+                    });
+
+                    console.log('unclusteredFeatures',unclusteredFeatures);
+                    console.log('clusteredFeatures',clusteredFeatures);
+                });
+            },
+
             notifyTotalPointsDisplayedOnMapChanged: function (totalPoints) {
                 this.$eventGlobal.$emit('totalPointsDisplayedOnMapChanged', totalPoints);
             },
@@ -232,7 +267,17 @@
                     alertify.notify('No addresses have been found', 'warning', 3);
                     this.notifyTotalPointsDisplayedOnMapChanged(0)
                 }
-            }
+            },
+
+            updateMapLayers: function (data) {
+                ['clusters','cluster-count','unclustered-point'].forEach(el => {
+                    if(this.map.getLayer(el)) this.map.removeLayer(el);
+                });
+
+                this.map.removeSource('earthquakes');
+
+                this.initDataSource(data);
+            },
         },
 
         mounted: function () {
@@ -247,6 +292,10 @@
 
                             this.initDataSource(data);
 
+                            this.listenToMouseMoves();
+
+                            this.listenToMarkerClicks();
+
                         });
                 });
 
@@ -254,29 +303,15 @@
 
                     this.loadAddresses(queryStr)
                         .then((data) => {
-
-                            ['clusters','cluster-count','unclustered-point'].forEach(el => {
-                                if(this.map.getLayer(el)) this.map.removeLayer(el);
-                            });
-
-                            this.map.removeSource('earthquakes');
-
-                            this.initDataSource(data);
+                            this.updateMapLayers(data);
                         })
-
                 });
 
                 this.$eventGlobal.$on('notifyMapMainGlobalSearchPerformed', ()=>{
+
                     this.loadAddresses('', true)
                         .then((data) => {
-
-                            ['clusters','cluster-count','unclustered-point'].forEach(el => {
-                                if(this.map.getLayer(el)) this.map.removeLayer(el);
-                            });
-
-                            this.map.removeSource('earthquakes');
-
-                            this.initDataSource(data);
+                            this.updateMapLayers(data);
                         })
                 });
 
