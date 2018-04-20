@@ -67,8 +67,8 @@
                                 <div v-if="activeTab == 'career'">
                                     <ul class="career-list">
                                         <li v-for="career in personData.careers">
-                                            <p class="occupation">{{career.role}}</p>
-                                            <p class="work-place">{{workPlace(career)}}</p>
+                                            <p class="occupation">{{workPlace(career)}}</p>
+                                            <p class="work-place">{{career.role}}</p>
                                             <p class="date">{{endDate(career.enddate)}}</p>
                                         </li>
                                     </ul>
