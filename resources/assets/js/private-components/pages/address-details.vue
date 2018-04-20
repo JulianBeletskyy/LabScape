@@ -60,7 +60,7 @@
             <div class="staff-overview address-box">
                 <div class="header">
                     <h3>Staff <a href="#"><i class="fa fa-pencil"></i></a></h3>
-                    <a href="javascript:void(0)" @click="showContactsChain(addressData)" class="view-contacts-chain">View Contacts Chain</a>
+                    <a href="javascript:void(0)" @click="showContactsChain(addressData)" class="view-contacts-chain">View Relationship Graph</a>
                 </div>
 
                 <p v-if="!addressData.people.length" class="empty-data-p">There are no employees yet.</p>
@@ -79,7 +79,7 @@
 
                 <div style="clear: both"></div>
 
-                <a href="javascript:void(0)" @click="showSlidedBox('all-employee')" class="address-box-show-more-link">Show All Employees</a>
+                <a href="javascript:void(0)" @click="showSlidedBox('all-employee')" class="address-box-show-more-link">Show all Employees</a>
             </div>
 
             <div class="used-products-overview address-box">
@@ -97,7 +97,7 @@
                         </span>
                     </li>
                     <li>
-                        <a href="" class="show-all-link">Show All</a>
+                        <a href="" class="show-all-link">Show all products</a>
                     </li>
                 </ul>
             </div>
@@ -116,7 +116,7 @@
                     </li>
                 </ul>
 
-                <a href="#" class="address-box-show-more-link">Lab Chain Details</a>
+                <a href="#" class="address-box-show-more-link">Show all lab chain members</a>
             </div>
 
             <div class="lab-news-overview address-box">
