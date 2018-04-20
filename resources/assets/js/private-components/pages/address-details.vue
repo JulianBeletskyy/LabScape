@@ -25,7 +25,10 @@
                 <h2>
                     <span>{{addressData.name}}</span>
                     <a href="#"><i class="fa fa-pencil"></i></a>
+
+                    <a href="javascript:void(0)" title="Show on Map" @click="showOnMap()"><i class="fa fa-map-marker"></i></a>
                 </h2>
+
 
                 <select class="customer-status-select-box" @change="updateCustomerStatus()" v-model="addressData.customer_status">
                     <option :value="null" hidden disabled="disabled" class="hidden">Customer Status</option>
@@ -202,6 +205,10 @@
             },
             showContactsChain: function (addressData) {
                 this.$eventGlobal.$emit('showModalContactsChain', addressData)
+            },
+
+            showOnMap: function () {
+                this.$eventGlobal.$emit('showSpecificItem', [this.addressData])
             }
         },
 

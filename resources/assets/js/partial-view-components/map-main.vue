@@ -257,7 +257,6 @@
                         }
 
                         if(ids.length){
-                            console.log('ids',ids);
                             this.$router.push('/dashboard?address-ids='+ids.toString());
                         }
                     }
@@ -343,6 +342,10 @@
                         .then((data) => {
                             this.updateMapLayers(data);
                         })
+                });
+
+                this.$eventGlobal.$on('showSpecificItem', (data)=>{
+                    this.updateMapLayers(data);
                 });
 
             },1000);
