@@ -43,7 +43,7 @@ ActionEnum = {
     DESELECT_NODE : 1
 }
 
-var BASE_URL = "http://localhost/~pdeboer/roche_labs/";
+var BASE_URL = window.location.origin;
 
 var previousActions = [];
 
@@ -85,7 +85,7 @@ var physicsOptions = { enabled : true, /*, timestep : 0.66, minVelocity : 0.75,*
 var hoverPhysicsOptions = { enabled : false, stabilization : { enabled : true } };
 
 function resetValues() {
-    BASE_URL = "http://localhost/~pdeboer/roche_labs/";
+    BASE_URL = window.location.origin;
 
     previousActions = [];
 
@@ -479,10 +479,10 @@ GraphNode.prototype.getExternalLink = function(){
     var url = "";
     switch (this.type){
         case NodeTypeEnum.PERSON:
-            url = BASE_URL + "index.php//person/detail/" + this.intId;
+            url = BASE_URL + "/person-details/" + this.intId;
             break;
         case NodeTypeEnum.HOSPITAL:
-            url = BASE_URL + "index.php//labmap/detail/" + this.intId;
+            url = BASE_URL + "/address-details/" + this.intId;
             break;
     }
     return url;
