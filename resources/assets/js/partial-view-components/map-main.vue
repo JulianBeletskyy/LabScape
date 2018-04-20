@@ -242,11 +242,9 @@
 
                     if(unclusteredFeatures.length){
                         let id = unclusteredFeatures[0].properties.id;
-                        console.log('unclusteredFeatures',unclusteredFeatures);
                         this.$router.push('/address-details/'+id);
                     }
                     else if(clusteredFeatures.length){
-                        console.log('clusteredFeatures',clusteredFeatures);
 
                         let clusterId = clusteredFeatures[0].properties.cluster_id;
 
@@ -259,6 +257,9 @@
                         }
 
                         console.log('ids', ids);
+                        if(ids.length){
+                            this.$router.push('/dashboard?address-ids='+ids.toString());
+                        }
                     }
                 });
             },

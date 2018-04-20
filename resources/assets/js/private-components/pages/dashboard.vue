@@ -165,13 +165,22 @@
                     type: '',
                     sortBy: '',
                     isOnlySortingChanged: false,
-                    globalSearch: this.$route.query['global-search'] || ''
+                    globalSearch: this.$route.query['global-search'] || '',
+                    addressIds: this.$route.query['address-ids'] || ''
                 },
                 pagination: {
                     currentPage: 1
                 },
                 totalPointsInCurrentMap: 0,
                 multipleDropdownSelects: []
+            }
+        },
+
+        watch: {
+            $route: function (to) {
+                if(this.$route.query['address-ids']){
+                    this.loadAddressesPaginated(true);
+                }
             }
         },
 
@@ -262,12 +271,22 @@
                     this.$router.push('/dashboard?global-search=' + this.appliedFilters.globalSearch);
                 }
 
+                if(this.appliedFilters.addressIds){
+                    queryStr += '&address_ids=' + this.appliedFilters.addressIds;
+                }
+
                 return queryStr;
             },
 
-            loadAddressesPaginated: function () {
+            loadAddressesPaginated: function (isAvoidMapUpdating) {
 
                 let url = '/api/addresses-paginated?page=' + this.pagination.currentPage + this.composeQueryUrl();
+
+                let doNotUpdateMap = isAvoidMapUpdating;
+
+                if(this.appliedFilters.addressIds){
+                    doNotUpdateMap = true;
+                }
 
                 console.log('url',url);
 
@@ -276,7 +295,7 @@
                         this.addressesTotal = data.total;
                         this.addressList = data.data;
 
-                        if(!this.isFirstLoad && !this.appliedFilters.isOnlySortingChanged && this.pagination.currentPage == 1) {
+                        if(!doNotUpdateMap && !this.isFirstLoad && !this.appliedFilters.isOnlySortingChanged && this.pagination.currentPage == 1) {
                             this.notifyFiltersHaveBeenApplied();
                         }
 
@@ -312,6 +331,8 @@
 
             resetFilters: function () {
 
+                this.$router.push('/dashboard');
+
                 this.$refs.productsMultipleDropdownSelect.resetSelectedValues();
                 this.$refs.tagMultipleDropdownSelect.resetSelectedValues();
 
@@ -321,7 +342,8 @@
                     type: '',
                     sortBy: '',
                     isOnlySortingChanged: false,
-                    globalSearch: ''
+                    globalSearch: '',
+                    addressIds: ''
                 };
 
                 this.$eventGlobal.$emit('resetedAllFilters');
