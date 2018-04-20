@@ -1779,3 +1779,9 @@ ul.staff-list li .personal-info .name a:hover{
 #contacts-chain .modal-dialog .modal-content .modal-body #graphCanvasContainer {
     height: 100%;
 }
+
+
+#nodeInfo #employeeInfo .select-wrapper .caret,
+#nodeInfo #employeeInfo .select-wrapper input.select-dropdown{
+    display: none;
+}
