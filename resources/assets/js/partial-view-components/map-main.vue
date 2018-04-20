@@ -19,7 +19,8 @@
                 map: null,
                 FeatureCollection: {},
                 isFirstLoad: true,
-                isGlobalSearchInitator: false
+                isGlobalSearchInitator: false,
+                cluster: {}
             }
         },
 
@@ -246,6 +247,18 @@
                     }
                     else if(clusteredFeatures.length){
                         console.log('clusteredFeatures',clusteredFeatures);
+
+                        let clusterId = clusteredFeatures[0].properties.cluster_id;
+
+                        var allFeatures = this.cluster.getLeaves(clusterId, Math.floor(this.map.getZoom()), Infinity);
+
+                        let ids = [];
+
+                        for(var i=0; i<allFeatures.length; ++i){
+                            ids.push(allFeatures[i].properties.id);
+                        }
+
+                        console.log('ids', ids);
                     }
                 });
             },
@@ -292,11 +305,21 @@
                 $('#map-element').height($('.content-wrapper').height());
                 this.initMap();
 
+                var clusterRadius = 50;
+                var clusterMaxZoom = 14;
+
+                this.cluster = supercluster({
+                    radius: clusterRadius,
+                    maxZoom: clusterMaxZoom
+                });
+
                 this.map.on('load', () => {
                     this.loadAddresses()
                         .then(data => {
 
                             this.initDataSource(data);
+
+                            this.cluster.load(this.FeatureCollection.features);
 
                             this.listenToMouseMoves();
 

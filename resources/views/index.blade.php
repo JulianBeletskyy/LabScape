@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
+    <script src="https://unpkg.com/supercluster@2.3.0/dist/supercluster.min.js"></script>
+
     <script src="/js/vendor.js"></script>
 </head>
 <body class="skin-blue">
