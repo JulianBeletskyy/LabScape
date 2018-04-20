@@ -239,8 +239,14 @@
                         layers: ['clusters']
                     });
 
-                    console.log('unclusteredFeatures',unclusteredFeatures);
-                    console.log('clusteredFeatures',clusteredFeatures);
+                    if(unclusteredFeatures.length){
+                        let id = unclusteredFeatures[0].properties.id;
+                        console.log('unclusteredFeatures',unclusteredFeatures);
+                        this.$router.push('/address-details/'+id);
+                    }
+                    else if(clusteredFeatures.length){
+                        console.log('clusteredFeatures',clusteredFeatures);
+                    }
                 });
             },
 
