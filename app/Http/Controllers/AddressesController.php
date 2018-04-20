@@ -89,6 +89,10 @@ class AddressesController extends Controller
             $query->where('rl_addresses.name', 'LIKE', '%'.$requestParams['global_search'].'%');
         }
 
+        if (isset($requestParams['address_ids'])) {
+            $query->whereIn('rl_addresses.id', explode(',',$requestParams['address_ids']));
+        }
+
         return $query;
     }
 

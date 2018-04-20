@@ -256,8 +256,8 @@
                             ids.push(allFeatures[i].properties.id);
                         }
 
-                        console.log('ids', ids);
                         if(ids.length){
+                            console.log('ids',ids);
                             this.$router.push('/dashboard?address-ids='+ids.toString());
                         }
                     }

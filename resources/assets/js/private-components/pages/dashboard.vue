@@ -220,7 +220,7 @@
 
             listenToGlobalSearchPerformed: function () {
                 this.$eventGlobal.$on('globalSearchPerformed', (globalSearchQuery) => {
-                    this.appliedFilters.globalSearch = globalSearchQuery || '';
+                    this.appliedFilters.globalSearch = this.$route.query['global-search'] || '';
                     if(!this.isFirstLoad) {
                         this.applyFilters();
                     }
@@ -271,8 +271,8 @@
                     this.$router.push('/dashboard?global-search=' + this.appliedFilters.globalSearch);
                 }
 
-                if(this.appliedFilters.addressIds){
-                    queryStr += '&address_ids=' + this.appliedFilters.addressIds;
+                if(this.$route.query['address-ids']){
+                    queryStr += '&address_ids=' + this.$route.query['address-ids'];
                 }
 
                 return queryStr;
@@ -324,14 +324,14 @@
 
                 this.appliedFilters.isOnlySortingChanged = !!isOnlySortingChanged;
 
+                console.log('this.$refs.paginationDirective',this.$refs.paginationDirective);
+
                 if(this.$refs.paginationDirective){
                     this.$refs.paginationDirective.setPage(1);
                 }
             },
 
             resetFilters: function () {
-
-                this.$router.push('/dashboard');
 
                 this.$refs.productsMultipleDropdownSelect.resetSelectedValues();
                 this.$refs.tagMultipleDropdownSelect.resetSelectedValues();
@@ -348,7 +348,7 @@
 
                 this.$eventGlobal.$emit('resetedAllFilters');
 
-                if(this.$route.query['global-search']) {
+                if(this.$route.query['global-search'] || this.$route.query['address-ids']) {
                     this.$router.push('/dashboard');
                 }
 
