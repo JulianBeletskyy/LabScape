@@ -158,7 +158,7 @@
 
                 this.map = new mapboxgl.Map({
                     container: 'map-element',
-                    style: 'mapbox://styles/mapbox/streets-v10',
+                    style: 'mapbox://styles/mapbox/light-v9',
                     center: [8.553399, 46.901604],
                     zoom: 7
                 });
