@@ -38,7 +38,7 @@
                                         </div>
                                         <img src="/images/graph/undo.svg" class="graphIcon" onclick="undoAction()"/>
                                         <img src="/images/graph/fitcenter.svg" class="graphIcon" onclick="fitCamera(true)"/>
-                                        <img src="/images/graph/fullscreen.svg" class="graphIcon" onclick="toggleFullScreen(event)" id="fullScreenIcon"/>
+                                        <img src="/images/graph/fullscreen.svg" class="graphIcon" @click="_toggleFullScreen" id="fullScreenIcon"/>
                                         <img src="/images/graph/exit_fullscreen.svg" class="graphIcon" onclick="toggleFullScreen(event)" id="exitFullScreenIcon" style="display: none"/>
 
                                     </div>
@@ -84,6 +84,11 @@
 
                         start(data);
                     })
+            },
+
+            _toggleFullScreen: function ($event) {
+                $('#contacts-chain').modal('hide');
+                toggleFullScreen($event);
             }
         },
 

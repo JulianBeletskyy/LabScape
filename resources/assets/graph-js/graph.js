@@ -645,7 +645,7 @@ function updateSelectedNodeInfo(){
                 option.value = employeeTypes[i];
                 workerTypeSelect.add(option);
             }
-            $('#workerTypeSelect').material_select();
+            // $('#workerTypeSelect').material_select();
 
             employeeInfo.style.display = "block";
         }else{
