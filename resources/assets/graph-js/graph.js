@@ -479,7 +479,7 @@ GraphNode.prototype.getExternalLink = function(){
     var url = "";
     switch (this.type){
         case NodeTypeEnum.PERSON:
-            url = BASE_URL + "/person-details/" + this.intId;
+            url = '/person-details/' + this.intId;
             break;
         case NodeTypeEnum.HOSPITAL:
             url = BASE_URL + "/address-details/" + this.intId;
@@ -1221,10 +1221,16 @@ function afterZoom(zoomInfo){
 }
 
 // function called after clicking on the node element
-function openNodeInfoExternalLink(){
+function openNodeInfoExternalLink(VueInstance, addressData){
     if (selectedNode){
         var url = selectedNode.getExternalLink();
-        window.open(url, "_blank");
+        if(url.indexOf('/person-details/') !== -1){
+            let personId = url.replace('/person-details/', '');
+            VueInstance.showEmployeeDetailsModal(personId, addressData.id, addressData);
+        }
+        else {
+            window.open(url, "_blank");
+        }
     }
 }
 

@@ -12,7 +12,7 @@
 
                                     </div>
                                     <div class="nodeInfoRow topRow">
-                                        <img src="/images/graph/external_link.svg" class="graphIcon" id="externalLinkIcon" onclick="openNodeInfoExternalLink()"> <span id="moreDetailsLabel">More details</span>
+                                        <img src="/images/graph/external_link.svg" class="graphIcon" id="externalLinkIcon" @click="_openNodeInfoExternalLink()"> <span id="moreDetailsLabel">More details</span>
                                     </div>
                                     <div class="nodeInfoRow" id="employeeInfo">
                                         <div id="employeeCount"></div>
@@ -58,9 +58,10 @@
 <script>
 
     import http from '../mixins/http';
+    import employeeModal from '../mixins/show-employee-details-modal';
 
     export default {
-        mixins: [http],
+        mixins: [http, employeeModal],
 
         data: function () {
             return {
@@ -89,6 +90,10 @@
             _toggleFullScreen: function ($event) {
                 // $('#contacts-chain').modal('hide');
                 toggleFullScreen($event);
+            },
+
+            _openNodeInfoExternalLink: function () {
+                openNodeInfoExternalLink(this, this.currentAddress);
             }
         },
 
