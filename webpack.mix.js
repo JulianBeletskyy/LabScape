@@ -31,6 +31,7 @@ mix
         'public/css/app.css')
 
     .scripts([
+            'node_modules/supercluster/build/supercluster.js',
             'bower_components/jquery/dist/jquery.min.js',
             'resources/assets/graph-js/vis.js',
             'resources/assets/graph-js/materialize.min.js',
