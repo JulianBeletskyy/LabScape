@@ -832,7 +832,8 @@ function toggleFullScreen(event){
     fitFlag = true;
     fitAnimationFlag = false;
 
-    event.stopPropagation();
+    if(event)
+        event.stopPropagation();
 }
 
 function getLabId(id){

@@ -80,21 +80,21 @@
                     .then(data => {
                         mainLabId = this.currentAddress.id;
 
-                        // this.resetValues()
-
                         start(data);
+
+                        this._toggleFullScreen()
                     })
             },
 
             _toggleFullScreen: function ($event) {
-                $('#contacts-chain').modal('hide');
+                // $('#contacts-chain').modal('hide');
                 toggleFullScreen($event);
             }
         },
 
         mounted: function(){
             this.$eventGlobal.$on('showModalContactsChain', (addressData) => {
-                $('#contacts-chain').modal('show');
+                // $('#contacts-chain').modal('show');
                 this.init(addressData);
             });
         }
