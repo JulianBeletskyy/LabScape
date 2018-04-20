@@ -168,6 +168,13 @@
             }
         },
 
+        watch:{
+            $route: function(to){
+                this.addressId = this.$route.params['id'];
+                this.loadAddressDetails();
+            }
+        },
+
         methods: {
             loadAddressDetails: function () {
 
