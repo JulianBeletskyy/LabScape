@@ -16,7 +16,7 @@
         <ul class="staff-list">
             <li v-for="(person, i) in people">
                 <div class="image">
-                    <img src="/images/anonimus-person_100x100.png" alt="">
+                    <img :src="'/images/mask-'+i+'.png'" alt="">
                 </div>
                 <div class="personal-info">
                     <p class="name"><a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressId, address)">{{person.name}}</a></p>

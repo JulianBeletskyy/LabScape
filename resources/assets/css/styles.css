@@ -794,6 +794,7 @@ ul.tag-list li + li{
 
 .item-image .main-image img{
     opacity: 0.4;
+    width: 100px;
 }
 
 .item-image .circle-1{

@@ -83,13 +83,13 @@
                 </div>
 
                 <ul class="sidebar-list">
-                    <li v-for="address in addressList">
+                    <li v-for="(address, i) in addressList">
                         <div class="item" :class="{'potential-customers':address.customer_status == 1, 'my-customers': address.customer_status == 2}">
 
                             <div class="item-image">
                                 <div class="main-image">
                                     <router-link :to="'/address-details/'+address.id">
-                                        <img src="/images/anonimus-person_100x100.png" alt="">
+                                        <img :src="'/images/mask-'+i+'.png'" alt="">
                                     </router-link>
                                 </div>
                                 <div class="circle-1"></div>

@@ -80,7 +80,7 @@
                 <ul class="staff-list">
                     <li v-if="i < 3" v-for="(person, i) in addressData.people">
                         <div class="image">
-                            <a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressData.id, addressData)"><img src="/images/anonimus-person_100x100.png" alt=""></a>
+                            <a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressData.id, addressData)"><img :src="'/images/mask-'+i+'.png'" alt=""></a>
                         </div>
                         <div class="personal-info">
                             <p class="name"><a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressData.id, addressData)">{{person.name}}</a></p>
