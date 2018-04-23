@@ -302,7 +302,7 @@
         mounted: function () {
 
             setTimeout(()=>{
-                $('#map-element').height(window.innerHeight - 70);
+                $('#map-element').height(window.innerHeight - 70 - 51);
                 this.initMap();
 
                 var clusterRadius = 50;
