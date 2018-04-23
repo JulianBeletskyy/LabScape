@@ -211,6 +211,9 @@
         },
 
         mounted: function () {
+
+            $('ul.sidebar-list').height(window.innerHeight - 325);
+
             this.listenToTotalPointsDisplayedOnMapChanged();
 
             this.listenToGlobalSearchPerformed();
