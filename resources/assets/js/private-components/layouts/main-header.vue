@@ -60,6 +60,7 @@
                         this.$eventGlobal.$emit('notifyMapMainGlobalSearchPerformed', encodeURIComponent(this.globalSearchInput));
                     }
                     else{
+                        this.$router.push('/dashboard?global-search=' + encodeURIComponent(this.globalSearchInput));
                         this.$eventGlobal.$emit('globalSearchPerformed', encodeURIComponent(this.globalSearchInput));
                     }
 
