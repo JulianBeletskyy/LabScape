@@ -4,7 +4,7 @@
 
         <div class="box-for-logo">
             <div class="header-logo">
-                <span class="logo-lg"><img src="/images/logo.png" alt=""></span>
+                <span class="logo-lg"><router-link to="/dashboard"><img src="/images/logo.png" alt=""></router-link></span>
             </div>
         </div>
 
