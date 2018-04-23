@@ -16,6 +16,8 @@
 
                 <div v-if="sideComponentToDisplay == 'lab-chain-details'">
                     <lab-chain-details
+                            :isActive="isExpanded && sideComponentToDisplay == 'lab-chain-details'"
+                            :addressId="addressId"
                             :addressData="addressData"
                             @closeSlidedBox="isExpanded = false"
                     ></lab-chain-details>

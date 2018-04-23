@@ -56,7 +56,7 @@
             </div>
 
             <ul class="staff-list">
-                <li v-if="i < 3" v-for="(person, i) in addressData.people">
+                <li v-if="i < 3" v-for="(person, i) in clusterStaff.data">
                     <div class="image">
                         <a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressData.id, addressData)"><img src="/images/anonimus-person_100x100.png" alt=""></a>
                     </div>
@@ -69,10 +69,14 @@
 
             <div style="clear: both"></div>
 
-            <a href="javascript:void(0)" @click="showLabChainStaffPaginated()" class="address-box-show-more-link">Show all Employees</a>
+            <a v-if="clusterStaff.data.length > 3" href="javascript:void(0)" @click="showLabChainStaffPaginated()" class="address-box-show-more-link">Show all Employees</a>
         </div>
 
         <div class="lab-chain-staff staff-overview address-box" v-if="!isShowLabChainStaffCollapsed">
+
+            <div class="header">
+                <h3>Lab Chain Staff <a href="#"><i class="fa fa-pencil"></i></a></h3>
+            </div>
 
             <ul class="staff-list">
                 <li v-for="person in clusterStaff.data">
@@ -120,6 +124,14 @@
             }
         },
 
+        watch: {
+            isActive: function(newVal){
+                if(newVal) {
+                    this.loadClusterStaffPaginated();
+                }
+            }
+        },
+
         methods: {
             showLabChainMembersPaginated: function() {
                 this.isShowLabChainMembersCollapsed = false;
@@ -161,6 +173,10 @@
             closeSlidedBox: function () {
                 this.$emit('closeSlidedBox')
             }
+        },
+
+        mounted: function () {
+            this.loadClusterStaffPaginated();
         },
 
         props: ['employeeList', 'isActive', 'addressId', 'address', 'addressData'],
