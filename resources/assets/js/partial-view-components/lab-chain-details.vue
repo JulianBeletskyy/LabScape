@@ -6,7 +6,7 @@
         </a>
 
         <h3 class="">
-            Lab Chain
+            {{addressData.cluster.name}}
             <a data-v-cd5686be="" href="#">
                 <i data-v-cd5686be="" class="fa fa-pencil"></i>
             </a>
@@ -48,20 +48,72 @@
             </div>
         </div>
 
+
+        <div class="lab-chain-staff staff-overview address-box" v-if="isShowLabChainStaffCollapsed">
+
+            <div class="header">
+                <h3>Lab Chain Staff <a href="#"><i class="fa fa-pencil"></i></a></h3>
+            </div>
+
+            <ul class="staff-list">
+                <li v-if="i < 3" v-for="(person, i) in addressData.people">
+                    <div class="image">
+                        <a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressData.id, addressData)"><img src="/images/anonimus-person_100x100.png" alt=""></a>
+                    </div>
+                    <div class="personal-info">
+                        <p class="name"><a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressData.id, addressData)">{{person.name}}</a></p>
+                        <p class="occupation">{{person.description}}</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div style="clear: both"></div>
+
+            <a href="javascript:void(0)" @click="showLabChainStaffPaginated()" class="address-box-show-more-link">Show all Employees</a>
+        </div>
+
+        <div class="lab-chain-staff staff-overview address-box" v-if="!isShowLabChainStaffCollapsed">
+
+            <ul class="staff-list">
+                <li v-for="person in clusterStaff.data">
+                    <div class="image">
+                        <img src="/images/anonimus-person_100x100.png" alt="">
+                    </div>
+                    <div class="personal-info">
+                        <p class="name"><a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressData.id, addressData)">{{person.name}}</a></p>
+                        <p class="occupation">{{person.description}}</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="show-less-btn"><a @click="isShowLabChainStaffCollapsed = true" href="javascript:void(0)">Show Less</a></div>
+
+            <div class="pagination-box">
+                <pagination :records="clusterStaff.total"  :class="'pagination pagination-sm no-margin pull-right'" :per-page="10" @paginate="staffPageChanged"></pagination>
+            </div>
+
+        </div>
+
     </div>
 </template>
 
 <script>
 
     import http from '../mixins/http';
+    import employeeModal from '../mixins/show-employee-details-modal';
 
     export default {
-        mixins: [http],
+        mixins: [http, employeeModal],
 
         data: function () {
             return {
                 isShowLabChainMembersCollapsed: true,
+                isShowLabChainStaffCollapsed: true,
                 clusterAddresses: {
+                    total: 0,
+                    data: []
+                },
+                clusterStaff: {
                     total: 0,
                     data: []
                 }
@@ -86,6 +138,24 @@
 
             pageChanged: function(pageNumber) {
                 this.loadClusterDetails(pageNumber);
+            },
+
+            showLabChainStaffPaginated: function() {
+                this.isShowLabChainStaffCollapsed = false;
+                this.loadClusterStaffPaginated();
+            },
+
+            staffPageChanged: function(pageNumber) {
+                this.loadClusterStaffPaginated(pageNumber)
+            },
+
+            loadClusterStaffPaginated: function (page) {
+                let p = page || 1;
+
+                this.httpGet('/api/address-details/'+this.addressData.id+'/get-cluster-staff-paginated?page='+p)
+                    .then(data => {
+                        this.clusterStaff = data;
+                    })
             },
 
             closeSlidedBox: function () {

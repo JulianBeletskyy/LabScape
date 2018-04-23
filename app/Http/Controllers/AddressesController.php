@@ -226,9 +226,20 @@ class AddressesController extends Controller
 
     function getClusterMembersPaginated(Address $address)
     {
-        $clusters = Address::where('cluster_id', $address->cluster_id)->paginate(10);
+        $clusterAddresses = Address::where('cluster_id', $address->cluster_id)->paginate(10);
 
-        return response()->json($clusters);
+        return response()->json($clusterAddresses);
+    }
+
+
+    function getClusterStaffPaginated(Address $address) {
+        $clusterStaff = People::with('addresses')
+            ->whereHas('addresses', function ($q) use ($address) {
+                $q->where('cluster_id', $address->cluster_id);
+            })
+            ->paginate(10);
+
+        return response()->json($clusterStaff);
     }
 
 }
