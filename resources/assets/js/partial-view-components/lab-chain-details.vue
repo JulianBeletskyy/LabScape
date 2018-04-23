@@ -123,7 +123,7 @@
 
             <div style="clear: both"></div>
 
-            <a v-if="clusterStaff.data.length > 3" href="javascript:void(0)" @click="showProductsPaginated()" class="address-box-show-more-link">Show all Products</a>
+            <a v-if="clusterProducts.data.length > 3" href="javascript:void(0)" @click="showProductsPaginated()" class="address-box-show-more-link">Show all {{clusterProducts.data.length}} products</a>
         </div>
 
         <div class="lab-chain-staff staff-overview address-box" v-if="!isProductCollapsed">
