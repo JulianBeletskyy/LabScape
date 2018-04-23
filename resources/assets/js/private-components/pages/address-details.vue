@@ -14,6 +14,13 @@
                     ></all-employee-list>
                 </div>
 
+                <div v-if="sideComponentToDisplay == 'lab-chain-details'">
+                    <lab-chain-details
+                            :addressData="addressData"
+                            @closeSlidedBox="isExpanded = false"
+                    ></lab-chain-details>
+                </div>
+
             </div>
 
             <router-link to="/dashboard" title="Back to dashboard" class="link-back arrow-left">
@@ -119,7 +126,7 @@
                     </li>
                 </ul>
 
-                <a href="#" v-if="addressData.cluster.addresses.length > 1" class="address-box-show-more-link">Show all lab chain members</a>
+                <a href="javascript:void(0)" @click="showSlidedBox('lab-chain-details')" v-if="addressData.cluster.addresses.length > 1" class="address-box-show-more-link">Show all lab chain members</a>
             </div>
 
             <div class="lab-news-overview address-box">
@@ -200,7 +207,14 @@
                     })
             },
             showSlidedBox: function (componentToDisplay) {
-                this.isExpanded = !this.isExpanded;
+
+                if(this.sideComponentToDisplay == componentToDisplay){
+                    this.isExpanded = !this.isExpanded;
+                }
+                else {
+                    this.isExpanded = true;
+                }
+
                 this.sideComponentToDisplay = componentToDisplay;
             },
             showContactsChain: function (addressData) {

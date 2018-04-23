@@ -23,6 +23,7 @@ Vue.component('multiple-dropdown-select', require('./partial-view-components/mul
 Vue.component('all-employee-list', require('./partial-view-components/all-employee-list'));
 Vue.component('modal-employee-details', require('./partial-view-components/modal-employee-details'));
 Vue.component('modal-contacts-chain', require('./partial-view-components/modal-contacts-chain'));
+Vue.component('lab-chain-details', require('./partial-view-components/lab-chain-details'));
 Vue.component('pagination', Pagination);
 
 Vue.prototype.$eventGlobal = new Vue(); // Global event bus

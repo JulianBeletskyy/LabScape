@@ -1789,3 +1789,19 @@ ul.staff-list li .personal-info .name a:hover{
 #nodeInfo #employeeInfo .select-wrapper input.select-dropdown{
     display: none;
 }
+
+.slided-box-content .address-box {
+    border-color: #dde3e8;
+}
+
+.slided-box-content .show-less-btn{
+    text-align: center;
+}
+
+.slided-box-content .show-less-btn a{
+    color: #72afd2;
+}
+
+.slided-box-content .show-less-btn a:hover{
+    text-decoration: underline;
+}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
+use App\Models\Cluster;
 use App\Models\CustomerType;
 use App\Models\People;
 use App\Models\Product;
@@ -220,6 +221,14 @@ class AddressesController extends Controller
         $result = [ 'related_labs' => $related_labs, 'related_people' => $related_people, 'relationships' => $people_relationships, 'workers' => $lab_workers ];
 
         return response()->json($result);
+    }
+
+
+    function getClusterMembersPaginated(Address $address)
+    {
+        $clusters = Address::where('cluster_id', $address->cluster_id)->paginate(10);
+
+        return response()->json($clusters);
     }
 
 }

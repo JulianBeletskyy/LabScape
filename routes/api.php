@@ -46,6 +46,8 @@ Route::group(['middleware'=>['jwt.auth']],function (){
 
     Route::get('/address-details/{address}/load-contacts-chain-data', 'AddressesController@getContactsChain')->name('address.getContactsChain');
 
+    Route::get('/address-details/{address}/get-cluster-members-paginated', 'AddressesController@getClusterMembersPaginated')->name('address.getClusterMembersPaginated');
+
     Route::get('/customer-statuses', 'CustomerStatusesController@show')->name('customerStatus.show');
 
     Route::get('/people/{person}', 'PeopleController@show')->name('people.show');
