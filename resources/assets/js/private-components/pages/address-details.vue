@@ -114,12 +114,12 @@
 
                 <ul class="lab-chain-member-list">
                     <li v-if="c.id != addressData.id && i < 3" v-for="(c,i) in addressData.cluster.addresses">
-                        <h4>{{c.name}}</h4>
+                        <h4><router-link :to="'/address-details/'+c.id">{{c.name}}</router-link></h4>
                         <p>{{c.address}}</p>
                     </li>
                 </ul>
 
-                <a href="#" class="address-box-show-more-link">Show all lab chain members</a>
+                <a href="#" v-if="addressData.cluster.addresses.length > 1" class="address-box-show-more-link">Show all lab chain members</a>
             </div>
 
             <div class="lab-news-overview address-box">

@@ -1171,13 +1171,17 @@ ul.lab-chain-member-list li{
     margin-bottom: 15px;
 }
 
-ul.lab-chain-member-list li h4{
+.address-box ul.lab-chain-member-list li h4 a{
     font-family: Montserrat;
     font-size: 16px;
     line-height: 1.63;
     color: #3a444f;
     font-weight: 600;
     margin-bottom: 0;
+}
+
+.address-box ul.lab-chain-member-list li h4 a:hover{
+    color: #4a90e2;
 }
 
 ul.lab-chain-member-list li p{
