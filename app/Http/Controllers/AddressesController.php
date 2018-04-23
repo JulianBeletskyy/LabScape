@@ -242,4 +242,16 @@ class AddressesController extends Controller
         return response()->json($clusterStaff);
     }
 
+
+    function getClusterProductsPaginated(Address $address)
+    {
+        $products = Product::with('addresses')
+            ->whereHas('addresses', function ($q) use ($address) {
+                $q->where('cluster_id', $address->cluster_id);
+            })
+            ->paginate(10);
+
+        return response()->json($products);
+    }
+
 }

@@ -98,6 +98,65 @@
 
         </div>
 
+        <div class="lab-chain-staff staff-overview address-box" v-if="isProductCollapsed">
+
+            <div class="header">
+                <h3>Used Products <a href="#"><i class="fa fa-pencil"></i></a></h3>
+            </div>
+
+            <ul class="products-list">
+                <li v-if="i < 3" v-for="(product, i) in clusterProducts.data">
+                    <div class="image">
+                        <img src="/images/anonimus-person_100x100.png" alt="">
+                    </div>
+                    <div>
+                        <span class="product-description">
+                            {{product.name? product.company + ': ' + product.name : product.company}}
+                        </span>
+
+                        <span class="product-also-use" v-html="productAlsoUse(product)"></span>
+                    </div>
+
+
+                </li>
+            </ul>
+
+            <div style="clear: both"></div>
+
+            <a v-if="clusterStaff.data.length > 3" href="javascript:void(0)" @click="showProductsPaginated()" class="address-box-show-more-link">Show all Products</a>
+        </div>
+
+        <div class="lab-chain-staff staff-overview address-box" v-if="!isProductCollapsed">
+
+            <div class="header">
+                <h3>Used Products <a href="#"><i class="fa fa-pencil"></i></a></h3>
+            </div>
+
+            <ul class="products-list">
+                <li v-for="(product, i) in clusterProducts.data">
+                    <div class="image">
+                        <img src="/images/anonimus-person_100x100.png" alt="">
+                    </div>
+                    <div>
+                        <span class="product-description">
+                            {{product.name? product.company + ': ' + product.name : product.company}}
+                        </span>
+
+                        <span class="product-also-use" v-html="productAlsoUse(product)"></span>
+                    </div>
+
+
+                </li>
+            </ul>
+
+            <div class="show-less-btn"><a @click="isProductCollapsed = true" href="javascript:void(0)">Show Less</a></div>
+
+            <div class="pagination-box">
+                <pagination :records="clusterProducts.total"  :class="'pagination pagination-sm no-margin pull-right'" :per-page="10" @paginate="productsPageChanged"></pagination>
+            </div>
+
+        </div>
+
     </div>
 </template>
 
@@ -113,11 +172,16 @@
             return {
                 isShowLabChainMembersCollapsed: true,
                 isShowLabChainStaffCollapsed: true,
+                isProductCollapsed: true,
                 clusterAddresses: {
                     total: 0,
                     data: []
                 },
                 clusterStaff: {
+                    total: 0,
+                    data: []
+                },
+                clusterProducts: {
                     total: 0,
                     data: []
                 }
@@ -170,13 +234,42 @@
                     })
             },
 
+            productsPageChanged: function(pageNumber) {
+                this.loadClusterStaffPaginated(pageNumber)
+            },
+
+            showProductsPaginated: function() {
+                this.isProductCollapsed = false;
+                this.loadClusterProductsPaginated();
+            },
+
+            loadClusterProductsPaginated: function (page) {
+                let p = page || 1;
+
+                this.httpGet('/api/address-details/'+this.addressData.id+'/get-cluster-products-paginated?page='+p)
+                    .then(data => {
+                        this.clusterProducts = data;
+                    })
+            },
+
             closeSlidedBox: function () {
                 this.$emit('closeSlidedBox')
+            },
+
+            productAlsoUse: function (product) {
+                let str = ' at <strong>' + product.addresses[0].name + '</strong>';
+
+                if(product.addresses.length > 1) {
+                    str += ' and ' + (product.addresses.length - 1) + ' other';
+                }
+
+                return str;
             }
         },
 
         mounted: function () {
             this.loadClusterStaffPaginated();
+            this.loadClusterProductsPaginated();
         },
 
         props: ['employeeList', 'isActive', 'addressId', 'address', 'addressData'],

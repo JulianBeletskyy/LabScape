@@ -1809,3 +1809,34 @@ ul.staff-list li .personal-info .name a:hover{
 .slided-box-content h3{
     margin-right: 50px;
 }
+
+.slided-box-content ul.products-list{
+    margin-top: 20px;
+}
+
+.slided-box-content ul.products-list li {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.slided-box-content ul.products-list li .image{
+    float: left;
+    margin-right: 15px;
+}
+
+.slided-box-content ul.products-list li .image img{
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+.slided-box-content ul.products-list li .product-description{
+    display: inline;
+    font-family: Montserrat;
+    font-size: 14px;
+    letter-spacing: normal;
+    color: #3a444f;
+    font-weight: 600;
+}
