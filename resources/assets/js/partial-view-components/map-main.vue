@@ -20,7 +20,11 @@
                 FeatureCollection: {},
                 isFirstLoad: true,
                 isGlobalSearchInitator: false,
-                cluster: {}
+                cluster: {},
+                popup: new mapboxgl.Popup({
+                    closeButton: false,
+                    closeOnClick: false
+                })
             }
         },
 
@@ -55,7 +59,8 @@
                             "mag": 2.3,
                             "time": 1507425650893,
                             "felt": null,
-                            "tsunami": 0
+                            "tsunami": 0,
+                            "name": adr.name
                         },
                         "geometry": {
                             "type": "Point",
@@ -222,8 +227,14 @@
 
                     if(unclusteredFeatures.length || clusteredFeatures.length) {
                         this.map.getCanvas().style.cursor = 'pointer';
+
+                        this.popup.setLngLat(unclusteredFeatures[0].geometry.coordinates)
+                            .setHTML('<h3 class="address-name-in-map-tooltip">'+unclusteredFeatures[0].properties.name+'</h3>')
+                            .addTo(this.map)
+
                     }
                     else {
+                        this.popup.remove();
                         this.map.getCanvas().style.cursor = '';
                     }
                 });

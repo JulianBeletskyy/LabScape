@@ -1906,3 +1906,10 @@ ul.staff-list li .personal-info .name a:hover{
     -moz-filter:blur(4px);
     -webkit-filter:blur(4px);
 }
+
+.address-name-in-map-tooltip{
+    margin: 0;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 600;
+}
