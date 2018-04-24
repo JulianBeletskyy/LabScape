@@ -23,7 +23,7 @@
         <main-component></main-component>
     </div>
 
-    <script src="/js/graph.js"></script>
+    <script src="/js/graph-1.js"></script>
     <script src="/js/app.js"></script>
 </body>
 </html>

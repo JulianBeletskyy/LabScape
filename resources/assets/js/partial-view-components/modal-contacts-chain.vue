@@ -81,6 +81,10 @@
                     .then(data => {
                         mainLabId = this.currentAddress.id;
 
+                        mainNodeType = 'Hospital';
+
+                        mainNodeId = this.currentAddress.id;
+
                         start(data);
 
                         this._toggleFullScreen()

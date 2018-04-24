@@ -53,4 +53,5 @@ mix
 
     .copyDirectory('resources/assets/fonts', 'public/fonts')
     .copyDirectory('resources/assets/images', 'public/images')
-    .copy('resources/assets/graph-js/graph.js', 'public/js/graph.js');
+    .copy('resources/assets/graph-js/graph.js', 'public/js/graph.js')
+    .copy('resources/assets/graph-js/graph-1.js', 'public/js/graph-1.js');

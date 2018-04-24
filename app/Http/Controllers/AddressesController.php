@@ -209,8 +209,6 @@ class AddressesController extends Controller
             $related_people_ids = $related_people_ids . $p->id;
         }
 
-        Log::info('$related_people_ids ' . print_r($related_people_ids,1));
-
         // get relationships and descriptions
         $people_relationships = [];
         if ($related_people_ids != ""){
