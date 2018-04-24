@@ -6,7 +6,8 @@
                     <div class="modal-header">
 
                         <div class="person-profile-picture">
-                            <img src="/images/anonimus-person_100x100.png" alt="">
+                            <span class="person-initials">{{getPersonInitials(personData.name)}}</span>
+                            <img src="/images/mask-7.png" alt="">
                         </div>
 
                         <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
@@ -152,9 +153,10 @@
 <script>
 
     import http from '../mixins/http';
+    import getPersonInitials from '../mixins/get-person-initials';
 
     export default {
-        mixins: [http],
+        mixins: [http, getPersonInitials],
 
         data: function () {
             return {
@@ -162,6 +164,7 @@
                 currentAddressId: null,
                 currentAddress: {},
                 personData: {
+                    name: '',
                     careers: [],
                     publications: []
                 },

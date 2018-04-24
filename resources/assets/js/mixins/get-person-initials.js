@@ -3,6 +3,10 @@ var getPersonInitials = {
     methods: {
         getPersonInitials: function (personName) {
 
+            if(!personName) {
+                return '';
+            }
+
             var initials = '';
 
             let arr = personName.split(' ');
