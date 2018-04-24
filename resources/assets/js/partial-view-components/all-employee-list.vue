@@ -16,8 +16,10 @@
         <ul class="staff-list">
             <li v-for="(person, i) in people">
                 <div class="image">
-                    <span class="person-initials">{{getPersonInitials(person.name)}}</span>
-                    <img :src="'/images/mask-'+i+'.png'" alt="">
+                    <a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressId, address)">
+                        <span class="person-initials">{{getPersonInitials(person.name)}}</span>
+                        <img :src="'/images/mask-'+i+'.png'" alt="">
+                    </a>
                 </div>
                 <div class="personal-info">
                     <p class="name"><a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressId, address)">{{person.name}}</a></p>
