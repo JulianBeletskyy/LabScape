@@ -1895,3 +1895,14 @@ ul.staff-list li .personal-info .name a:hover{
     color: #ffffff;
     top: calc(50% - 20px);
 }
+
+.modal-open .main-header,
+.modal-open .main-sidebar,
+.modal-open #map-element,
+.modal-open .main-footer{
+    filter:blur(4px);
+    -o-filter:blur(4px);
+    -ms-filter:blur(4px);
+    -moz-filter:blur(4px);
+    -webkit-filter:blur(4px);
+}
