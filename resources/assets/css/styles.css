@@ -849,6 +849,10 @@ ul.tag-list li + li{
     padding-left: 50px;
     padding-top: 40px;
     position: relative;
+}
+
+.slided-box,
+.address-details-fixed-height{
     overflow-y: auto;
 }
 
