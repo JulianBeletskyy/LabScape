@@ -849,6 +849,7 @@ ul.tag-list li + li{
     padding-left: 50px;
     padding-top: 40px;
     position: relative;
+    overflow-y: auto;
 }
 
 .address-overview .customer-status-select-box{

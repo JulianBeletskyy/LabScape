@@ -233,6 +233,9 @@
         },
 
         mounted: function () {
+
+            $('.address-details-container.slider-container').height(window.innerHeight - 70 -51);
+
             this.addressId = this.$route.params.id;
 
             this.loadAddressDetails();
