@@ -38,6 +38,7 @@ class AddressesController extends Controller
     {
         $query = Address::with('tags')
             ->with('cluster')
+            ->withCount('people')
             ->with(['products' => function($q){
                 $q->select('id');
             }]);
@@ -57,7 +58,6 @@ class AddressesController extends Controller
             $direction = explode('-',$requestParams['sort_by'])[1];
 
             if($field == 'people') {
-                $query->withCount('people');
                 $field .= '_count';
             }
             else if($field == 'products') {

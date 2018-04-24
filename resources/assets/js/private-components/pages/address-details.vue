@@ -244,6 +244,12 @@
 
             this.loadAddressDetails();
             this.loadCustomerStatusList();
+
+            if(this.$route.query['all-employees']){
+                setTimeout(()=>{
+                    this.showSlidedBox('all-employee');
+                },0)
+            }
         }
     }
 </script>

@@ -88,8 +88,12 @@
 
                             <div class="item-image">
                                 <div class="main-image">
-                                    <router-link :to="'/address-details/'+address.id">
-                                        <img :src="'/images/mask-'+i+'.png'" alt="">
+                                    <router-link :to="'/address-details/'+address.id+ (address.people_count? '?all-employees=1' : '')">
+                                        <div class="box-p">
+                                            <span class="people-count" v-if="address.people_count">See {{address.people_count}} employee{{address.people_count > 1? 's': ''}}</span>
+
+                                            <img class="addr-img" :src="'/images/mask-'+i+'.png'" alt="">
+                                        </div>
                                     </router-link>
                                 </div>
                                 <div class="circle-1"></div>

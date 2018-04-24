@@ -792,8 +792,8 @@ ul.tag-list li + li{
     background: #e6ecf3;
 }
 
-.item-image .main-image img{
-    opacity: 0.4;
+.item-image .main-image img.addr-img{
+    /*opacity: 0.4;*/
     width: 100px;
 }
 
@@ -1876,4 +1876,22 @@ ul.staff-list li .personal-info .name a:hover{
     left: 0;
     color: #fff;
     text-shadow: 1px 1px 9px rgba(0,0,0,.3);
+}
+
+.sidebar-list .item-image .main-image .box-p{
+    position: relative;
+}
+
+.sidebar-list .item-image .main-image .box-p span.people-count{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+
+    height: 32px;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #ffffff;
+    top: calc(50% - 20px);
 }
