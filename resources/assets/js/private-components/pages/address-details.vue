@@ -80,7 +80,10 @@
                 <ul class="staff-list">
                     <li v-if="i < 3" v-for="(person, i) in addressData.people">
                         <div class="image">
-                            <a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressData.id, addressData)"><img :src="'/images/mask-'+i+'.png'" alt=""></a>
+                            <a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressData.id, addressData)">
+                                <span class="person-initials">{{getPersonInitials(person.name)}}</span>
+                                <img :src="'/images/mask-'+i+'.png'" alt="">
+                            </a>
                         </div>
                         <div class="personal-info">
                             <p class="name"><a href="javascript:void(0)" @click="showEmployeeDetailsModal(person.id, addressData.id, addressData)">{{person.name}}</a></p>
@@ -158,9 +161,10 @@
 
     import http from '../../mixins/http';
     import employeeModal from '../../mixins/show-employee-details-modal';
+    import getPersonInitials from '../../mixins/get-person-initials';
 
     export default {
-        mixins: [http, employeeModal],
+        mixins: [http, employeeModal, getPersonInitials],
 
         data: function () {
             return {

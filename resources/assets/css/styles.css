@@ -1049,6 +1049,20 @@ ul.staff-list li .image{
     float: left;
     border-radius: 35px;
     background: #e6ecf3;
+    position: relative;
+}
+
+ul.staff-list li .image .person-initials{
+    position: absolute;
+    font-family: Montserrat;
+    font-size: 21px;
+    line-height: 21px;
+    height: 21px;
+    font-weight: 600;
+    color: #ffffff;
+    top: calc(50% - 11px);
+    width: 100%;
+    text-align: center;
 }
 
 ul.staff-list li .image img{
