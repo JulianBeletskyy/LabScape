@@ -3,7 +3,6 @@
         <div class="modal fade" id="contacts-chain" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <!--<script type="text/javascript" src="/js/graph.js"></script>-->
                     <div class="modal-body">
                         <div id="graphCanvasContainer">
                             <div id="graphCanvasMovableContainer" onclick="exitFullScreen(event)">
