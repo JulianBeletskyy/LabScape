@@ -44,7 +44,7 @@
         data: function () {
             return {
                 user: {},
-                globalSearchInput: '',
+                globalSearchInput: this.$route.query['global-search'],
                 timeOutId: null
             }
         },
@@ -60,11 +60,11 @@
 
                     if(this.$route.path != '/dashboard') {
                         this.$router.push('/dashboard?global-search=' + encodeURIComponent(this.globalSearchInput));
-                        this.$eventGlobal.$emit('notifyMapMainGlobalSearchPerformed', encodeURIComponent(this.globalSearchInput));
+                        // this.$eventGlobal.$emit('notifyMapMainGlobalSearchPerformed', encodeURIComponent(this.globalSearchInput));
                     }
                     else{
                         this.$router.push('/dashboard?global-search=' + encodeURIComponent(this.globalSearchInput));
-                        this.$eventGlobal.$emit('globalSearchPerformed', encodeURIComponent(this.globalSearchInput));
+                        // this.$eventGlobal.$emit('globalSearchPerformed', encodeURIComponent(this.globalSearchInput));
                     }
 
                     if(this.globalSearchInput == '') {

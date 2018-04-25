@@ -233,8 +233,6 @@
             $('ul.sidebar-list').height(window.innerHeight - 325);
 
             this.listenToTotalPointsDisplayedOnMapChanged();
-
-            this.listenToGlobalSearchPerformed();
         },
 
         methods: {
@@ -258,15 +256,6 @@
                 this.appliedFilters.globalSearch = this.$route.query['global-search'] || '';
                 this.appliedFilters.addressIds = this.$route.query['address-ids'] || '';
 
-            },
-
-            listenToGlobalSearchPerformed: function () {
-                this.$eventGlobal.$on('globalSearchPerformed', (globalSearchQuery) => {
-                    this.appliedFilters.globalSearch = this.$route.query['global-search'] || '';
-                    if(!this.isFirstLoad) {
-                        this.applyFilters();
-                    }
-                })
             },
 
             applyUsedProductsFilter: function (data) {

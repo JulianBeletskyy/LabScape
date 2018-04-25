@@ -34,7 +34,7 @@
 
                 if ((this.isFirstLoad && this.$route.query['global-search']) || isGlobalSearchInitiator) {
 
-                    let url = '/api/addresses?global_search=' + encodeURIComponent(this.$route.query['global-search']);
+                    let url = '/api/addresses?global-search=' + encodeURIComponent(this.$route.query['global-search']);
 
                     this.isFirstLoad = false;
 
@@ -317,6 +317,16 @@
 
                 this.cluster.load(this.FeatureCollection.features);
             },
+
+            initSuperCluster: function () {
+                var clusterRadius = 50;
+                var clusterMaxZoom = 14;
+
+                this.cluster = supercluster({
+                    radius: clusterRadius,
+                    maxZoom: clusterMaxZoom
+                });
+            }
         },
 
         mounted: function () {
@@ -325,13 +335,7 @@
                 $('#map-element').height(window.innerHeight - 70 - 51);
                 this.initMap();
 
-                var clusterRadius = 50;
-                var clusterMaxZoom = 14;
-
-                this.cluster = supercluster({
-                    radius: clusterRadius,
-                    maxZoom: clusterMaxZoom
-                });
+                this.initSuperCluster();
 
                 this.map.on('load', () => {
 
@@ -358,14 +362,6 @@
                 this.$eventGlobal.$on('filtersHaveBeenApplied', (queryStr) => {
 
                     this.loadAddresses(queryStr)
-                        .then((data) => {
-                            this.updateMapLayers(data);
-                        })
-                });
-
-                this.$eventGlobal.$on('notifyMapMainGlobalSearchPerformed', ()=>{
-
-                    this.loadAddresses('', true)
                         .then((data) => {
                             this.updateMapLayers(data);
                         })
