@@ -189,6 +189,8 @@
 
                 console.log('this.$route.query', this.$route.query);
 
+                this.initFilters();
+
                 this.composeQueryUrl();
 
                 this.$refs.paginationDirective.setPage(1);
@@ -217,6 +219,8 @@
 
         created: function () {
 
+            this.initFilters();
+
             this.composeQueryUrl();
 
             this.loadAddressesPaginated();
@@ -234,6 +238,27 @@
         },
 
         methods: {
+
+            initFilters: function () {
+
+                this.appliedFilters.usedProducts = this.$route.query['used-product-ids[]'] || [];
+
+                if(typeof this.appliedFilters.usedProducts === 'string') {
+                    this.appliedFilters.usedProducts = [this.appliedFilters.usedProducts ];
+                }
+
+                this.appliedFilters.tags = this.$route.query['tag-ids[]'] || [];
+
+                if(typeof this.appliedFilters.tags === 'string') {
+                    this.appliedFilters.tags = [this.appliedFilters.tags ];
+                }
+
+                this.appliedFilters.type =  this.$route.query['type-id'] || '';
+                this.appliedFilters.sortBy = this.$route.query['sort-by'] || '';
+                this.appliedFilters.globalSearch = this.$route.query['global-search'] || '';
+                this.appliedFilters.addressIds = this.$route.query['address-ids'] || '';
+
+            },
 
             listenToGlobalSearchPerformed: function () {
                 this.$eventGlobal.$on('globalSearchPerformed', (globalSearchQuery) => {
