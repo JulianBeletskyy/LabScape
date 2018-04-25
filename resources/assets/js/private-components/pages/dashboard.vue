@@ -187,7 +187,11 @@
                 //     this.loadAddressesPaginated(true);
                 // }
 
-                console.log('this.$route.query', this.$route.query);
+                // console.log('this.$route.query', this.$route.query);
+
+                if(this.$route.query.hasOwnProperty('zoom')) {
+                    return;
+                }
 
                 this.initFilters();
 
