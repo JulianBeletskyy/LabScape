@@ -276,6 +276,35 @@ a{
     background: transparent;
     /*box-shadow: 0 0 30px 0 rgba(35, 40, 72, 0.13);*/
     height: 70px;
+    margin-left: 0;
+    display: flex;
+}
+
+.navbar.navbar-static-top > div{
+    width: 33%;
+    float: none;
+}
+
+.navbar.navbar-static-top > div.nav-search{
+    margin-left: 0;
+    float: none;
+}
+
+.navbar.navbar-static-top > div.nav-search ul{
+    width: 100%;
+}
+
+.navbar.navbar-static-top > div.nav-search ul li{
+    width: 60%;
+    margin-left: 20%;
+}
+
+.navbar.navbar-static-top > div.nav-links{
+    float: none;
+}
+
+.navbar.navbar-static-top > div.nav-links ul{
+    float: right;
 }
 
 .main-header{
@@ -329,10 +358,11 @@ a{
     font-size: 14px;
     background: transparent;
     border: 0;
-    width: 280px;
+    width: calc(100% - 35px);
     height: 1.5em;
     color: #ffffff;
     padding: 3px;
+    /*text-align: center;*/
 }
 
 .nav-search input:focus{

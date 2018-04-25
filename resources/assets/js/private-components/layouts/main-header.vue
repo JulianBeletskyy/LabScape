@@ -2,13 +2,16 @@
     <header class="main-header">
         <!-- Logo -->
 
-        <div class="box-for-logo">
-            <div class="header-logo">
-                <span class="logo-lg"><router-link to="/dashboard"><img src="/images/labscape.png" alt=""></router-link></span>
-            </div>
-        </div>
+
 
         <nav class="navbar navbar-static-top">
+
+            <div class="box-for-logo">
+                <div class="header-logo">
+                    <span class="logo-lg"><router-link to="/dashboard"><img src="/images/labscape.png" alt=""></router-link></span>
+                </div>
+            </div>
+
 
             <div class="nav-search">
                 <ul class="nav navbar-nav">
@@ -22,7 +25,7 @@
                     </li>
                 </ul>
             </div>
-            
+
             <div class="nav-links">
                 <ul>
                     <li><a href="#" class="active">Lab Map</a></li>
