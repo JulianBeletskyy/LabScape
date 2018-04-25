@@ -58,11 +58,11 @@ class AddressesController extends Controller
             $direction = explode('-',$requestParams['sort-by'])[1];
 
             if($field == 'people') {
-                $field .= '-count';
+                $field .= '_count';
             }
             else if($field == 'products') {
                 $query->withCount('products');
-                $field .= '-count';
+                $field .= '_count';
             }
 
             $query->orderBy($field,$direction);

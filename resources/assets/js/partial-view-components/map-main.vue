@@ -314,6 +314,8 @@
                 this.map.removeSource('earthquakes');
 
                 this.initDataSource(data);
+
+                this.cluster.load(this.FeatureCollection.features);
             },
         },
 

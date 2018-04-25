@@ -164,10 +164,10 @@
                     tag_list: []
                 },
                 appliedFilters: {
-                    usedProducts: [],
-                    tags: [],
-                    type: '',
-                    sortBy: '',
+                    usedProducts: this.$route.query['used-product-ids[]'] || [],
+                    tags: this.$route.query['tag-ids[]'] || [],
+                    type:  this.$route.query['type-id'] || '',
+                    sortBy: this.$route.query['sort-by'] || '',
                     isOnlySortingChanged: false,
                     globalSearch: this.$route.query['global-search'] || '',
                     addressIds: this.$route.query['address-ids'] || ''
@@ -176,15 +176,23 @@
                     currentPage: 1
                 },
                 totalPointsInCurrentMap: 0,
-                multipleDropdownSelects: []
+                multipleDropdownSelects: [],
+                queryUrl: ''
             }
         },
 
         watch: {
             $route: function (to) {
-                if(this.$route.query['address-ids']){
-                    this.loadAddressesPaginated(true);
-                }
+                // if(this.$route.query['address-ids']){
+                //     this.loadAddressesPaginated(true);
+                // }
+
+                console.log('this.$route.query', this.$route.query);
+
+                this.composeQueryUrl();
+
+                this.$refs.paginationDirective.setPage(1);
+
             }
         },
 
@@ -208,6 +216,8 @@
         },
 
         created: function () {
+
+            this.composeQueryUrl();
 
             this.loadAddressesPaginated();
 
@@ -253,6 +263,15 @@
             composeQueryUrl: function () {
                 let queryStr = '';
 
+                if (this.appliedFilters.type) {
+                    queryStr += '&type-id=' + this.appliedFilters.type;
+                }
+
+                if (this.appliedFilters.globalSearch) {
+                    queryStr += '&global-search=' + this.appliedFilters.globalSearch;
+                    this.$router.push('/dashboard?global-search=' + this.appliedFilters.globalSearch);
+                }
+
                 if (this.appliedFilters.usedProducts.length) {
                     this.appliedFilters.usedProducts.forEach(id => {
                         queryStr += '&used-product-ids[]=' + id;
@@ -265,35 +284,22 @@
                     });
                 }
 
-                if (this.appliedFilters.type) {
-                    queryStr += '&type-id=' + this.appliedFilters.type;
+                if(this.$route.query['address-ids']){
+                    queryStr += '&address-ids=' + this.$route.query['address-ids'];
                 }
 
                 if (this.appliedFilters.sortBy) {
                     queryStr += '&sort-by=' + this.appliedFilters.sortBy;
                 }
 
-                if (this.appliedFilters.globalSearch) {
-                    queryStr += '&global-search=' + this.appliedFilters.globalSearch;
-                    this.$router.push('/dashboard?global-search=' + this.appliedFilters.globalSearch);
-                }
-
-                if(this.$route.query['address-ids']){
-                    queryStr += '&address-ids=' + this.$route.query['address-ids'];
-                }
+                this.queryUrl = queryStr;
 
                 return queryStr;
             },
 
-            loadAddressesPaginated: function (isAvoidMapUpdating) {
+            loadAddressesPaginated: function () {
 
-                let url = '/api/addresses-paginated?page=' + this.pagination.currentPage + this.composeQueryUrl();
-
-                let doNotUpdateMap = isAvoidMapUpdating;
-
-                if(this.appliedFilters.addressIds){
-                    doNotUpdateMap = true;
-                }
+                let url = '/api/addresses-paginated?page=' + this.pagination.currentPage + this.queryUrl;
 
                 console.log('url',url);
 
@@ -302,7 +308,7 @@
                         this.addressesTotal = data.total;
                         this.addressList = data.data;
 
-                        if(!doNotUpdateMap && !this.isFirstLoad && !this.appliedFilters.isOnlySortingChanged && this.pagination.currentPage == 1) {
+                        if(!this.appliedFilters.isOnlySortingChanged){
                             this.notifyFiltersHaveBeenApplied();
                         }
 
@@ -312,7 +318,7 @@
             },
 
             notifyFiltersHaveBeenApplied: function () {
-                this.$eventGlobal.$emit('filtersHaveBeenApplied', this.composeQueryUrl().replace('&','?'));
+                this.$eventGlobal.$emit('filtersHaveBeenApplied', this.queryUrl.replace('&','?'));
             },
 
             pageChanged: function (pageNumber) {
@@ -321,7 +327,7 @@
             },
 
             loadFilterObject: function() {
-                this.httpGet('/api/addresses-load-filters')
+                return this.httpGet('/api/addresses-load-filters')
                     .then(data => {
                         this.filterObject = data;
                     })
@@ -331,11 +337,10 @@
 
                 this.appliedFilters.isOnlySortingChanged = !!isOnlySortingChanged;
 
-                console.log('this.$refs.paginationDirective',this.$refs.paginationDirective);
 
-                if(this.$refs.paginationDirective){
-                    this.$refs.paginationDirective.setPage(1);
-                }
+                this.composeQueryUrl();
+
+                this.$router.push('/dashboard?'+this.queryUrl);
             },
 
             resetFilters: function () {
