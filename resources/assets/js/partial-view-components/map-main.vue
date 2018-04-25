@@ -334,7 +334,14 @@
                 });
 
                 this.map.on('load', () => {
-                    this.loadAddresses()
+
+                    let queryUrl = '';
+
+                    if(this.$route.path == '/dashboard') {
+                        queryUrl = this.$route.fullPath.replace('/dashboard', '');
+                    }
+
+                    this.loadAddresses(queryUrl)
                         .then(data => {
 
                             this.initDataSource(data);
