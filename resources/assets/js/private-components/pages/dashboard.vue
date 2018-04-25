@@ -255,31 +255,31 @@
 
                 if (this.appliedFilters.usedProducts.length) {
                     this.appliedFilters.usedProducts.forEach(id => {
-                        queryStr += '&used_product_ids[]=' + id;
+                        queryStr += '&used-product-ids[]=' + id;
                     });
                 }
 
                 if (this.appliedFilters.tags.length) {
                     this.appliedFilters.tags.forEach(id => {
-                        queryStr += '&tag_ids[]=' + id;
+                        queryStr += '&tag-ids[]=' + id;
                     });
                 }
 
                 if (this.appliedFilters.type) {
-                    queryStr += '&type_id=' + this.appliedFilters.type;
+                    queryStr += '&type-id=' + this.appliedFilters.type;
                 }
 
                 if (this.appliedFilters.sortBy) {
-                    queryStr += '&sort_by=' + this.appliedFilters.sortBy;
+                    queryStr += '&sort-by=' + this.appliedFilters.sortBy;
                 }
 
                 if (this.appliedFilters.globalSearch) {
-                    queryStr += '&global_search=' + this.appliedFilters.globalSearch;
+                    queryStr += '&global-search=' + this.appliedFilters.globalSearch;
                     this.$router.push('/dashboard?global-search=' + this.appliedFilters.globalSearch);
                 }
 
                 if(this.$route.query['address-ids']){
-                    queryStr += '&address_ids=' + this.$route.query['address-ids'];
+                    queryStr += '&address-ids=' + this.$route.query['address-ids'];
                 }
 
                 return queryStr;

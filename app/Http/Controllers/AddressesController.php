@@ -52,46 +52,46 @@ class AddressesController extends Controller
     function composeConditions($query, $requestParams)
     {
 
-        if (isset($requestParams['sort_by'])) {
+        if (isset($requestParams['sort-by'])) {
 
-            $field = explode('-',$requestParams['sort_by'])[0];
-            $direction = explode('-',$requestParams['sort_by'])[1];
+            $field = explode('-',$requestParams['sort-by'])[0];
+            $direction = explode('-',$requestParams['sort-by'])[1];
 
             if($field == 'people') {
-                $field .= '_count';
+                $field .= '-count';
             }
             else if($field == 'products') {
                 $query->withCount('products');
-                $field .= '_count';
+                $field .= '-count';
             }
 
             $query->orderBy($field,$direction);
         }
 
-        if (isset($requestParams['tag_ids'])) {
+        if (isset($requestParams['tag-ids'])) {
             $query->whereHas('tags', function ($q) use ($requestParams) {
-                $q->whereIn('id', $requestParams['tag_ids']);
+                $q->whereIn('id', $requestParams['tag-ids']);
             });
         }
 
-        if (isset($requestParams['used_product_ids'])) {
+        if (isset($requestParams['used-product-ids'])) {
             $query->whereHas('products', function ($q) use ($requestParams) {
-                $q->whereIn('id', $requestParams['used_product_ids']);
+                $q->whereIn('id', $requestParams['used-product-ids']);
             });
         }
 
-        if (isset($requestParams['type_id'])) {
+        if (isset($requestParams['type-id'])) {
             $query->whereHas('customerType', function ($q) use ($requestParams) {
-                $q->where('id', $requestParams['type_id']);
+                $q->where('id', $requestParams['type-id']);
             });
         }
 
-        if (isset($requestParams['global_search'])) {
-            $query->where('rl_addresses.name', 'LIKE', '%'.$requestParams['global_search'].'%');
+        if (isset($requestParams['global-search'])) {
+            $query->where('rl_addresses.name', 'LIKE', '%'.$requestParams['global-search'].'%');
         }
 
-        if (isset($requestParams['address_ids'])) {
-            $query->whereIn('rl_addresses.id', explode(',',$requestParams['address_ids']));
+        if (isset($requestParams['address-ids'])) {
+            $query->whereIn('rl_addresses.id', explode(',',$requestParams['address-ids']));
         }
 
         return $query;
