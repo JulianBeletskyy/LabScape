@@ -227,17 +227,24 @@
 
                     if(unclusteredFeatures.length || clusteredFeatures.length) {
                         this.map.getCanvas().style.cursor = 'pointer';
-
-                        this.popup.setLngLat(unclusteredFeatures[0].geometry.coordinates)
-                            .setHTML('<h3 class="address-name-in-map-tooltip">'+unclusteredFeatures[0].properties.name+'</h3>')
-                            .addTo(this.map)
-
                     }
                     else {
-                        this.popup.remove();
                         this.map.getCanvas().style.cursor = '';
                     }
+
+                    this.displayTooltip(unclusteredFeatures)
                 });
+            },
+
+            displayTooltip: function(unclusteredFeatures) {
+                if(unclusteredFeatures.length) {
+                    this.popup.setLngLat(unclusteredFeatures[0].geometry.coordinates)
+                        .setHTML('<h3 class="address-name-in-map-tooltip">'+unclusteredFeatures[0].properties.name+'</h3>')
+                        .addTo(this.map)
+                }
+                else {
+                    this.popup.remove();
+                }
             },
 
             listenToMarkerClicks: function () {
