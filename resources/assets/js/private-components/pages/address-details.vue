@@ -33,6 +33,11 @@
 
                 <div class="address-overview">
 
+                    <customer-status-select
+                            :options="customerStatusList"
+                            :selected="addressData.customer_status"
+                    ></customer-status-select>
+
                     <h2>
                         <span>{{addressData.name}}</span>
                         <a href="#"><i class="fa fa-pencil"></i></a>
@@ -41,10 +46,10 @@
                     </h2>
 
 
-                    <select class="customer-status-select-box" @change="updateCustomerStatus()" v-model="addressData.customer_status">
+                    <!--<select class="customer-status-select-box" @change="updateCustomerStatus()" v-model="addressData.customer_status">
                         <option :value="null" hidden disabled="disabled" class="hidden">Customer Status</option>
                         <option v-for="cs in customerStatusList" :value="cs.id">{{cs.name}}</option>
-                    </select>
+                    </select>-->
 
                     <div style="clear: both"></div>
 

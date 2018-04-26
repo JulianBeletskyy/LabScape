@@ -2115,3 +2115,44 @@ ul.staff-list li .personal-info .name a:hover{
 .form-group.filter-panel{
     margin: 0;
 }
+
+.customer-status-custom-select-box .select2.select2-container{
+    width: auto !important;
+}
+
+.customer-status-custom-select-box .select2-container--default .select2-selection--single .select2-selection__rendered{
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-align: center;
+    line-height: 23px;
+    margin-top: 0;
+}
+
+
+.customer-status-custom-select-box .select2-container--default .select2-selection--single .select2-selection__arrow{
+    top: 0px;
+}
+.customer-status-custom-select-box .select2-container--default .select2-selection--single .select2-selection__arrow b{
+    border-color: #fff transparent transparent transparent ;
+}
+
+
+
+.customer-status-custom-select-box .select2-container--default .select2-selection--single{
+    height: 25px;
+    width: 170px;
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+}
+
+.customer-status-custom-select-box.potential .select2-container--default .select2-selection--single{
+    background: #ff894f;
+}
+
+.customer-status-custom-select-box.customer .select2-container--default .select2-selection--single{
+    background: #34cc8c;
+}

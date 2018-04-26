@@ -25,6 +25,7 @@ mix
         'resources/assets/css/AdminLTE.min.css',
         'resources/assets/css/_all-skins.css',
         // 'resources/assets/css/materialize.css',
+        'bower_components/select2/dist/css/select2.css',
         'resources/assets/css/styles.css',
         'resources/assets/css/responsive.css',
     ],
