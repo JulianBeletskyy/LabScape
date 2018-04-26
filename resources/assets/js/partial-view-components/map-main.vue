@@ -28,7 +28,8 @@
                 mapZoom: null,
                 mapCenterLng: null,
                 mapCenterLat: null,
-                moveendId: null
+                moveendId: null,
+                isMapMovedBecauseOfSearch: true
             }
         },
 
@@ -330,7 +331,67 @@
                 });
             },
 
-            detectMapChanges: function () {
+            updateAddressBarWithMapCoords: function () {
+                this.mapZoom = this.map.getZoom();
+                this.mapCenterLng = this.map.getCenter().lng;
+                this.mapCenterLat = this.map.getCenter().lat;
+
+                let fullUrl = this.$route.fullPath;
+
+                if (fullUrl.indexOf('?') === -1) {
+                    fullUrl += '?';
+                }
+                else {
+                    fullUrl += '&';
+                }
+
+                if(fullUrl.indexOf('zoom') === -1) {
+                    fullUrl += 'zoom='+this.mapZoom + '&center-lng=' + this.mapCenterLng + '&center-lat=' + this.mapCenterLat;
+                }
+                else {
+                    // debugger;
+
+                    let arr;
+
+                    if (fullUrl.indexOf('?') === -1){
+                        arr = fullUrl.split('&');
+                    }
+                    else {
+                        arr = fullUrl.split('?');
+                        arr = arr[1].split('&');
+                    }
+
+                    let zoom, centerLng, centerLat;
+
+                    arr = arr.filter(el => {
+                        if(el.indexOf('zoom') !== -1) {
+                            zoom = 'zoom='+this.mapZoom;
+                            return false;
+                        }
+                        if(el.indexOf('center-lng') !== -1) {
+                            centerLng = '&center-lng='+this.mapCenterLng;
+                            return false;
+                        }
+                        if(el.indexOf('center-lat') !== -1) {
+                            centerLat = '&center-lat='+this.mapCenterLat;
+                            return false;
+                        }
+                        return true;
+                    });
+
+                    if(arr.length) {
+                        fullUrl = this.$route.path + '?'+ arr.join('&') + '&' + zoom + centerLng + centerLat;
+                    }
+                    else {
+                        fullUrl = this.$route.path + '?' + zoom + centerLng + centerLat;
+                    }
+                }
+
+
+                this.$router.push(fullUrl);
+            },
+
+            detectMapMoveEnds: function () {
                 this.map.on('moveend', (e)=>{
 
                     if(this.moveendId) {
@@ -339,63 +400,12 @@
 
                     this.moveendId = setTimeout(()=>{
 
-                        this.mapZoom = this.map.getZoom();
-                        this.mapCenterLng = this.map.getCenter().lng;
-                        this.mapCenterLat = this.map.getCenter().lat;
-
-                        let fullUrl = this.$route.fullPath;
-
-                        if (fullUrl.indexOf('?') === -1) {
-                            fullUrl += '?';
-                        }
-                        else {
-                            fullUrl += '&';
+                        if(this.isMapMovedBecauseOfSearch) {
+                            this.isMapMovedBecauseOfSearch = false;
+                            return;
                         }
 
-                        if(fullUrl.indexOf('zoom') === -1) {
-                            fullUrl += 'zoom='+this.mapZoom + '&center-lng=' + this.mapCenterLng + '&center-lat=' + this.mapCenterLat;
-                        }
-                        else {
-                            // debugger;
-
-                            let arr;
-
-                            if (fullUrl.indexOf('?') === -1){
-                                arr = fullUrl.split('&');
-                            }
-                            else {
-                                arr = fullUrl.split('?');
-                                arr = arr[1].split('&');
-                            }
-
-                            let zoom, centerLng, centerLat;
-
-                            arr = arr.filter(el => {
-                                if(el.indexOf('zoom') !== -1) {
-                                    zoom = 'zoom='+this.mapZoom;
-                                    return false;
-                                }
-                                if(el.indexOf('center-lng') !== -1) {
-                                    centerLng = '&center-lng='+this.mapCenterLng;
-                                    return false;
-                                }
-                                if(el.indexOf('center-lat') !== -1) {
-                                    centerLat = '&center-lat='+this.mapCenterLat;
-                                    return false;
-                                }
-                                return true;
-                            });
-
-                            if(arr.length) {
-                                fullUrl = this.$route.path + '?'+ arr.join('&') + '&' + zoom + centerLng + centerLat;
-                            }
-                            else {
-                                fullUrl = this.$route.path + '?' + zoom + centerLng + centerLat;
-                            }
-                        }
-
-
-                        this.$router.push(fullUrl);
+                        this.updateAddressBarWithMapCoords();
 
                     },1000);
 
@@ -430,12 +440,14 @@
 
                             this.listenToMarkerClicks();
 
-                            this.detectMapChanges();
+                            this.detectMapMoveEnds();
 
                         });
                 });
 
                 this.$eventGlobal.$on('filtersHaveBeenApplied', (queryStr) => {
+
+                    this.isMapMovedBecauseOfSearch = true;
 
                     this.loadAddresses(queryStr)
                         .then((data) => {
@@ -444,6 +456,9 @@
                 });
 
                 this.$eventGlobal.$on('showSpecificItem', (data)=>{
+
+                    this.isMapMovedBecauseOfSearch = true;
+
                     this.updateMapLayers(data);
                 });
 

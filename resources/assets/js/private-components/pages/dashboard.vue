@@ -177,25 +177,21 @@
                 },
                 totalPointsInCurrentMap: 0,
                 multipleDropdownSelects: [],
-                queryUrl: ''
+                queryUrl: '',
+                oldQueryUrl: ''
             }
         },
 
         watch: {
             $route: function (to) {
-                // if(this.$route.query['address-ids']){
-                //     this.loadAddressesPaginated(true);
-                // }
-
-                // console.log('this.$route.query', this.$route.query);
-
-                if(this.$route.query.hasOwnProperty('zoom')) {
-                    return;
-                }
 
                 this.initFilters();
 
                 this.composeQueryUrl();
+
+                if(this.oldQueryUrl == this.queryUrl) {
+                    return;
+                }
 
                 this.$refs.paginationDirective.setPage(1);
 
@@ -331,6 +327,8 @@
                         }
 
                         this.isFirstLoad = false;
+
+                        this.oldQueryUrl = this.queryUrl;
                     })
 
             },
