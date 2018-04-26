@@ -8,13 +8,6 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group filter-panel">
-                            <!--<select v-model="appliedFilters.type" @change="applyFilters()" class="form-control select-filter type-filter">
-                                <option selected class="hidden" value="">Type</option>
-                                <option value="">All</option>
-                                <option v-for="type in filterObject.customer_types" :value="type.id">
-                                    {{type.name}}
-                                </option>
-                            </select>-->
 
                             <single-dropdown-select
                                     class="form-control select-filter type-filter"
@@ -40,15 +33,14 @@
                                     ref="tagMultipleDropdownSelect"
                             ></multiple-dropdown-select>
 
-                            <select v-model="appliedFilters.sortBy" @change="applyFilters(true)" class="form-control select-filter sort-by-filter">
-                                <option selected class="hidden" value="">Sort By</option>
-                                <option value="name-asc">Name &uarr;</option>
-                                <option value="name-desc">Name &darr;</option>
-                                <option value="people-asc">Employee &uarr;</option>
-                                <option value="people-desc">Employee &darr;</option>
-                                <option value="products-asc">Products &uarr;</option>
-                                <option value="products-desc">Products &darr;</option>
-                            </select>
+                            <single-dropdown-select
+                                    class="form-control select-filter type-filter"
+                                    :options="sortByOptionsForFilter"
+                                    :isHiddenEmptyOption="true"
+                                    @changed="applySortByFilter"
+                                    :name="'Sort By'"
+                                    ref="sortBySingleDropdownSelect"
+                            ></single-dropdown-select>
 
                             <a href="javascript:void(0)" class="btn btn-default reset-filters" title="Reset Filters" @click="resetFilters()">
                                 <i class="fa fa-remove"></i>
@@ -209,6 +201,17 @@
 
         computed: {
 
+            sortByOptionsForFilter: function () {
+                return [
+                    {value: 'name-asc', label: 'Name &uarr;'},
+                    {value: 'name-desc', label: 'Name &darr;'},
+                    {value: 'people-asc', label: 'Employee &uarr;'},
+                    {value: 'people-desc', label: 'Employee &darr;'},
+                    {value: 'products-asc', label: 'Products &uarr;'},
+                    {value: 'products-desc', label: 'Products &darr;'},
+                ]
+            },
+
             customerTypesForFilter: function () {
                 return this.filterObject.customer_types.map(el => {
                     return {label: el.name, value: el.id};
@@ -287,6 +290,11 @@
             applyTagsFilter: function (data) {
                 this.appliedFilters.tags = data;
                 this.applyFilters();
+            },
+
+            applySortByFilter: function (data) {
+                this.appliedFilters.sortBy = data;
+                this.applyFilters(true);
             },
 
             listenToTotalPointsDisplayedOnMapChanged: function () {
@@ -385,6 +393,7 @@
                 this.$refs.typeSingleDropdownSelect.resetSelectedValues();
                 this.$refs.productsMultipleDropdownSelect.resetSelectedValues();
                 this.$refs.tagMultipleDropdownSelect.resetSelectedValues();
+                this.$refs.sortBySingleDropdownSelect.resetSelectedValues();
 
                 this.appliedFilters = {
                     usedProducts: [],

@@ -7,17 +7,17 @@
                 {{selectedValuesNamesString? selectedValuesNamesString : name}}
             </a>
             <ul class="dropdown-menu">
-                <li @click="selectValue('', name)" v-if="!isHiddenEmptyOption">
+                <li @click="selectValue('', name)" :class="{'hidden': isHiddenEmptyOption, selected: !selectedValue}">
                     <div class="grey-checkbox">
                         <label>
                             <span class="remember_text">All</span>
                         </label>
                     </div>
                 </li>
-                <li v-for="option in options" @click="selectValue(option.value, option.label)">
+                <li v-for="option in options" @click="selectValue(option.value, option.label)" :class="{selected: option && selectedValue == option.value}">
                     <div class="grey-checkbox">
                         <label>
-                            <span class="remember_text">{{option.label}}</span>
+                            <span class="remember_text" v-html="option.label"></span>
                         </label>
                     </div>
                 </li>

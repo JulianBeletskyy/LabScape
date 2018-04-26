@@ -646,6 +646,12 @@ ul.select-filter > li > ul > li:hover{
     cursor: pointer;
 }
 
+
+
+ul.single-dropdown-select.select-filter > li > ul > li.selected {
+    background: #edf5ff;
+}
+
 ul.select-filter > li > ul > li label {
     display: flex;
     align-items: center;
