@@ -7,7 +7,7 @@
             <div class="sidebar-form">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group">
+                        <div class="form-group filter-panel">
                             <select v-model="appliedFilters.type" @change="applyFilters()" class="form-control select-filter type-filter">
                                 <option selected class="hidden" value="">Type</option>
                                 <option value="">All</option>
