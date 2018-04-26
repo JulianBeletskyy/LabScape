@@ -441,7 +441,7 @@
 
                         this.updateAddressBarWithMapCoords();
 
-                    },1000);
+                    },2000);
 
                 })
             }
