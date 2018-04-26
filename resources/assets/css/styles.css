@@ -2116,6 +2116,11 @@ ul.staff-list li .personal-info .name a:hover{
     margin: 0;
 }
 
+.customer-status-custom-select-box{
+    float: right;
+    margin-top: 5px;
+}
+
 .customer-status-custom-select-box .select2.select2-container{
     width: auto !important;
 }

@@ -36,6 +36,8 @@
                     <customer-status-select
                             :options="customerStatusList"
                             :selected="addressData.customer_status"
+                            :addressId="addressId"
+                            @customerStatusUpdated="updateCustomerStatus"
                     ></customer-status-select>
 
                     <h2>
@@ -214,9 +216,10 @@
                         this.customerStatusList = data;
                     })
             },
-            updateCustomerStatus: function () {
-                this.httpPut('/api/address-details/'+this.addressId+'/update-status', {status: this.addressData.customer_status})
+            updateCustomerStatus: function (status) {
+                this.httpPut('/api/address-details/'+this.addressId+'/update-status', {status: status})
                     .then(data => {
+                        this.addressData.customer_status = data.customer_status;
                         alertify.notify('Status has been updated.', 'success', 3);
                     })
             },
