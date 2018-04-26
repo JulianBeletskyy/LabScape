@@ -2161,3 +2161,7 @@ ul.staff-list li .personal-info .name a:hover{
 .customer-status-custom-select-box.customer .select2-container--default .select2-selection--single{
     background: #34cc8c;
 }
+
+.single-dropdown-select li label{
+    cursor: pointer;
+}

@@ -8,13 +8,21 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group filter-panel">
-                            <select v-model="appliedFilters.type" @change="applyFilters()" class="form-control select-filter type-filter">
+                            <!--<select v-model="appliedFilters.type" @change="applyFilters()" class="form-control select-filter type-filter">
                                 <option selected class="hidden" value="">Type</option>
                                 <option value="">All</option>
                                 <option v-for="type in filterObject.customer_types" :value="type.id">
                                     {{type.name}}
                                 </option>
-                            </select>
+                            </select>-->
+
+                            <single-dropdown-select
+                                    class="form-control select-filter type-filter"
+                                    :options="customerTypesForFilter"
+                                    @changed="applyTypeFilter"
+                                    :name="'Type'"
+                                    ref="typeSingleDropdownSelect"
+                            ></single-dropdown-select>
 
                             <multiple-dropdown-select
                                     class="form-control select-filter used-products-filter"
@@ -161,7 +169,8 @@
                 addressesTotal: 0,
                 filterObject: {
                     used_product_list: [],
-                    tag_list: []
+                    tag_list: [],
+                    customer_types: []
                 },
                 appliedFilters: {
                     usedProducts: this.$route.query['used-product-ids[]'] || [],
@@ -199,6 +208,13 @@
         },
 
         computed: {
+
+            customerTypesForFilter: function () {
+                return this.filterObject.customer_types.map(el => {
+                    return {label: el.name, value: el.id};
+                })
+            },
+
             usedProductOptionsForDropDown: function () {
                 return this.filterObject.used_product_list.map(product => {
                     return {
@@ -256,6 +272,11 @@
                 this.appliedFilters.globalSearch = this.$route.query['global-search'] || '';
                 this.appliedFilters.addressIds = this.$route.query['address-ids'] || '';
 
+            },
+
+            applyTypeFilter: function (data) {
+                this.appliedFilters.type = data;
+                this.applyFilters();
             },
 
             applyUsedProductsFilter: function (data) {
@@ -361,6 +382,7 @@
 
             resetFilters: function () {
 
+                this.$refs.typeSingleDropdownSelect.resetSelectedValues();
                 this.$refs.productsMultipleDropdownSelect.resetSelectedValues();
                 this.$refs.tagMultipleDropdownSelect.resetSelectedValues();
 
