@@ -31,7 +31,8 @@
                 mapCenterLng: null,
                 mapCenterLat: null,
                 moveendId: null,
-                isMapMovedBecauseOfSearch: true
+                isMapMovedBecauseOfSearch: true,
+                isMapMovedBecauseOfFitMapContent: true
             }
         },
 
@@ -42,7 +43,11 @@
                 let centerLng = this.$route.query['center-lng'];
                 let centerLat = this.$route.query['center-lat'];
 
-                if (!zoom || !centerLng || !centerLat) {
+                if(!zoom && !centerLng && !centerLat && this.$route.path == '/dashboard' && this.FeatureCollection.features.length) {
+                    this.fitMapBounds();
+                    return;
+                }
+                else if (!zoom || !centerLng || !centerLat) {
                     return;
                 }
 
@@ -177,6 +182,7 @@
             },
 
             fitMapBounds: function () {
+                this.isMapMovedBecauseOfFitMapContent = true;
                 this.map.fitBounds(geojsonExtent(this.FeatureCollection), {maxZoom: 12, padding: 50});
             },
 
@@ -419,17 +425,19 @@
 
                     this.moveendId = setTimeout(()=>{
 
-                        console.log('moveendId ', this.moveendId );
-
                         if(this.isMapMovedBecauseOfSearch) {
-                            console.log('isMapMovedBecauseOfSearch', this.isMapMovedBecauseOfSearch);
 
                             this.isMapMovedBecauseOfSearch = false;
-
+                            this.isMapMovedBecauseOfFitMapContent = false;
                             return;
                         }
 
-                        console.log('isMapMovedBecauseOfSearch', this.isMapMovedBecauseOfSearch);
+                        if(this.isMapMovedBecauseOfFitMapContent) {
+
+                            this.isMapMovedBecauseOfFitMapContent = false;
+                            this.isMapMovedBecauseOfSearch = false;
+                            return;
+                        }
 
                         this.updateAddressBarWithMapCoords();
 
