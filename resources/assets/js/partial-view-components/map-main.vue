@@ -17,7 +17,9 @@
         data: function () {
             return {
                 map: null,
-                FeatureCollection: {},
+                FeatureCollection: {
+                    features: []
+                },
                 isFirstLoad: true,
                 isGlobalSearchInitator: false,
                 cluster: {},
@@ -30,6 +32,23 @@
                 mapCenterLat: null,
                 moveendId: null,
                 isMapMovedBecauseOfSearch: true
+            }
+        },
+
+        watch: {
+            $route: function (to) {
+
+                let zoom = this.$route.query['zoom'];
+                let centerLng = this.$route.query['center-lng'];
+                let centerLat = this.$route.query['center-lat'];
+
+                if (!zoom || !centerLng || !centerLat) {
+                    return;
+                }
+
+                if (zoom != this.mapZoom || centerLng != this.mapCenterLng || centerLat != this.mapCenterLat) {
+                    this.map.flyTo({center: [centerLng, centerLat], zoom: zoom});
+                }
             }
         },
 
@@ -400,10 +419,17 @@
 
                     this.moveendId = setTimeout(()=>{
 
+                        console.log('moveendId ', this.moveendId );
+
                         if(this.isMapMovedBecauseOfSearch) {
+                            console.log('isMapMovedBecauseOfSearch', this.isMapMovedBecauseOfSearch);
+
                             this.isMapMovedBecauseOfSearch = false;
+
                             return;
                         }
+
+                        console.log('isMapMovedBecauseOfSearch', this.isMapMovedBecauseOfSearch);
 
                         this.updateAddressBarWithMapCoords();
 
