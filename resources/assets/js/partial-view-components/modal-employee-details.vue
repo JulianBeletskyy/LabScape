@@ -7,7 +7,11 @@
 
                         <div class="person-profile-picture">
                             <span class="person-initials">{{getPersonInitials(personData.name)}}</span>
-                            <img src="/images/mask-7.png" alt="">
+                            <img src="/images/mask-7.png" alt="" class="avatar">
+
+                            <a href="javascript:void(0)" class="close-icon-a" data-dismiss="modal" aria-label="Close">
+                                <img src="/images/x.png" alt="">
+                            </a>
                         </div>
 
                         <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
