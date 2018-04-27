@@ -190,7 +190,8 @@
                 },
                 customerStatusList: [],
                 isExpanded: false,
-                sideComponentToDisplay: ''
+                sideComponentToDisplay: '',
+                isFirstLoad: true,
             }
         },
 
@@ -198,13 +199,17 @@
             $route: function(to){
                 this.addressId = this.$route.params['id'];
                 this.loadAddressDetails();
+
+                if(!this.isFirstLoad) {
+                    this.showModalIfPersonHashDetected();
+                }
             }
         },
 
         methods: {
             loadAddressDetails: function () {
 
-                this.httpGet('/api/address-details/'+this.addressId)
+                return this.httpGet('/api/address-details/'+this.addressId)
                     .then(data => {
                         this.addressData = data;
                         document.title = this.addressData.name;
@@ -241,6 +246,15 @@
 
             showOnMap: function () {
                 this.$eventGlobal.$emit('showSpecificItem', [this.addressData])
+            },
+
+            showModalIfPersonHashDetected: function () {
+                if(this.$route.hash.indexOf('#person-') !== -1) {
+
+                    let personId = this.$route.hash.replace('#person-','');
+
+                    this.showEmployeeDetailsModal(personId, this.addressId, this.addressData);
+                }
             }
         },
 
@@ -251,7 +265,12 @@
 
             this.addressId = this.$route.params.id;
 
-            this.loadAddressDetails();
+            this.loadAddressDetails()
+                .then(()=>{
+                    this.showModalIfPersonHashDetected();
+                    this.isFirstLoad = false;
+                });
+
             this.loadCustomerStatusList();
 
             if(this.$route.query['all-employees']){

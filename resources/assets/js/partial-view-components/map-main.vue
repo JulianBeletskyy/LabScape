@@ -362,6 +362,7 @@
                 this.mapCenterLat = this.map.getCenter().lat;
 
                 let fullUrl = this.$route.fullPath;
+                let hash = this.$route.hash;
 
                 if (fullUrl.indexOf('?') === -1) {
                     fullUrl += '?';
@@ -412,6 +413,9 @@
                     }
                 }
 
+                if(hash) {
+                    fullUrl += hash;
+                }
 
                 this.$router.push(fullUrl);
             },

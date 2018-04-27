@@ -187,7 +187,7 @@
         computed: {
             experienceYears: function() {
 
-                if(!this.personData.careers.length) {
+                if(!this.personData.careers || !this.personData.careers.length) {
                     return 0;
                 }
 
@@ -198,7 +198,7 @@
             },
 
             yearsAtThisJob: function () {
-                if (!this.personData.careers.length) {
+                if (!this.personData.careers || !this.personData.careers.length) {
                     return 0;
                 }
 
@@ -213,6 +213,14 @@
                 let now = moment();
 
                 return _.round(now.diff(startDate, 'days') / 365 , 1);
+            }
+        },
+
+        watch: {
+            $route: function (to) {
+                if(window.location.hash.indexOf('person-') === -1 && $('#personal-modal').hasClass('in')){
+                    $('#personal-modal').modal('hide');
+                }
             }
         },
 
@@ -234,6 +242,9 @@
                 }
             },
             init: function (personId, addressId, address) {
+
+                window.location.hash = 'person-' + personId;
+
                 $('#personal-modal').modal('show');
 
                 this.personId = personId;
@@ -243,7 +254,11 @@
                 this.httpGet('/api/people/'+personId)
                     .then(data => {
                         this.personData = data;
-                    })
+                    });
+
+                $('#personal-modal').on('hidden.bs.modal', function (e) {
+                    window.location.hash = '';
+                });
             },
             setTabActive: function (tabName) {
                 this.activeTab = tabName;
