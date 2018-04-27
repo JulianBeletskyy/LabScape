@@ -133,9 +133,9 @@
 
                                     <p style="text-align: center" v-if="!personData.relationships.length">This person doesn't have relationships yet.</p>
 
-                                    <ul class="staff-list" v-if="personData.relationships && personData.relationships.length && relationshipsCollapsed">
+                                    <ul class="staff-list" v-if="relationshipsCollapsedData && relationshipsCollapsedData.length && relationshipsCollapsed">
 
-                                        <li v-if="i < 3" v-for="(relation, i) in personData.relationships">
+                                        <li v-if="i < 3" v-for="(relation, i) in relationshipsCollapsedData">
                                             <div class="image">
                                                 <a href="javascript:void(0)">
                                                     <span class="person-initials">{{getPersonInitials(relation.name)}}</span>
@@ -162,17 +162,21 @@
                                             <div class="personal-info">
                                                 <p class="name"><a href="javascript:void(0)">{{relation.name}}</a></p>
                                                 <p class="occupation" style="text-align: left">{{relation.description}}</p>
-                                                <p class="connection-type" style="text-align: left">{{connectionName(relation.pivot.edge_type)}}</p>
+                                                <p class="connection-type" style="text-align: left">{{connectionName(relation.edge_type)}}</p>
                                             </div>
                                         </li>
                                     </ul>
 
+                                    <div class="pagination-box" style="margin-top: 20px" v-if="!relationshipsCollapsed">
+                                        <pagination :records="relationshipsTotal"  :class="'pagination pagination-sm no-margin pull-right'" :per-page="10" @paginate="relationshipsPageChanged"></pagination>
+                                    </div>
+
                                     <div style="clear: both"></div>
 
-                                    <div class="text-center" style="margin-top: 20px" v-if="personData.relationships && personData.relationships.length > 3">
+                                    <div class="text-center" style="margin-top: 20px" v-if="relationshipsCollapsedData && relationshipsCollapsedData.length > 3">
                                         <a href="javascript:void(0)"
                                            v-if="relationshipsCollapsed"
-                                           @click="relationshipsCollapsed = false"
+                                           @click="loadPersonRelationshipsPaginated()"
                                            class="address-box-show-more-link show-all-employees-link"
                                         >
                                             Show all Relationships
@@ -213,11 +217,14 @@
                 personData: {
                     name: '',
                     careers: [],
-                    publications: []
+                    publications: [],
+                    relationships: []
                 },
                 activeTab: 'career',
                 connectionTypes: [],
-                relationshipsCollapsed: true
+                relationshipsCollapsed: true,
+                relationshipsCollapsedData: [],
+                relationshipsTotal: 0
             }
         },
 
@@ -291,6 +298,7 @@
                 this.httpGet('/api/people/'+personId)
                     .then(data => {
                         this.personData = data;
+                        this.relationshipsCollapsedData = JSON.parse(JSON.stringify(this.personData.relationships));
                     });
 
                 $('#personal-modal').on('hidden.bs.modal', function (e) {
@@ -299,6 +307,26 @@
             },
             setTabActive: function (tabName) {
                 this.activeTab = tabName;
+            },
+
+            loadPersonRelationshipsPaginated: function (page) {
+
+                let p = page || 1;
+
+                let url = '/api/people/'+this.personData.id+'/relationships?page='+p;
+
+                this.httpGet(url)
+                    .then(data => {
+                        this.relationshipsCollapsed = false;
+
+                        this.personData.relationships = data.data;
+
+                        this.relationshipsTotal = data.total;
+                    });
+            },
+
+            relationshipsPageChanged: function(page) {
+                this.loadPersonRelationshipsPaginated(page);
             }
         },
 
