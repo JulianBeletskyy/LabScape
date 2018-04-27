@@ -249,6 +249,8 @@
 
         mounted: function () {
 
+            document.title = 'Labscape';
+
             $('ul.sidebar-list').height(window.innerHeight - 325);
 
             this.listenToTotalPointsDisplayedOnMapChanged();

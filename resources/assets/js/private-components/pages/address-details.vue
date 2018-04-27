@@ -47,12 +47,6 @@
                         <a href="javascript:void(0)" title="Show on Map" @click="showOnMap()"><i class="fa fa-map-marker"></i></a>
                     </h2>
 
-
-                    <!--<select class="customer-status-select-box" @change="updateCustomerStatus()" v-model="addressData.customer_status">
-                        <option :value="null" hidden disabled="disabled" class="hidden">Customer Status</option>
-                        <option v-for="cs in customerStatusList" :value="cs.id">{{cs.name}}</option>
-                    </select>-->
-
                     <div style="clear: both"></div>
 
                     <p class="lab-chain">
@@ -207,6 +201,7 @@
                 this.httpGet('/api/address-details/'+this.addressId)
                     .then(data => {
                         this.addressData = data;
+                        document.title = this.addressData.name;
                     })
 
             },
