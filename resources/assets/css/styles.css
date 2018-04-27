@@ -632,13 +632,20 @@ ul.select-filter > li > ul.dropdown-menu{
     max-height: 500px;
     overflow-y: auto;
     box-shadow: 5px 5px 20px rgba(0,0,0,.2);
+    padding: 15px 0px;
+    margin-top: 10px;
+    border-radius: 5px;
 }
 
 ul.select-filter > li > ul > li{
-    padding: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
 }
 
 ul.select-filter > li > ul > li:hover{
@@ -649,7 +656,7 @@ ul.select-filter > li > ul > li:hover{
 
 
 ul.single-dropdown-select.select-filter > li > ul > li.selected {
-    background: #edf5ff;
+    background: #c9e1ff;
 }
 
 ul.select-filter > li > ul > li label {
@@ -660,9 +667,14 @@ ul.select-filter > li > ul > li label {
 }
 
 ul.select-filter > li > ul > li .grey-checkbox span.remember_text{
-    font-weight: 400;
-    color: #333333;
+    font-weight: 500;
     float: none;
+
+    font-family: Montserrat;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+
+    color: #3a444f;
 }
 
 ul.select-filter > li > ul > li:hover .grey-checkbox span.remember_text{
@@ -672,6 +684,22 @@ ul.select-filter > li > ul > li:hover .grey-checkbox span.remember_text{
 ul.select-filter > li > ul > li .grey-checkbox label span.borders{
     float: none;
     margin: 0;
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 5px;
+    border: 2px solid #e2e3e5;
+    margin-right: 15px;
+}
+
+ul.select-filter > li > ul > li .grey-checkbox [type=checkbox]:checked + span.borders{
+    background: #4081df;
+    border-color: #4081df;
+}
+
+ul.select-filter > li > ul > li .grey-checkbox [type=checkbox]:checked + span:before{
+    color: #ffffff;
+    top: -2px;
+    left: 2px;
 }
 
 .sidebar .sidebar-form a.reset-filters {
