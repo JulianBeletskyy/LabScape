@@ -1631,14 +1631,15 @@ ul.staff-list li .personal-info .name a:hover{
 
 #personal-modal h4.modal-title{
     font-family: Montserrat;
-    font-size: 38px;
+    font-size: 28px;
     text-align: center;
     color: #3a444f;
     display: flex;
-    margin-top: 10px;
-    margin-bottom: 17px;
+    margin-top: 18px;
+    margin-bottom: 7px;
     justify-content: center;
     align-items: center;
+    font-weight: 400;
 }
 
 #personal-modal h4.modal-title a{
@@ -1646,30 +1647,48 @@ ul.staff-list li .personal-info .name a:hover{
     color: #fff;
     background: #bbbec2;
     font-size: 16px;
-    width: 25px;
-    height: 25px;
-    line-height: 25px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
     border-radius: 14px;
     text-align: center;
     transition: background-color 0.1s linear;
-    margin-left: 15px;
+    margin-left: 6px;
 }
 
 #personal-modal h4.modal-title a:hover{
     background: #4a90e3;
 }
 
-#personal-modal .place-of-work,
-#personal-modal .occupation {
+#personal-modal .place-of-work{
     font-family: Montserrat;
     font-size: 16px;
     text-align: center;
+    color: #3a444f;
+    margin-bottom: 4px;
+    margin-bottom: 11px;
+}
+#personal-modal .occupation {
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+    text-align: left;
+    color: #3a444f;
+}
+
+#personal-modal .name {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.63;
+    text-align: left;
     color: #3a444f;
 }
 
 #personal-modal .place-of-work a{
     color: #4a90e3;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 #personal-modal .place-of-work a:hover{
@@ -1714,7 +1733,7 @@ ul.staff-list li .personal-info .name a:hover{
 #personal-modal .person-experience .number{
     font-family: Montserrat;
     font-size: 30px;
-    height: 40px;
+    height: 32px;
     color: #3a444f;
     line-height: 1em;
     font-weight: 600;
@@ -1722,31 +1741,38 @@ ul.staff-list li .personal-info .name a:hover{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 0;
+}
+
+#personal-modal .person-experience .number img{
+    width: 40px;
 }
 
 #personal-modal .person-experience .text{
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 400;
     color: #3a444f;
 }
 
 #personal-modal .view-contacts-chain-container {
     text-align: center;
     margin-bottom: -35px;
-    margin-top: 30px;
+    margin-top: 22px;
 }
 
 #personal-modal .view-contacts-chain-container a{
     background: #4a90e3;
     color: #fff;
     display: inline-block;
-    padding: 10px 15px;
+    padding: 10px 20px;
     border-radius: 5px;
     font-family: Montserrat;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     text-align: left;
     margin: 0;
+    letter-spacing: 0.5px;
     transition: background-color 0.1s linear;
 }
 
@@ -1756,7 +1782,7 @@ ul.staff-list li .personal-info .name a:hover{
 
 #personal-modal .modal-body {
     position: initial;
-    padding-top: 50px;
+    padding-top: 44px;
     padding-left: 140px;
     padding-right: 140px;
     padding-bottom: 50px;
@@ -1773,7 +1799,7 @@ ul.staff-list li .personal-info .name a:hover{
 }
 
 #personal-modal ul.person-tabs li a{
-    padding: 10px 15px;
+    padding: 7px 8px 13px;
     border: 2px solid transparent;
 
     opacity: 0.5;
@@ -1801,7 +1827,7 @@ ul.staff-list li .personal-info .name a:hover{
 }
 
 #personal-modal .tab-content{
-    padding-top: 45px;
+    padding-top: 37px;
 }
 
 
@@ -1812,7 +1838,7 @@ ul.staff-list li .personal-info .name a:hover{
 }
 
 #personal-modal ul.career-list li{
-    margin-bottom: 35px;
+    margin-bottom: 32px;
 }
 
 #personal-modal ul.career-list li p{
@@ -1881,7 +1907,8 @@ ul.staff-list li .personal-info .name a:hover{
 .publication-list li p.title{
     font-family: Montserrat;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
+    line-height: 1.63;
     color: #3a444f;
     margin-bottom: 5px;
 }
@@ -1899,6 +1926,7 @@ ul.staff-list li .personal-info .name a:hover{
     font-size: 14px;
     color: #3a444f;
     margin-bottom: 0;
+    font-weight: 300;
 }
 
 .staff-list .connection-type {

@@ -25,6 +25,7 @@
                             <li><a href=""><i class="fa fa-twitter"></i></a></li>
                             <li><a href=""><i class="fa fa-facebook"></i></a></li>
                             <li><a href=""><i class="fa fa-instagram"></i></a></li>
+                            <li><a href=""><i class="fa fa-telegram"></i></a></li>
                         </ul>
 
                         <div class="row person-experience">
@@ -47,7 +48,7 @@
                         </div>
 
                         <div class="view-contacts-chain-container">
-                            <a href="javascript:void(0)">View Contact Chain</a>
+                            <a href="javascript:void(0)">View Contacts Chain</a>
                         </div>
                     </div>
                     <div class="modal-body">
@@ -127,14 +128,17 @@
 
                                     <ul class="staff-list" v-if="personData.relationships && personData.relationships.length">
 
-                                        <li v-for="relation in personData.relationships">
+                                        <li v-for="(relation, i) in personData.relationships">
                                             <div class="image">
-                                                <img src="/images/anonimus-person_100x100.png" alt="">
+                                                <a href="javascript:void(0)">
+                                                    <span class="person-initials">{{getPersonInitials(relation.name)}}</span>
+                                                    <img :src="'/images/mask-'+i+'.png'" alt="">
+                                                </a>
                                             </div>
                                             <div class="personal-info">
                                                 <p class="name"><a href="javascript:void(0)">{{relation.name}}</a></p>
                                                 <p class="occupation" style="text-align: left">{{relation.description}}</p>
-                                                <p class="connection-type" style="text-align: left">{{connectionName(relation.pivot.edge_type)}}</p>
+                                                <!--<p class="connection-type" style="text-align: left">{{connectionName(relation.pivot.edge_type)}}</p>-->
                                             </div>
                                         </li>
                                     </ul>
