@@ -110,6 +110,8 @@
                 <h3>Used Products <a href="#"><i class="fa fa-pencil"></i></a></h3>
             </div>
 
+            <p v-if="!clusterProducts.data.length" class="empty-data-p">There are no used products</p>
+
             <ul class="products-list">
                 <li v-if="i < 3" v-for="(product, i) in clusterProducts.data">
                     <div class="image">
