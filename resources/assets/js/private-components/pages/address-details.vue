@@ -103,7 +103,7 @@
 
                     <div style="clear: both"></div>
 
-                    <a href="javascript:void(0)" @click="showSlidedBox('all-employee')" class="address-box-show-more-link">Show all Employees</a>
+                    <a href="javascript:void(0)" @click="showSlidedBox('all-employee')" class="address-box-show-more-link show-all-employees-link">Show all Employees</a>
                 </div>
 
                 <div class="used-products-overview address-box">
@@ -121,7 +121,7 @@
                         </span>
                         </li>
                         <li>
-                            <a href="" class="show-all-link">Show all products</a>
+                            <a href="" class="show-all-link">Show all</a>
                         </li>
                     </ul>
                 </div>
@@ -140,7 +140,7 @@
                         </li>
                     </ul>
 
-                    <a href="javascript:void(0)" @click="showSlidedBox('lab-chain-details')" v-if="addressData.cluster.addresses.length > 1" class="address-box-show-more-link">Show all lab chain members</a>
+                    <a href="javascript:void(0)" @click="showSlidedBox('lab-chain-details')" v-if="addressData.cluster.addresses.length > 1" class="address-box-show-more-link">Lab Chain Details</a>
                 </div>
 
                 <div class="lab-news-overview address-box">

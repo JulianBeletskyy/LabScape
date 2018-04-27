@@ -908,7 +908,7 @@ ul.tag-list li + li{
 
 .sidebar ul.tag-list li a{
     display: block;
-    padding: 6px 10px;
+    padding: 4px 11px;
     font-family: Montserrat;
     font-size: 12px;
     letter-spacing: 0.5px;
@@ -1051,7 +1051,7 @@ ul.tag-list li + li{
 
 .address-details-container{
     padding-left: 50px;
-    padding-top: 40px;
+    padding-top: 31px;
     position: relative;
 }
 
@@ -1068,10 +1068,10 @@ ul.tag-list li + li{
     display: inline-block;
     color: #fff;
     background: #bbbec2;
-    font-size: 16px;
-    width: 25px;
-    height: 25px;
-    line-height: 25px;
+    font-size: 14px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
     border-radius: 14px;
     text-align: center;
     transition: background-color 0.1s linear;
@@ -1106,7 +1106,7 @@ ul.tag-list li + li{
     margin-top: 10px;
 
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 300;
     line-height: 1.5;
     text-align: left;
@@ -1135,23 +1135,23 @@ ul.tag-list li + li{
 
 .address-overview .address-line{
     font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 300;
+    font-size: 13px;
+    font-weight: 400;
     line-height: 1.5;
     text-align: left;
     color: #3a444f;
-    margin-top: 15px;
+    margin-top: 10px;
     margin-bottom: 0;
 }
 
 .link-and-phone {
     font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 300;
+    font-size: 13px;
+    font-weight: 400;
     line-height: 1.5;
     text-align: left;
     color: #3a444f;
-    margin-top: 15px;
+    margin-top: 7px;
     margin-bottom: 0;
 }
 
@@ -1180,8 +1180,9 @@ ul.tag-list li + li{
 }
 
 .address-box{
+    margin-top: 19px;
     padding-right: 25px;
-    padding-top: 25px;
+    padding-top: 21px;
 }
 
 .address-box .header{
@@ -1190,12 +1191,12 @@ ul.tag-list li + li{
 
 .address-box .header h3{
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     line-height: 1.5;
     text-align: left;
     color: #3a444f;
-    margin-top: 12px;
+    margin-top: 5px;
     margin-bottom: 0;
 }
 
@@ -1207,14 +1208,16 @@ ul.tag-list li + li{
 .address-box .header h3 > a{
     padding: 1px;
     background: #bbbec2;
-    width: 25px;
-    height: 25px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
     display: inline-block;
     text-align: center;
     border-radius: 14px;
     color: #ffffff;
     transition: background-color 0.1s linear;
-    margin-left: 15px;
+    margin-left: 6px;
+    font-size: 14px;
 }
 
 .address-box .header h3 > a:hover{
@@ -1249,9 +1252,13 @@ ul.staff-list {
 
 ul.staff-list li {
     overflow: hidden;
-    margin-top: 15px;
+    margin-top: 12px;
     display: flex;
     align-items: center;
+}
+
+ul.staff-list li + li {
+    margin-top: 19px;
 }
 
 ul.staff-list li .image{
@@ -1327,13 +1334,37 @@ ul.staff-list li .personal-info .occupation {
     color: #ffffff;
 }
 
+.address-box a.address-box-show-more-link.show-all-employees-link{
+    color:#dde3e8;
+    background: transparent;
+    font-size: 15px;
+}
+.address-box a.address-box-show-more-link.show-all-employees-link:hover{
+    color: #4a90e2;
+    background: transparent;
+}
+
 .address-box {
     border-top: 1px solid #f7f7f7;
     padding-bottom: 25px;
 }
 
+.lab-news-overview.address-box,
+.lab-chain-members-overview.address-box,
+.used-products-overview.address-box{
+    margin-top: 0;
+}
+
 .used-products-overview .header h3{
     margin-top: 0;
+}
+
+.lab-chain-members-overview.address-box .header h3 {
+    margin-bottom: 7px;
+}
+
+.lab-chain-members-overview.address-box h4{
+    margin-bottom: 5px;
 }
 
 ul.used-products-list {
@@ -1413,7 +1444,7 @@ ul.lab-chain-member-list li p{
     font-size: 14px;
     line-height: 1.63;
     color: #3a444f;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .lab-news-overview.address-box .header h3{
@@ -1447,6 +1478,7 @@ ul.lab-news-list li h4{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 300;
     font-family: Montserrat;
     font-size: 12px;
 }
@@ -1482,7 +1514,7 @@ a.link-back.arrow-left:hover{
     margin-top: 15px;
     font-family: Montserrat;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.5;
     text-align: left;
     color: #3a444f;
