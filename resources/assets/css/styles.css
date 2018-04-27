@@ -611,6 +611,7 @@ ul.select-filter{
 
 ul.select-filter > li {
     width: 100%;
+    border-radius: 6px;
 }
 
 .sidebar-form ul.select-filter > li > a {
@@ -621,6 +622,16 @@ ul.select-filter > li {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-right: 0;
+    transition: color 0s linear;
+}
+
+.sidebar-form ul.select-filter > li.open{
+    background: #4081df;
+}
+
+.sidebar-form ul.select-filter > li.open > a{
+    color: #ffffff;
 }
 
 ul.select-filter > li > a .caret {
@@ -656,7 +667,7 @@ ul.select-filter > li > ul > li:hover{
 
 
 ul.single-dropdown-select.select-filter > li > ul > li.selected {
-    background: #c9e1ff;
+    background: #4081df;
 }
 
 ul.select-filter > li > ul > li label {
@@ -664,6 +675,10 @@ ul.select-filter > li > ul > li label {
     align-items: center;
     margin: 0;
     padding: 4px 5px;
+}
+
+ul.select-filter > li > ul > li.selected .grey-checkbox span.remember_text{
+    color: #fff !important;
 }
 
 ul.select-filter > li > ul > li .grey-checkbox span.remember_text{
