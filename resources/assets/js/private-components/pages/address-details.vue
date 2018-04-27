@@ -97,7 +97,13 @@
 
                     <div style="clear: both"></div>
 
-                    <a href="javascript:void(0)" @click="showSlidedBox('all-employee')" class="address-box-show-more-link show-all-employees-link">Show all Employees</a>
+                    <a href="javascript:void(0)"
+                       v-if="addressData.people && addressData.people.length > 3"
+                       @click="showSlidedBox('all-employee')"
+                       class="address-box-show-more-link show-all-employees-link"
+                    >
+                        Show all Employees
+                    </a>
                 </div>
 
                 <div class="used-products-overview address-box">
