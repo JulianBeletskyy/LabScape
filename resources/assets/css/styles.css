@@ -1191,8 +1191,8 @@ ul.tag-list li + li{
 
 .address-box .header h3{
     font-family: Montserrat;
-    font-size: 17px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 500;
     line-height: 1.5;
     text-align: left;
     color: #3a444f;
@@ -1296,8 +1296,8 @@ ul.staff-list li .personal-info .name {
     margin-bottom: 0;
 
     font-family: Montserrat;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
     line-height: 1.5;
     text-align: left;
     color: #3a444f;
@@ -1322,7 +1322,7 @@ ul.staff-list li .personal-info .occupation {
     font-size: 16px;
     line-height: 1.31;
     color: #4a90e2;
-    font-weight: 600;
+    font-weight: 500;
     padding: 5px;
     border-radius: 5px;
     margin-top: 5px;
@@ -1337,7 +1337,6 @@ ul.staff-list li .personal-info .occupation {
 .address-box a.address-box-show-more-link.show-all-employees-link{
     color:#dde3e8;
     background: transparent;
-    font-size: 15px;
 }
 .address-box a.address-box-show-more-link.show-all-employees-link:hover{
     color: #4a90e2;
@@ -1431,7 +1430,7 @@ ul.lab-chain-member-list li{
     font-size: 16px;
     line-height: 1.63;
     color: #3a444f;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 0;
 }
 
