@@ -1606,6 +1606,20 @@ ul.staff-list li .personal-info .name a:hover{
     font-size: 12px;
 }
 
+#personal-modal .modal-content{
+    border-radius: 6px;
+}
+
+#personal-modal .modal-header{
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+#personal-modal .modal-body{
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
 #personal-modal .modal-header{
     background: #f7f7f7;
 }
