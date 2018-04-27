@@ -2136,11 +2136,11 @@ ul.staff-list li .personal-info .name a:hover{
 .modal-open .main-sidebar,
 .modal-open #map-element,
 .modal-open .main-footer{
-    filter:blur(4px);
-    -o-filter:blur(4px);
-    -ms-filter:blur(4px);
-    -moz-filter:blur(4px);
-    -webkit-filter:blur(4px);
+    /*filter:blur(4px);*/
+    /*-o-filter:blur(4px);*/
+    /*-ms-filter:blur(4px);*/
+    /*-moz-filter:blur(4px);*/
+    /*-webkit-filter:blur(4px);*/
 }
 
 .address-name-in-map-tooltip{
