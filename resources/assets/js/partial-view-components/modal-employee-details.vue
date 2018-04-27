@@ -21,7 +21,10 @@
                         <p class="occupation">{{personData.description}}</p>
 
                         <p class="place-of-work" v-if="personData.careers && personData.careers.length">
-                            at <a href="#">{{currentAddress.name}}</a>
+                            worked at
+                            <span v-for="(address, i) in personData.addresses">
+                                <a :href="'/address-details/'+address.id" >{{address.name}}</a><span v-if="i != 0">, </span>
+                            </span>
                         </p>
 
                         <ul class="social-icons">

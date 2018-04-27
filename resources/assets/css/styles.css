@@ -1731,6 +1731,9 @@ ul.staff-list li .personal-info .name a:hover{
     color: #3a444f;
     margin-bottom: 4px;
     margin-bottom: 11px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #personal-modal .modal-header .occupation{
