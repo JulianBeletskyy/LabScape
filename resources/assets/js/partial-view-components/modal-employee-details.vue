@@ -133,7 +133,24 @@
 
                                     <p style="text-align: center" v-if="!personData.relationships.length">This person doesn't have relationships yet.</p>
 
-                                    <ul class="staff-list" v-if="personData.relationships && personData.relationships.length">
+                                    <ul class="staff-list" v-if="personData.relationships && personData.relationships.length && relationshipsCollapsed">
+
+                                        <li v-if="i < 3" v-for="(relation, i) in personData.relationships">
+                                            <div class="image">
+                                                <a href="javascript:void(0)">
+                                                    <span class="person-initials">{{getPersonInitials(relation.name)}}</span>
+                                                    <img :src="'/images/mask-'+i+'.png'" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="personal-info">
+                                                <p class="name"><a href="javascript:void(0)">{{relation.name}}</a></p>
+                                                <p class="occupation" style="text-align: left">{{relation.description}}</p>
+                                                <p class="connection-type" style="text-align: left">{{connectionName(relation.pivot.edge_type)}}</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="staff-list" v-if="personData.relationships && personData.relationships.length && !relationshipsCollapsed">
 
                                         <li v-for="(relation, i) in personData.relationships">
                                             <div class="image">
@@ -145,11 +162,30 @@
                                             <div class="personal-info">
                                                 <p class="name"><a href="javascript:void(0)">{{relation.name}}</a></p>
                                                 <p class="occupation" style="text-align: left">{{relation.description}}</p>
-                                                <!--<p class="connection-type" style="text-align: left">{{connectionName(relation.pivot.edge_type)}}</p>-->
+                                                <p class="connection-type" style="text-align: left">{{connectionName(relation.pivot.edge_type)}}</p>
                                             </div>
                                         </li>
                                     </ul>
 
+                                    <div style="clear: both"></div>
+
+                                    <div class="text-center" style="margin-top: 20px" v-if="personData.relationships && personData.relationships.length > 3">
+                                        <a href="javascript:void(0)"
+                                           v-if="relationshipsCollapsed"
+                                           @click="relationshipsCollapsed = false"
+                                           class="address-box-show-more-link show-all-employees-link"
+                                        >
+                                            Show all Relationships
+                                        </a>
+
+                                        <a href="javascript:void(0)"
+                                           v-if="!relationshipsCollapsed"
+                                           @click="relationshipsCollapsed = true"
+                                           class="address-box-show-more-link show-all-employees-link"
+                                        >
+                                            Show Less
+                                        </a>
+                                    </div>
                                 </div>
 
                             </div>
@@ -180,7 +216,8 @@
                     publications: []
                 },
                 activeTab: 'career',
-                connectionTypes: []
+                connectionTypes: [],
+                relationshipsCollapsed: true
             }
         },
 
