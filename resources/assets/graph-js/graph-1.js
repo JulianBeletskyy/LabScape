@@ -36,7 +36,8 @@ NodeStateEnum = {
 
 ConnectionTypeEnum = {
     COAUTOR : 1,
-    CITED_PAPER : 2
+    CITED_PAPER : 2,
+    ZEFIX : 3
 }
 
 ActionEnum = {
@@ -330,6 +331,10 @@ GraphEdge.prototype.generateEdgeLabel = function(){
             case ConnectionTypeEnum.CITED_PAPER:
                 this.clabel += nodesMap[con.from].label + " cited\n" + nodesMap[con.to].label + " " + con.weight + " time" + (this.edgeWeight == 1? "." : "s. ");
                 break;
+
+            case ConnectionTypeEnum.ZEFIX:
+                this.clabel += nodesMap[con.from].label + " was signatory at the same company as " + nodesMap[con.to].label + " " + con.weight + " time" + (this.edgeWeight == 1? "." : "s. ");
+            break;
         }
     }
 }
@@ -353,7 +358,7 @@ GraphEdge.prototype.setHover = function(hover){
 }
 
 GraphEdge.prototype.addConnectionType = function(from, to, type, weight){
-    if (type == ConnectionTypeEnum.COAUTOR){
+    if (type == ConnectionTypeEnum.COAUTOR || type == ConnectionTypeEnum.ZEFIX){
         var foundCoauthor = false;
         for (var i = 0; i < this.connections.length; i++){
             if (this.connections[i].type == type){

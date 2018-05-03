@@ -33,6 +33,7 @@
                                                 <option value="0" disabled selected>Data Sources</option>
                                                 <option value="1" selected>Coauthors</option>
                                                 <option value="2" selected>Cited By</option>
+                                                <option value="3" selected>Zefix</option>
                                             </select>
                                         </div>
                                         <img src="/images/graph/undo.svg" class="graphIcon" onclick="undoAction()"/>
