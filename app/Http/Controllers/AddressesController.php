@@ -252,4 +252,15 @@ class AddressesController extends Controller
         return response()->json($products);
     }
 
+    public function updateAddressDetails(Address $address)
+    {
+        $address->name = request()->get('name');
+        $address->address = request()->get('address');
+        $address->url = request()->get('url');
+        $address->phone = request()->get('phone');
+        $address->save();
+
+        return response()->json($address);
+    }
+
 }

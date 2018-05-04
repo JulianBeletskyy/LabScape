@@ -52,6 +52,8 @@ Route::group(['middleware'=>['jwt.auth']],function (){
 
     Route::get('/address-details/{address}/get-cluster-products-paginated', 'AddressesController@getClusterProductsPaginated')->name('address.getClusterProductsPaginated');
 
+    Route::put('/address-details/{address}/update-details', 'AddressesController@updateAddressDetails')->name('address.updateAddressDetails');
+
     Route::get('/customer-statuses', 'CustomerStatusesController@show')->name('customerStatus.show');
 
     Route::get('/people/{person}/relationships', 'PeopleController@getPersonRelationships')->name('people.getPersonRelationships');
@@ -59,5 +61,4 @@ Route::group(['middleware'=>['jwt.auth']],function (){
     Route::get('/people/{person}', 'PeopleController@show')->name('people.show');
 
     Route::get('/connection-types', 'PeopleController@getConnectionTypes')->name('people.getConnectionTypes');
-
 });

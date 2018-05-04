@@ -13,6 +13,8 @@
 
                 <modal-employee-details></modal-employee-details>
 
+                <modal-address-edit></modal-address-edit>
+
                 <modal-contacts-chain></modal-contacts-chain>
 
                 <map-main></map-main>
@@ -28,10 +30,13 @@
 
 <script>
 
+    import ModalAddressEdit from "../partial-view-components/modal-address-edit";
+
     require('../../../../node_modules/admin-lte/dist/js/adminlte.min');
     require('../../../../node_modules/admin-lte/dist/js/demo.js');
 
     export default {
+        components: {ModalAddressEdit},
         created: function (){
             this.$eventGlobal.$on('update-user-profile', loggedUserData => {
                 localStorage.setItem('logged-user', JSON.stringify(loggedUserData))

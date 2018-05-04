@@ -42,7 +42,7 @@
 
                     <h2>
                         <span>{{addressData.name}}</span>
-                        <a href="#"><i class="fa fa-pencil"></i></a>
+                        <a href="javascript:void(0)" @click="showAddressEditModal(addressData)"><i class="fa fa-pencil"></i></a>
 
                         <a href="javascript:void(0)" title="Show on Map" @click="showOnMap()"><i class="fa fa-map-marker"></i></a>
                     </h2>
@@ -255,6 +255,9 @@
 
                     this.showEmployeeDetailsModal(personId, this.addressId, this.addressData);
                 }
+            },
+            showAddressEditModal: function (addressData) {
+                this.$eventGlobal.$emit('showModalAddressEdit', addressData);
             }
         },
 
