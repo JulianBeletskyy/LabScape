@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
+use App\Models\AddressTag;
 use App\Models\Cluster;
 use App\Models\CustomerType;
 use App\Models\People;
@@ -260,7 +261,45 @@ class AddressesController extends Controller
         $address->phone = request()->get('phone');
         $address->save();
 
+        $tags = request()->get('tags');
+
+        $ids = [];
+
+        foreach ($tags as $tag) {
+            if (!Tag::whereName($tag['name'])->first()) {
+                $newTag = new Tag();
+                $newTag->name = $tag['name'];
+                $newTag->save();
+                $ids[] = $newTag->id;
+            } else {
+                $ids[] = $tag['id'];
+            }
+        }
+
+        AddressTag::where('address_id', '=', $address->id)->delete();
+
+        foreach ($ids as $tagId) {
+            $addressTag = new AddressTag();
+            $addressTag->address_id = $address->id;
+            $addressTag->tag_id = $tagId;
+            $addressTag->save();
+        }
+
         return response()->json($address);
+    }
+
+    public function loadAllTags(Address $address)
+    {
+        $tags = Tag::all();
+
+        return response()->json($tags);
+    }
+
+    public function loadSelectedTags(Address $address)
+    {
+        $selectedTags = $address->load('tags')->tags;
+
+        return response()->json($selectedTags);
     }
 
 }

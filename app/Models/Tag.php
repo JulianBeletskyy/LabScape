@@ -9,6 +9,7 @@ class Tag extends Model
 
     protected $table = 'rl_tags';
 
+    public $timestamps = false;
 
     function addresses ()
     {

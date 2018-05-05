@@ -54,6 +54,10 @@ Route::group(['middleware'=>['jwt.auth']],function (){
 
     Route::put('/address-details/{address}/update-details', 'AddressesController@updateAddressDetails')->name('address.updateAddressDetails');
 
+    Route::get('/address-details/{address}/get-all-tags', 'AddressesController@loadAllTags')->name('address.loadAllTags');
+
+    Route::get('/address-details/{address}/load-selected-tags', 'AddressesController@loadSelectedTags')->name('address.loadSelectedTags');
+
     Route::get('/customer-statuses', 'CustomerStatusesController@show')->name('customerStatus.show');
 
     Route::get('/people/{person}/relationships', 'PeopleController@getPersonRelationships')->name('people.getPersonRelationships');

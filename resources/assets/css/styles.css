@@ -1124,6 +1124,31 @@ ul.tag-list li + li{
     background: #4a90e3;
 }
 
+.sidebar .address-overview h2 a.active {
+    background: #4a90e3;
+}
+
+.sidebar .address-overview h2 a.active:hover {
+    background: #bbbec2;
+}
+
+.sidebar .address-overview .can-edit {
+    color: #4a90e2;
+}
+
+.sidebar .address-overview .can-edit:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.sidebar .address-overview .confirm-edit-block {
+    margin-top: 10px;
+}
+
+.sidebar .address-overview .edit-input-block {
+    margin-top: 7px;
+}
+
 .customer-status-select-box {
 
 }

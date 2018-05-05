@@ -9,6 +9,7 @@ window.Vue = require('vue');
 window.Vue.use(VueRouter);
 
 AuthService.defineIsLoggedIn();
+import vSelect from 'vue-select';
 
 /* Components Registration */
 Vue.component('main-component', require('./main-component'));
@@ -27,6 +28,7 @@ Vue.component('modal-contacts-chain', require('./partial-view-components/modal-c
 Vue.component('lab-chain-details', require('./partial-view-components/lab-chain-details'));
 Vue.component('customer-status-select', require('./partial-view-components/customer-status-select'));
 Vue.component('pagination', Pagination);
+Vue.component('v-select', vSelect);
 
 Vue.prototype.$eventGlobal = new Vue(); // Global event bus
 
