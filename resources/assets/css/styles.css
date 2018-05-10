@@ -1120,6 +1120,8 @@ ul.tag-list li + li{
     transition: background-color 0.1s linear;
 }
 
+/******************************/
+
 .sidebar .address-overview h2 a:hover{
     background: #4a90e3;
 }
@@ -1133,21 +1135,162 @@ ul.tag-list li + li{
 }
 
 .sidebar .address-overview .can-edit {
-    color: #4a90e2;
+    /*color: #4a90e2;*/
+    border-bottom: 1px solid #d2d6de;
 }
 
 .sidebar .address-overview .can-edit:hover {
     cursor: pointer;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
 }
 
 .sidebar .address-overview .confirm-edit-block {
     margin-top: 10px;
+    float: right;
 }
 
 .sidebar .address-overview .edit-input-block {
     margin-top: 7px;
 }
+
+.sidebar .address-overview .save-address-btn {
+    width: 170px;
+    background: #4a90e3;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+    transition: background-color 0.1s linear;
+}
+
+.sidebar .address-overview .cancel-address-btn {
+    background: #fff;
+    font-family: Montserrat;
+    font-size: 13px;
+    /* font-weight: 600; */
+    margin: 0;
+}
+.sidebar .address-overview .save-address-btn-disabled {
+    width: 170px;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-family: Montserrat;
+    font-size: 13px;
+     font-weight: 600;
+    margin: 0;
+    font-size: 13px;
+}
+
+.sidebar .address-overview .save-address-btn:hover {
+    background: #5ba3f4;
+}
+
+.sidebar .address-overview .save-address-btn:focus,
+.sidebar .address-overview .cancel-address-btn:focus {
+    outline: none;
+}
+
+.sidebar .address-overview .save-address-btn:active,
+.sidebar .address-overview .cancel-address-btn:active {
+    box-shadow: none;
+}
+
+.sidebar .address-overview .can-edit-input {
+
+}
+
+.sidebar .address-overview ul.tags-edit li a {
+    position: relative;
+    display: block;
+    padding: 4px 30px 4px 15px;
+    font-family: Montserrat;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #3a444f;
+    border-radius: 6px;
+    border: solid 1px #eaeff4;
+    transition: background-color 100ms linear;
+}
+
+.sidebar .address-overview ul.tags-edit li a .delete-tag {
+    position: absolute;
+    /*left: 142px;*/
+    right: 8px;
+    top: -1px;
+    /* float: none; */
+    /* margin-right: 0; */
+    font-size: 30px;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    font-weight: 500;
+    line-height: 1;
+    /* color: #000; */
+    /* text-shadow: 0 1px 0 #fff; */
+    filter: alpha(opacity=20);
+    opacity: 0.2;
+}
+
+.sidebar .address-overview ul.tags-edit li a .delete-tag:focus {
+    outline: none;
+}
+
+.sidebar .address-overview ul li a.add-tag {
+    color: #4a90e2;
+    border: 1px solid #4a90e2;
+    padding: 4px 12px;
+}
+
+.sidebar .address-overview div.v-select.tags-select ul,
+.sidebar .address-overview div.v-select.tags-select div.dropdown-toggle {
+    /*border: none;*/
+}
+
+.sidebar .address-overview div.v-select.tags-select .selected-tag {
+    position: relative;
+    display: block;
+    padding: 0 30px 0 15px;
+    font-family: Montserrat;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #3a444f;
+    border-radius: 6px;
+    border: solid 1px #eaeff4;
+    transition: background-color 100ms linear;
+    background: #fff;
+}
+
+.sidebar .address-overview div.v-select.tags-select .selected-tag .close {
+    position: absolute;
+    right: 8px;
+    top: -2px;
+    font-size: 30px;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    font-weight: 500;
+    line-height: 1;
+    filter: alpha(opacity=20);
+    opacity: 0.2;
+}
+
+.sidebar .address-overview div.v-select.tags-select .selected-tag:hover {
+    background-color: #eaeff4;
+}
+
+ul.tag-list li {
+    margin-bottom: 10px;
+}
+
+/************************/
+
+
 
 .customer-status-select-box {
 
@@ -1155,7 +1298,8 @@ ul.tag-list li + li{
 
 .address-overview {
     padding-right: 25px;
-    padding-bottom: 25px;
+    /*padding-bottom: 25px;*/
+    padding-bottom: 50px;
 }
 
 .address-overview h2{

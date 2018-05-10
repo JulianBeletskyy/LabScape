@@ -63,7 +63,7 @@
                         </p>
 
                         <ul class="tag-list">
-                            <li v-for="tag in addressData.tags"><a href="">{{tag.name}}</a></li>
+                            <li v-for="tag in addressData.tags"><a href="#" @click.prevent>{{tag.name}}</a></li>
                         </ul>
 
                         <p class="address-line">
@@ -77,72 +77,74 @@
                     </div>
 
                     <div v-else>
-                        <h2>
-                            <span class="can-edit" @click="toggleEditingInput('name')">
-                                {{addressData.name}}
-                            </span>
+                        <form>
+                            <h2 @click="toggleEditingInput('name')">
+                                <div>
+                                    <div-editable :content.sync="addressData.name"></div-editable>
+                                </div>
 
-                            <a href="javascript:void(0)" @click="toggleEditing" :class="{'active': isEditing}">
-                                <i class="fa fa-pencil"></i>
-                            </a>
+                                <!--<a href="javascript:void(0)" @click="toggleEditing" :class="{'active': isEditing}">-->
+                                <!--<i class="fa fa-pencil"></i>-->
+                                <!--</a>-->
 
-                            <a href="javascript:void(0)" title="Show on Map" @click="showOnMap()"><i class="fa fa-map-marker"></i></a>
-                        </h2>
+                                <!--<a href="javascript:void(0)" title="Show on Map" @click="showOnMap()"><i class="fa fa-map-marker"></i></a>-->
+                            </h2>
 
-                        <div style="clear: both"></div>
+                            <div style="clear: both"></div>
 
-                        <div v-if="editingInput === 'name'" class="edit-input-block">
-                            <input v-model="addressData.name" class="form-control" type="text">
-                        </div>
+                            <p class="lab-chain">
+                                <span class="current-chain-name">{{addressData.cluster.name}}</span>
 
-                        <p class="lab-chain">
-                            <span class="current-chain-name">{{addressData.cluster.name}}</span>
+                                <br />
 
-                            <br />
+                                <span class="lab-chain-text">Lab Chain:</span>
+                                <a href="#" class="add-to-chain-link">Add to Chain</a>
+                            </p>
 
-                            <span class="lab-chain-text">Lab Chain:</span>
-                            <a href="#" class="add-to-chain-link">Add to Chain</a>
-                        </p>
+                            <ul v-if="editingInput !== 'tags'" class="tag-list tags-edit">
+                                <li v-for="tag in addressData.tags">
+                                    <a href="#" @click.prevent>
+                                        {{tag.name}}
+                                        <button class="delete-tag" @click="removeSelectedTag(tag.name)">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" @click.prevent="toggleEditingInput('tags')" class="add-tag">
+                                        Add Tag
+                                    </a>
+                                </li>
+                            </ul>
 
-                        <v-select
-                                v-model="addressData.tags"
-                                :options="allTags"
-                                :label="'name'"
-                                multiple
-                                taggable
-                                push-tags
-                        ></v-select>
+                            <v-select v-show="editingInput === 'tags'"
+                                    v-model="addressData.tags"
+                                    :options="allTags"
+                                    :label="'name'"
+                                    :class="'tags-select'"
+                                    multiple
+                                    taggable
+                                    push-tags
+                            ></v-select>
 
-                        <p class="address-line can-edit" @click="toggleEditingInput('address')">
-                            {{addressData.address}}
-                        </p>
+                            <p class="address-line can-edit" @click="toggleEditingInput('address')">
+                                <div-editable :content.sync="addressData.address"></div-editable>
+                            </p>
 
-                        <div v-if="editingInput === 'address'" class="edit-input-block">
-                            <input v-model="addressData.address" class="form-control" type="text">
-                        </div>
+                            <p class="address-line can-edit" @click="toggleEditingInput('url')">
+                                <div-editable :content.sync="addressData.url"></div-editable>
+                            </p>
 
-                        <p class="link-and-phone">
-                            <a class="can-edit" @click="toggleEditingInput('url')">
-                                {{addressData.url.replace('https://', '').replace('http://', '')}}
-                            </a>
-                            <span class="pone-number can-edit" @click="toggleEditingInput('phone')">
-                                {{addressData.phone}}
-                            </span>
-                        </p>
+                            <p class="address-line can-edit" @click="toggleEditingInput('phone')">
+                                <div-editable :content.sync="addressData.phone"></div-editable>
+                            </p>
 
-                        <div v-if="editingInput === 'url'" class="edit-input-block">
-                            <input v-model="addressData.url" class="form-control" type="text">
-                        </div>
-
-                        <div v-if="editingInput === 'phone'" class="edit-input-block">
-                            <input v-model="addressData.phone" class="form-control" type="text">
-                        </div>
-
-                        <div class="confirm-edit-block">
-                            <button v-if="saveBtnDisabled" disabled class="btn btn-primary">Save</button>
-                            <button v-else @click="updateAddress" class="btn btn-primary">Save</button>
-                            <button @click="toggleEditing" class="btn btn-warning">Cancel</button>
-                        </div>
+                            <div class="confirm-edit-block">
+                                <button type="button" @click="toggleEditing" class="btn cancel-address-btn">Cancel</button>
+                                <button type="submit" v-if="!saveBtnDisabled && madeChanges" @click.prevent="updateAddress" class="btn save-address-btn">Suggest Edits</button>
+                                <button type="button" v-if="saveBtnDisabled || !madeChanges" disabled class="btn save-address-btn-disabled">Suggest Edits</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -270,6 +272,7 @@
                 isEditing: false,
                 editingInput: null,
                 saveBtnDisabled: false,
+                madeChanges: false,
                 old: {
                     name: '',
                     address: '',
@@ -296,29 +299,110 @@
                 }
             },
             "addressData.name": function () {
-                this.saveBtnDisabled = this.addressData.name === '' ?  true : false;
+                this.checkIfInputsEmpty();
+                if (this.isEditing) {
+                    this.checkIfChangesMade();
+                }
             },
             "addressData.address": function () {
-                this.saveBtnDisabled = this.addressData.address === '' ?  true : false;
+                this.checkIfInputsEmpty();
+                if (this.isEditing) {
+                    this.checkIfChangesMade();
+                }
             },
             "addressData.url": function () {
-                this.saveBtnDisabled = this.addressData.url === '' ?  true : false;
+                this.checkIfInputsEmpty();
+                if (this.isEditing) {
+                    this.checkIfChangesMade();
+                }
             },
             "addressData.phone": function () {
-                this.saveBtnDisabled = this.addressData.phone === '' ?  true : false;
+                this.checkIfInputsEmpty();
+                if (this.isEditing) {
+                    this.checkIfChangesMade();
+                }
             },
             "addressData.tags": function () {
-                this.saveBtnDisabled = this.addressData.tags.length < 1 ?  true : false;
+                this.checkIfInputsEmpty();
+                if (this.isEditing) {
+                    this.checkIfChangesMade();
+                }
             },
         },
 
         methods: {
+            checkIfInputsEmpty: function () {
+                if (
+                    this.addressData.name === '' ||
+                    this.addressData.address === '' ||
+                    this.addressData.url === '' ||
+                    this.addressData.phone === '' ||
+                    this.addressData.tags.length < 1
+                ) {
+                    this.saveBtnDisabled = true;
+                } else {
+                    this.saveBtnDisabled = false;
+                }
+            },
+            checkIfChangesMade: function () {
+
+                if (
+                    this.addressData.name !== this.old.name ||
+                    this.addressData.phone !== this.old.phone ||
+                    this.addressData.address !== this.old.address ||
+                    this.addressData.url !== this.old.url ||
+                    this.compareTags()
+                ) {
+                    this.madeChanges = true;
+                } else {
+                    this.madeChanges = false;
+                }
+            },
+            compareTags: function() {
+                var _this = this,
+                    sortedTags = this.addressData.tags.slice(),
+                    sortedOldTags = this.old.tags.slice();
+
+                sortedTags.sort(function(a, b) {
+                    var c = a.name,
+                        d = b.name;
+                    if (c > d) return 1;
+                    if (c < d) return -1;
+                });
+
+                sortedOldTags.sort(function(a, b) {
+                    var c = a.name,
+                        d = b.name;
+                    if (c > d) return 1;
+                    if (c < d) return -1;
+                });
+
+                if (sortedTags.length === sortedOldTags.length) {
+                    for (var i = 0; i < sortedTags.length; i++) {
+                        if (sortedTags[i].name !== sortedOldTags[i].name) {
+                            _this.madeChanges = true;
+                            break;
+                        } else {
+                            _this.madeChanges = false;
+                        }
+                    }
+                } else {
+                    _this.madeChanges = true;
+                }
+
+                if (_this.madeChanges) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
             loadAddressDetails: function () {
 
                 return this.httpGet('/api/address-details/'+this.addressId)
                     .then(data => {
                         this.addressData = data;
                         document.title = this.addressData.name;
+                        this.madeChanges = false;
                     })
 
             },
@@ -387,6 +471,7 @@
                     this.addressData.tags = this.old.tags;
                 } else {
                     this.loadSelectedTags();
+                    this.checkIfChangesMade();
                 }
             },
             toggleEditingInput: function (input) {
@@ -407,8 +492,18 @@
                         this.old.phone = this.addressData.phone;
                         this.loadAllTags();
                         this.loadSelectedTags();
+                        this.madeChanges = false;
+                        this.saveBtnDisabled = false;
+                        this.editingInput = null;
                         alertify.notify('Address has been updated.', 'success', 3);
                     })
+            },
+            removeSelectedTag: function (name) {
+                var tags = this.addressData.tags.filter(function(elem) {
+                    return elem.name != name;
+                });
+
+                this.addressData.tags = tags;
             }
         },
 

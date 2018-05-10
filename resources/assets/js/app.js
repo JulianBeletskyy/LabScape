@@ -29,6 +29,7 @@ Vue.component('lab-chain-details', require('./partial-view-components/lab-chain-
 Vue.component('customer-status-select', require('./partial-view-components/customer-status-select'));
 Vue.component('pagination', Pagination);
 Vue.component('v-select', vSelect);
+Vue.component('div-editable', require('./partial-view-components/div-editable'));
 
 Vue.prototype.$eventGlobal = new Vue(); // Global event bus
 
