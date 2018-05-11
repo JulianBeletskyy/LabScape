@@ -82,7 +82,7 @@
                                 <div class="name-block can-edit">
                                     <div-editable :content.sync="addressData.name" :placeholder="'Name'"></div-editable>
                                 </div>
-                                
+
                                 <!--<a href="javascript:void(0)" @click="toggleEditing" :class="{'active': isEditing}">-->
                                 <!--<i class="fa fa-pencil"></i>-->
                                 <!--</a>-->
