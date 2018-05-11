@@ -1288,6 +1288,30 @@ ul.tag-list li {
     margin-bottom: 10px;
 }
 
+.sidebar .address-overview .address-line input {
+    /*border: noe*/
+}
+
+.sidebar .address-overview .can-edit div:empty:not(:focus):before {
+    content: attr(data-placeholder)
+}
+
+.sidebar .address-overview .name-block.can-edit div:empty:not(:focus):before {
+    font-weight: 100;
+}
+
+.sidebar .address-overview div.name-block.can-edit {
+    display: inline-block;
+    align-items: center;
+    font-family: Montserrat;
+    font-size: 27px;
+    line-height: 1.39em;
+    font-weight: 400;
+    margin: 0;
+    float: left;
+    width: calc(100% - 190px);
+}
+
 /************************/
 
 

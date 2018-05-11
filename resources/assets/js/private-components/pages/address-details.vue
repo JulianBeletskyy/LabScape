@@ -78,17 +78,17 @@
 
                     <div v-else>
                         <form>
-                            <h2 @click="toggleEditingInput('name')">
-                                <div>
-                                    <div-editable :content.sync="addressData.name"></div-editable>
+                            <div @click="toggleEditingInput('name')">
+                                <div class="name-block can-edit">
+                                    <div-editable :content.sync="addressData.name" :placeholder="'Name'"></div-editable>
                                 </div>
-
+                                
                                 <!--<a href="javascript:void(0)" @click="toggleEditing" :class="{'active': isEditing}">-->
                                 <!--<i class="fa fa-pencil"></i>-->
                                 <!--</a>-->
 
                                 <!--<a href="javascript:void(0)" title="Show on Map" @click="showOnMap()"><i class="fa fa-map-marker"></i></a>-->
-                            </h2>
+                            </div>
 
                             <div style="clear: both"></div>
 
@@ -125,18 +125,20 @@
                                     multiple
                                     taggable
                                     push-tags
+                                    :placeholder="'Select tags'"
                             ></v-select>
 
                             <p class="address-line can-edit" @click="toggleEditingInput('address')">
-                                <div-editable :content.sync="addressData.address"></div-editable>
+                                <div-editable :content.sync="addressData.address" :placeholder="'Address'"></div-editable>
                             </p>
 
                             <p class="address-line can-edit" @click="toggleEditingInput('url')">
-                                <div-editable :content.sync="addressData.url"></div-editable>
+                                <div-editable :content.sync="addressData.url" :placeholder="'Url'"></div-editable>
                             </p>
 
                             <p class="address-line can-edit" @click="toggleEditingInput('phone')">
-                                <div-editable :content.sync="addressData.phone"></div-editable>
+                                <!--<input type="text" v-model="addressData.phone" class="form-control edit-input" placeholder="Phone number">-->
+                                <div-editable :content.sync="addressData.phone" :placeholder="'Phone number'"></div-editable>
                             </p>
 
                             <div class="confirm-edit-block">
@@ -402,7 +404,6 @@
                     .then(data => {
                         this.addressData = data;
                         document.title = this.addressData.name;
-                        this.madeChanges = false;
                     })
 
             },
@@ -525,6 +526,8 @@
                     this.old.address = this.addressData.address;
                     this.old.url = this.addressData.url;
                     this.old.phone = this.addressData.phone;
+                    this.madeChanges = false;
+                    this.saveBtnDisabled = true;
                 });
 
             this.loadCustomerStatusList();
