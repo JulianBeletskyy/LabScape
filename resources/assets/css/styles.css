@@ -1118,6 +1118,7 @@ ul.tag-list li + li{
     border-radius: 14px;
     text-align: center;
     transition: background-color 0.1s linear;
+    vertical-align: middle;
 }
 
 /******************************/
@@ -1136,7 +1137,8 @@ ul.tag-list li + li{
 
 .sidebar .address-overview .can-edit {
     /*color: #4a90e2;*/
-    border-bottom: 1px solid #d2d6de;
+    /*border-bottom: 1px solid #d2d6de;*/
+    border-bottom: 2px solid #EAEFF4;
 }
 
 .sidebar .address-overview .can-edit:hover {
@@ -1336,6 +1338,7 @@ ul.tag-list li {
     margin: 0;
     float: left;
     width: calc(100% - 170px);
+    vertical-align: middle;
 }
 
 .address-overview .lab-chain{

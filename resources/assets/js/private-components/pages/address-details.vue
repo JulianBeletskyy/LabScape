@@ -42,7 +42,7 @@
 
                     <div v-if="!isEditing">
                         <h2>
-                            <span>{{addressData.name}}</span>
+                            <span style="vertical-align: middle">{{addressData.name}}</span>
 
                             <a href="javascript:void(0)" @click="toggleEditing" :class="{'active': isEditing}">
                                 <i class="fa fa-pencil"></i>
@@ -59,7 +59,8 @@
                             <br />
 
                             <span class="lab-chain-text">Lab Chain:</span>
-                            <a href="#" class="add-to-chain-link">Add to Chain</a>
+                            <autocompleteSelect v-if="chainSelect" :type="'clusters'" :selected="addressData.cluster" :close="closeChain" :choose="addChain" />
+                            <a href="#" @click.prevent="toggleChain" class="add-to-chain-link">Add to Chain</a>
                         </p>
 
                         <ul class="tag-list">
@@ -98,7 +99,8 @@
                                 <br />
 
                                 <span class="lab-chain-text">Lab Chain:</span>
-                                <a href="#" class="add-to-chain-link">Add to Chain</a>
+                                <autocompleteSelect v-if="chainSelect" :type="'clusters'" :selected="addressData.cluster" :close="closeChain" :choose="addChain" />
+                                <a href="#" @click.prevent="toggleChain" class="add-to-chain-link">Add to Chain</a>
                             </p>
 
                             <ul v-if="editingInput !== 'tags'" class="tag-list tags-edit">
@@ -250,10 +252,13 @@
     import http from '../../mixins/http';
     import employeeModal from '../../mixins/show-employee-details-modal';
     import getPersonInitials from '../../mixins/get-person-initials';
+    import autocompleteSelect from '../../partial-view-components/autocomplete-select';
 
     export default {
         mixins: [http, employeeModal, getPersonInitials],
-
+        components: {
+            autocompleteSelect
+        },
         data: function () {
             return {
                 addressId: null,
@@ -267,10 +272,11 @@
                     products: []
                 },
                 customerStatusList: [],
+                chainList: [],
                 isExpanded: false,
                 sideComponentToDisplay: '',
                 isFirstLoad: true,
-
+                chainSelect: false,
                 isEditing: false,
                 editingInput: null,
                 saveBtnDisabled: false,
@@ -399,7 +405,6 @@
                 }
             },
             loadAddressDetails: function () {
-
                 return this.httpGet('/api/address-details/'+this.addressId)
                     .then(data => {
                         this.addressData = data;
@@ -411,6 +416,21 @@
                 this.httpGet('/api/customer-statuses')
                     .then(data => {
                         this.customerStatusList = data;
+                    })
+            },
+            loadChainList: function () {
+                this.httpGet('/api/clusters')
+                    .then(data => {
+                        this.chainList = data;
+                    })
+            },
+            addChain: function (id) {
+                this.httpPut('/api/clusters/'+this.addressId, {cluster_id: id})
+                    .then(data => {
+                        this.addressData.cluster.id = data.cluster.id
+                        this.addressData.cluster.name = data.cluster.name
+                        alertify.notify('Chain has been updated.', 'success', 3);
+                        this.chainSelect = false
                     })
             },
             updateCustomerStatus: function (status) {
@@ -505,6 +525,12 @@
                 });
 
                 this.addressData.tags = tags;
+            },
+            closeChain: function () {
+                this.chainSelect = false
+            },
+            toggleChain: function () {
+                this.chainSelect = !this.chainSelect
             }
         },
 
@@ -531,7 +557,6 @@
                 });
 
             this.loadCustomerStatusList();
-
             if(this.$route.query['all-employees']){
                 setTimeout(()=>{
                     this.showSlidedBox('all-employee');

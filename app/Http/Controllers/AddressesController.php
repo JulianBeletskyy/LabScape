@@ -302,4 +302,18 @@ class AddressesController extends Controller
         return response()->json($selectedTags);
     }
 
+    public function getClusters()
+    {
+        $clusters = Cluster::get();
+        return response()->json($clusters);
+    }
+
+    public function updateClusters(Address $address)
+    {
+        $address->cluster_id = request()->get('cluster_id');
+        $address->update();
+        $address->load('cluster');
+        return response()->json($address);
+    }
+
 }
