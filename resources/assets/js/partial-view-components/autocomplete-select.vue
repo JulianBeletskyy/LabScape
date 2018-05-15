@@ -11,11 +11,8 @@
                     <span class="checkmark"></span>
                 </label>
             </div>
-            <div>
-                <a class="link" href="javascript:void(0)">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                    New Labs Chain
-                </a>
+            <div class="text-right">
+                <button type="button" @click="closeSelf" class="btn cancel-address-btn">Cancel</button>
                 <a href="javascript:void(0)" class="button" @click="addItem">Add</a>
             </div>
         </div>
@@ -33,7 +30,8 @@
                 list: [],
                 filtered: [],
                 query: '',
-                cluster: {}
+                cluster: {},
+                oldValue: 0
             }
         },
         methods: {
@@ -53,15 +51,15 @@
                 this.choose(this.cluster.id)
             },
             closeSelf: function () {
+                this.cluster.id = this.oldValue
                 this.close()
-                document.body.removeEventListener('click', this.closeSelf)
             }
         },
         mounted: function () {
             this.cluster = this.selected
+            this.oldValue = this.selected.id
             document.getElementById('input').focus()
             this.loadList()
-            document.body.addEventListener('click', this.closeSelf)
         }
     }
 </script>
@@ -82,6 +80,7 @@
    .link {
         color: #4a90e3 !important;
         font-weight: 500;
+
    }
    .input {
         width: 300px;
@@ -98,8 +97,6 @@
    .button {
         background: #4a90e3;
         color: #fff !important;
-        display: block;
-        float: right;
         padding: 10px 15px;
         border-radius: 5px;
         font-family: Montserrat;
