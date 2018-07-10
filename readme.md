@@ -1,6 +1,6 @@
 #Labscape
 
-### Laravel 5.6 + Angular 5.2.0(with Angular cli)
+### Laravel 5.6 + Vue 2.5.16
 
 ### Installation
 
